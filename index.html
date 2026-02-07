@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калькулятор водного следа | Проект Голубенко</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Навигация -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-tint"></i>
+                <span>Водный след</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Главная</a></li>
+                <li><a href="#calculator" class="nav-link">Калькулятор</a></li>
+                <li><a href="#water-tables" class="nav-link">Таблицы</a></li>
+                <li><a href="#about" class="nav-link">О водном следе</a></li>
+                <li><a href="#recommendations" class="nav-link">Рекомендации</a></li>
+                <li><a href="#project" class="nav-link">О проекте</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Главная секция -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Калькулятор водного следа
+                    <span class="highlight">человека</span>
+                </h1>
+                <p class="hero-description">
+                    Узнайте свой реальный водный след с учётом бытового потребления, 
+                    пищевого рациона и покупок товаров. Осознанное потребление — 
+                    первый шаг к защите водных ресурсов планеты.
+                </p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-number">2+ млрд</div>
+                        <div class="stat-label">людей испытывают дефицит воды</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">3000-5000</div>
+                        <div class="stat-label">литров в день — средний водный след</div>
+                    </div>
+                </div>
+                <button class="cta-button" onclick="scrollToCalculator()">
+                    <i class="fas fa-calculator"></i>
+                    Рассчитать водный след
+                </button>
+            </div>
+            <div class="hero-visual">
+                <div class="water-drop">
+                    <i class="fas fa-tint"></i>
+                </div>
+                <div class="floating-elements">
+                    <div class="drop small"></div>
+                    <div class="drop medium"></div>
+                    <div class="drop large"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Калькулятор -->
+    <section id="calculator" class="calculator-section">
+        <div class="container">
+            <h2 class="section-title">Калькулятор водного следа</h2>
+            <p class="section-description">
+                Ответьте на несколько вопросов о вашем образе жизни, чтобы рассчитать 
+                индивидуальный водный след
+            </p>
+
+            <div class="calculator-container">
+                <div class="tabs">
+                    <button class="tab-button active" data-tab="domestic">
+                        <i class="fas fa-home"></i>
+                        Бытовое потребление
+                    </button>
+                    <button class="tab-button" data-tab="food">
+                        <i class="fas fa-utensils"></i>
+                        Питание
+                    </button>
+                    <button class="tab-button" data-tab="goods">
+                        <i class="fas fa-shopping-bag"></i>
+                        Товары
+                    </button>
+                </div>
+
+                <!-- Бытовое потребление -->
+                <div id="domestic" class="tab-content active">
+                    <div class="input-group">
+                        <label for="shower-time">Время в душе (минут в день)</label>
+                        <input type="range" id="shower-time" min="0" max="30" value="10" class="slider">
+                        <span class="value-display">10 мин</span>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="baths">Принятие ванн (раз в неделю)</label>
+                        <input type="range" id="baths" min="0" max="7" value="1" class="slider">
+                        <span class="value-display">1 раз</span>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="dishwashing">Мытьё посуды (минут в день)</label>
+                        <input type="range" id="dishwashing" min="0" max="60" value="15" class="slider">
+                        <span class="value-display">15 мин</span>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="laundry">Стирка (раз в неделю)</label>
+                        <input type="range" id="laundry" min="0" max="10" value="3" class="slider">
+                        <span class="value-display">3 раза</span>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="toilet-flush">Смыв туалета (раз в день)</label>
+                        <input type="range" id="toilet-flush" min="0" max="20" value="8" class="slider">
+                        <span class="value-display">8 раз</span>
+                    </div>
+                </div>
+
+                <!-- Питание -->
+                <div id="food" class="tab-content">
+                    <div class="food-category">
+                        <h3>Мясо и рыба (граммов в день)</h3>
+                        <div class="input-group">
+                            <label for="beef">Говядина</label>
+                            <input type="range" id="beef" min="0" max="200" value="50" step="10" class="slider">
+                            <span class="value-display">50 г</span>
+                        </div>
+                        <div class="input-group">
+                            <label for="pork">Свинина</label>
+                            <input type="range" id="pork" min="0" max="200" value="30" step="10" class="slider">
+                            <span class="value-display">30 г</span>
+                        </div>
+                        <div class="input-group">
+                            <label for="lamb">Баранина</label>
+                            <input type="range" id="lamb" min="0" max="150" value="0" step="10" class="slider">
+                            <span class="value-display">0 г</span>
+                        </div>
+                        <div class="input-group">
+                            <label for="goat-meat">Козье мясо</label>
+                            <input type="range" id="goat-meat" min="0" max="150" value="0" step="10" class="slider">
+                            <span class="value-display">0 г</span>
+                        </div>
+                        <div class="input-group">
+                            <label for="chicken">Курица</label>
+                            <input type="range" id="chicken" min="0" max="300" value="100" step="10" class="slider">
+                            <span class="value-display">100 г</span>
+                        </div>
+                        <div class="input-group">
+                            <label for="fish">Рыба</label>
+                            <input type="range" id="fish" min="0" max="200" value="50" step="10" class="slider">
+                            <span class="value-display">50 г</span>
+                        </div>
+                    </div>
+
+                    <div class="food-category">
+                        <h3>Молочные продукты и яйца (граммов в день)</h3>
+                        <div class="input-group">
+                            <label for="milk">Молоко</label>
+                            <input type="range" id="milk" min="0" max="500" value="200" step="25" class="slider">
+                            <span class="value-display">200 мл</span>
+                        </div>
+                        <div class="input-group">
+                            <label for="cheese">Сыр твёрдый</label>
+                            <input type="range" id="cheese" min="0" max="100" value="30" step="5" class="slider">
+                            <span class="value-display">30 г</span>
+                        </div>
+                        <div class="input-group">
+                            <label for="yogurt">Йогурт</label>
+                            <input type="range" id="yogurt" min="0" max="500" value="150" step="25" class="slider">
+                            <span class="value-display">150 г</span>
+                        </div>
+                        <div class="input-group">
+                            <label for="butter">Масло сливочное</label>
+                            <input type="range" id="butter" min="0" max="100" value="15" step="5" class="slider">
+                            <span class="value-display">15 г</span>
+                        </div>
+                        <div class="input-group">
+                            <label for="cream">Сливки</label>
+                            <input type="range" id="cream" min="0" max="100" value="0" step="5" class="slider">
+                            <span class="value-display">0 г</span>
+                        </div>
+                        <div class="input-group">
+                            <label for="eggs">Яйца куриные</label>
+                            <input type="range" id="eggs" min="0" max="5" value="1" step="1" class="slider">
+                            <span class="value-display">1 штука (50 г)</span>
+                        </div>
+                    </div>
+
+                    <div class="food-category">
+                        <h3>Злаки и крупы (граммов в день)</h3>
+                        <div class="input-group">
+                            <label for="bread">Хлеб пшеничный</label>
+                            <input type="range" id="bread" min="0" max="300" value="100" step="25" class="slider">
+                            <span class="value-display">100 г</span>
+                        </div>
+                        <div class="input-group">
+                            <label for="rice">Рис</label>
+                            <input type="range" id="rice" min="0" max="200" value="75" step="25" class="slider">
+                            <span class="value-display">75 г</span>
+                        </div>
+                        <div class="input-group">
+                            <label for="wheat">Пшеница (макароны, крупы)</label>
+                            <input type="range" id="wheat" min="0" max="200" value="50" step="25" class="slider">
+                            <span class="value-display">50 г</span>
+                        </div>
+                        <div class="input-group">
+                            <label for="oats">Овсянка</label>
+                            <input type="range" id="oats" min="0" max="150" value="30" step="15" class="slider">
+                            <span class="value-display">30 г</span>
+                        </div>
+                        <div class="input-group">
+                            <label for="potatoes">Картофель</label>
+                            <input type="range" id="potatoes" min="0" max="400" value="150" step="25" class="slider">
+                            <span class="value-display">150 г</span>
+                        </div>
+                    </div>
+
+                    <div class="food-category">
+                        <h3>Овощи и фрукты (граммов в день)</h3>
+                        <div class="input-group">
+                            <label for="vegetables">Овощи (общие)</label>
+                            <input type="range" id="vegetables" min="0" max="800" value="300" step="25" class="slider">
+                            <span class="value-display">300 г</span>
+                        </div>
+                        <div class="input-group">
+                            <label for="tomatoes">Помидоры</label>
+                            <input type="range" id="tomatoes" min="0" max="300" value="100" step="25" class="slider">
+                            <span class="value-display">100 г</span>
+                        </div>
+                        <div class="input-group">
+                            <label for="carrots">Морковь</label>
+                            <input type="range" id="carrots" min="0" max="200" value="50" step="25" class="slider">
+                            <span class="value-display">50 г</span>
+                        </div>
+                        <div class="input-group">
+                            <label for="onions">Лук репчатый</label>
+                            <input type="range" id="onions" min="0" max="150" value="30" step="15" class="slider">
+                            <span class="value-display">30 г</span>
+                        </div>
+                        <div class="input-group">
+                            <label for="fruits">Фрукты (общие)</label>
+                            <input type="range" id="fruits" min="0" max="600" value="200" step="25" class="slider">
+                            <span class="value-display">200 г</span>
+                        </div>
+                        <div class="input-group">
+                            <label for="apples">Яблоки</label>
+                            <input type="range" id="apples" min="0" max="400" value="150" step="25" class="slider">
+                            <span class="value-display">150 г</span>
+                        </div>
+                        <div class="input-group">
+                            <label for="bananas">Бананы</label>
+                            <input type="range" id="bananas" min="0" max="300" value="100" step="25" class="slider">
+                            <span class="value-display">100 г</span>
+                        </div>
+                        <div class="input-group">
+                            <label for="oranges">Апельсины</label>
+                            <input type="range" id="oranges" min="0" max="300" value="100" step="25" class="slider">
+                            <span class="value-display">100 г</span>
+                        </div>
+                    </div>
+
+                    <div class="food-category">
+                        <h3>Напитки (мл в день)</h3>
+                        <div class="input-group">
+                            <label for="coffee">Кофе</label>
+                            <input type="range" id="coffee" min="0" max="1000" value="200" step="50" class="slider">
+                            <span class="value-display">200 мл</span>
+                        </div>
+                        <div class="input-group">
+                            <label for="tea">Чай</label>
+                            <input type="range" id="tea" min="0" max="1000" value="300" step="50" class="slider">
+                            <span class="value-display">300 мл</span>
+                        </div>
+                        <div class="input-group">
+                            <label for="juice">Соки фруктовые</label>
+                            <input type="range" id="juice" min="0" max="500" value="100" step="50" class="slider">
+                            <span class="value-display">100 мл</span>
+                        </div>
+                        <div class="input-group">
+                            <label for="soft-drinks">Газированные напитки</label>
+                            <input type="range" id="soft-drinks" min="0" max="1000" value="0" step="50" class="slider">
+                            <span class="value-display">0 мл</span>
+                        </div>
+                        <div class="input-group">
+                            <label for="beer">Пиво</label>
+                            <input type="range" id="beer" min="0" max="2000" value="0" step="100" class="slider">
+                            <span class="value-display">0 мл</span>
+                        </div>
+                        <div class="input-group">
+                            <label for="wine">Вино</label>
+                            <input type="range" id="wine" min="0" max="500" value="0" step="50" class="slider">
+                            <span class="value-display">0 мл</span>
+                        </div>
+                    </div>
+
+                    <div class="food-category">
+                        <h3>Масла и жиры (граммов в день)</h3>
+                        <div class="input-group">
+                            <label for="vegetable-oil">Растительное масло</label>
+                            <input type="range" id="vegetable-oil" min="0" max="100" value="20" step="5" class="slider">
+                            <span class="value-display">20 г</span>
+                        </div>
+                        <div class="input-group">
+                            <label for="olive-oil">Оливковое масло</label>
+                            <input type="range" id="olive-oil" min="0" max="50" value="0" step="5" class="slider">
+                            <span class="value-display">0 г</span>
+                        </div>
+                        <div class="input-group">
+                            <label for="mayonnaise">Майонез</label>
+                            <input type="range" id="mayonnaise" min="0" max="100" value="0" step="5" class="slider">
+                            <span class="value-display">0 г</span>
+                        </div>
+                    </div>
+
+                    <div class="food-category">
+                        <h3>Бобовые и орехи (граммов в день)</h3>
+                        <div class="input-group">
+                            <label for="beans">Фасоль и бобы</label>
+                            <input type="range" id="beans" min="0" max="150" value="30" step="15" class="slider">
+                            <span class="value-display">30 г</span>
+                        </div>
+                        <div class="input-group">
+                            <label for="lentils">Чечевица</label>
+                            <input type="range" id="lentils" min="0" max="150" value="0" step="15" class="slider">
+                            <span class="value-display">0 г</span>
+                        </div>
+                        <div class="input-group">
+                            <label for="peas">Горох</label>
+                            <input type="range" id="peas" min="0" max="150" value="0" step="15" class="slider">
+                            <span class="value-display">0 г</span>
+                        </div>
+                        <div class="input-group">
+                            <label for="nuts">Орехи (грецкие, миндаль)</label>
+                            <input type="range" id="nuts" min="0" max="100" value="15" step="5" class="slider">
+                            <span class="value-display">15 г</span>
+                        </div>
+                        <div class="input-group">
+                            <label for="peanuts">Арахис</label>
+                            <input type="range" id="peanuts" min="0" max="100" value="0" step="5" class="slider">
+                            <span class="value-display">0 г</span>
+                        </div>
+                    </div>
+
+                    <div class="food-category">
+                        <h3>Сахар и сладости (граммов в день)</h3>
+                        <div class="input-group">
+                            <label for="sugar">Сахар</label>
+                            <input type="range" id="sugar" min="0" max="100" value="30" step="5" class="slider">
+                            <span class="value-display">30 г</span>
+                        </div>
+                        <div class="input-group">
+                            <label for="chocolate">Шоколад</label>
+                            <input type="range" id="chocolate" min="0" max="100" value="20" step="10" class="slider">
+                            <span class="value-display">20 г</span>
+                        </div>
+                        <div class="input-group">
+                            <label for="honey">Мёд</label>
+                            <input type="range" id="honey" min="0" max="50" value="0" step="5" class="slider">
+                            <span class="value-display">0 г</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Товары -->
+                <div id="goods" class="tab-content">
+                    <div class="input-group">
+                        <label for="clothes">Покупка одежды (вещей в месяц)</label>
+                        <input type="range" id="clothes" min="0" max="20" value="2" class="slider">
+                        <span class="value-display">2 вещи</span>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="electronics">Электроника (покупок в год)</label>
+                        <input type="range" id="electronics" min="0" max="10" value="1" class="slider">
+                        <span class="value-display">1 покупка</span>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="books">Книги (покупок в год)</label>
+                        <input type="range" id="books" min="0" max="20" value="4" class="slider">
+                        <span class="value-display">4 книги</span>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="toiletries">Средства гигиены (покупок в месяц)</label>
+                        <input type="range" id="toiletries" min="0" max="10" value="2" class="slider">
+                        <span class="value-display">2 покупки</span>
+                    </div>
+                </div>
+
+                <button class="calculate-button" onclick="calculateWaterFootprint()">
+                    <i class="fas fa-calculator"></i>
+                    Рассчитать водный след
+                </button>
+            </div>
+
+            <!-- Результаты -->
+            <div id="results" class="results-container" style="display: none;">
+                <h3>Ваш водный след</h3>
+                <div class="results-grid">
+                    <div class="result-card">
+                        <div class="result-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <div class="result-content">
+                            <h4>Бытовое потребление</h4>
+                            <div class="result-value" id="domestic-result">0 л/день</div>
+                        </div>
+                    </div>
+                    <div class="result-card">
+                        <div class="result-icon">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <div class="result-content">
+                            <h4>Питание</h4>
+                            <div class="result-value" id="food-result">0 л/день</div>
+                        </div>
+                    </div>
+                    <div class="result-card">
+                        <div class="result-icon">
+                            <i class="fas fa-shopping-bag"></i>
+                        </div>
+                        <div class="result-content">
+                            <h4>Товары</h4>
+                            <div class="result-value" id="goods-result">0 л/день</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="total-result">
+                    <h3>Общий водный след</h3>
+                    <div class="total-value" id="total-result">0 л/день</div>
+                    <div class="comparison">
+                        <div class="comparison-text" id="comparison-text"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- О водном следе -->
+    <section id="about" class="info-section">
+        <div class="container">
+            <h2 class="section-title">Что такое водный след?</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3>Определение</h3>
+                    <p>
+                        Водный след — это объём пресной воды, используемый для производства 
+                        товаров и услуг, потребляемых человеком. Он включает как прямое 
+                        использование воды, так и косвенное.
+                    </p>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <h3>Компоненты</h3>
+                    <ul>
+                        <li><strong>Зелёный</strong> — дождевая вода</li>
+                        <li><strong>Голубой</strong> — поверхностные и подземные воды</li>
+                        <li><strong>Серый</strong> — вода для разбавления загрязнений</li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>Глобальная проблема</h3>
+                    <p>
+                        Более 2 миллиардов людей живут в странах, испытывающих высокий 
+                        дефицит воды. Изменение климата усугубляет эту проблему.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Таблицы водного следа -->
+    <section id="water-tables" class="tables-section">
+        <div class="container">
+            <h2 class="section-title">Таблицы водного следа продуктов</h2>
+            <p class="section-description">
+                Научные данные о водном следе различных продуктов питания 
+                на основе исследований Mekonnen & Hoekstra (2011, 2012)
+            </p>
+
+            <div class="tables-container">
+                <!-- Мясо и рыба -->
+                <div class="table-card">
+                    <h3><i class="fas fa-drumstick-bite"></i> Мясо и рыба</h3>
+                    <div class="table-scroll">
+                        <table class="water-table">
+                            <thead>
+                                <tr>
+                                    <th>Продукт</th>
+                                    <th>Водный след (л/кг)</th>
+                                    <th>Категория</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Говядина</td>
+                                    <td class="high">15,415</td>
+                                    <td>Высокий</td>
+                                </tr>
+                                <tr>
+                                    <td>Баранина</td>
+                                    <td class="high">10,412</td>
+                                    <td>Высокий</td>
+                                </tr>
+                                <tr>
+                                    <td>Свинина</td>
+                                    <td class="medium-high">5,988</td>
+                                    <td>Средне-высокий</td>
+                                </tr>
+                                <tr>
+                                    <td>Козье мясо</td>
+                                    <td class="medium-high">5,521</td>
+                                    <td>Средне-высокий</td>
+                                </tr>
+                                <tr>
+                                    <td>Курица</td>
+                                    <td class="medium">4,325</td>
+                                    <td>Средний</td>
+                                </tr>
+                                <tr>
+                                    <td>Рыба (средняя)</td>
+                                    <td class="medium">5,000</td>
+                                    <td>Средний</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Молочные продукты -->
+                <div class="table-card">
+                    <h3><i class="fas fa-cheese"></i> Молочные продукты</h3>
+                    <div class="table-scroll">
+                        <table class="water-table">
+                            <thead>
+                                <tr>
+                                    <th>Продукт</th>
+                                    <th>Водный след (л/кг)</th>
+                                    <th>Категория</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Сыр твёрдый</td>
+                                    <td class="high">5,553</td>
+                                    <td>Высокий</td>
+                                </tr>
+                                <tr>
+                                    <td>Масло сливочное</td>
+                                    <td class="high">5,553</td>
+                                    <td>Высокий</td>
+                                </tr>
+                                <tr>
+                                    <td>Йогурт</td>
+                                    <td class="medium">1,020</td>
+                                    <td>Средний</td>
+                                </tr>
+                                <tr>
+                                    <td>Молоко</td>
+                                    <td class="medium">1,020</td>
+                                    <td>Средний</td>
+                                </tr>
+                                <tr>
+                                    <td>Яйца куриные</td>
+                                    <td class="medium">3,265</td>
+                                    <td>Средний</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Злаки и крупы -->
+                <div class="table-card">
+                    <h3><i class="fas fa-seedling"></i> Злаки и крупы</h3>
+                    <div class="table-scroll">
+                        <table class="water-table">
+                            <thead>
+                                <tr>
+                                    <th>Продукт</th>
+                                    <th>Водный след (л/кг)</th>
+                                    <th>Категория</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Пшеница</td>
+                                    <td class="medium">1,827</td>
+                                    <td>Средний</td>
+                                </tr>
+                                <tr>
+                                    <td>Рис</td>
+                                    <td class="medium">1,673</td>
+                                    <td>Средний</td>
+                                </tr>
+                                <tr>
+                                    <td>Хлеб пшеничный</td>
+                                    <td class="medium">1,608</td>
+                                    <td>Средний</td>
+                                </tr>
+                                <tr>
+                                    <td>Овсянка</td>
+                                    <td class="medium">1,788</td>
+                                    <td>Средний</td>
+                                </tr>
+                                <tr>
+                                    <td>Картофель</td>
+                                    <td class="low">287</td>
+                                    <td>Низкий</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Овощи и фрукты -->
+                <div class="table-card">
+                    <h3><i class="fas fa-apple-alt"></i> Овощи и фрукты</h3>
+                    <div class="table-scroll">
+                        <table class="water-table">
+                            <thead>
+                                <tr>
+                                    <th>Продукт</th>
+                                    <th>Водный след (л/кг)</th>
+                                    <th>Категория</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Яблоки</td>
+                                    <td class="medium">822</td>
+                                    <td>Средний</td>
+                                </tr>
+                                <tr>
+                                    <td>Бананы</td>
+                                    <td class="medium">790</td>
+                                    <td>Средний</td>
+                                </tr>
+                                <tr>
+                                    <td>Апельсины</td>
+                                    <td class="medium">560</td>
+                                    <td>Средний</td>
+                                </tr>
+                                <tr>
+                                    <td>Помидоры</td>
+                                    <td class="low">214</td>
+                                    <td>Низкий</td>
+                                </tr>
+                                <tr>
+                                    <td>Морковь</td>
+                                    <td class="low">195</td>
+                                    <td>Низкий</td>
+                                </tr>
+                                <tr>
+                                    <td>Овощи (средние)</td>
+                                    <td class="low">322</td>
+                                    <td>Низкий</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Напитки -->
+                <div class="table-card">
+                    <h3><i class="fas fa-coffee"></i> Напитки</h3>
+                    <div class="table-scroll">
+                        <table class="water-table">
+                            <thead>
+                                <tr>
+                                    <th>Напиток</th>
+                                    <th>Водный след (л/кг)</th>
+                                    <th>Категория</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Кофе (1 чашка ≈ 7г)</td>
+                                    <td class="very-high">130 л/чашка</td>
+                                    <td>Очень высокий</td>
+                                </tr>
+                                <tr>
+                                    <td>Чай (1 чашка ≈ 3г)</td>
+                                    <td class="high">27 л/чашка</td>
+                                    <td>Высокий</td>
+                                </tr>
+                                <tr>
+                                    <td>Пиво</td>
+                                    <td class="low">300</td>
+                                    <td>Низкий</td>
+                                </tr>
+                                <tr>
+                                    <td>Вино</td>
+                                    <td class="low">870</td>
+                                    <td>Низкий</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Орехи и бобовые -->
+                <div class="table-card">
+                    <h3><i class="fas fa-seedling"></i> Орехи и бобовые</h3>
+                    <div class="table-scroll">
+                        <table class="water-table">
+                            <thead>
+                                <tr>
+                                    <th>Продукт</th>
+                                    <th>Водный след (л/кг)</th>
+                                    <th>Категория</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Орехи (средние)</td>
+                                    <td class="very-high">9,063</td>
+                                    <td>Очень высокий</td>
+                                </tr>
+                                <tr>
+                                    <td>Миндаль</td>
+                                    <td class="very-high">16,095</td>
+                                    <td>Очень высокий</td>
+                                </tr>
+                                <tr>
+                                    <td>Грецкие орехи</td>
+                                    <td class="very-high">9,280</td>
+                                    <td>Очень высокий</td>
+                                </tr>
+                                <tr>
+                                    <td>Арахис</td>
+                                    <td class="high">3,974</td>
+                                    <td>Высокий</td>
+                                </tr>
+                                <tr>
+                                    <td>Фасоль сухая</td>
+                                    <td class="high">5,053</td>
+                                    <td>Высокий</td>
+                                </tr>
+                                <tr>
+                                    <td>Чечевица</td>
+                                    <td class="high">5,874</td>
+                                    <td>Высокий</td>
+                                </tr>
+                                <tr>
+                                    <td>Горох</td>
+                                    <td class="medium">1,979</td>
+                                    <td>Средний</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Масла и жиры -->
+                <div class="table-card">
+                    <h3><i class="fas fa-oil-can"></i> Масла и жиры</h3>
+                    <div class="table-scroll">
+                        <table class="water-table">
+                            <thead>
+                                <tr>
+                                    <th>Продукт</th>
+                                    <th>Водный след (л/кг)</th>
+                                    <th>Категория</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Оливковое масло</td>
+                                    <td class="very-high">14,431</td>
+                                    <td>Очень высокий</td>
+                                </tr>
+                                <tr>
+                                    <td>Подсолнечное масло</td>
+                                    <td class="high">6,792</td>
+                                    <td>Высокий</td>
+                                </tr>
+                                <tr>
+                                    <td>Рапсовое масло</td>
+                                    <td class="high">4,301</td>
+                                    <td>Высокий</td>
+                                </tr>
+                                <tr>
+                                    <td>Соевое масло</td>
+                                    <td class="high">4,190</td>
+                                    <td>Высокий</td>
+                                </tr>
+                                <tr>
+                                    <td>Кукурузное масло</td>
+                                    <td class="medium">2,575</td>
+                                    <td>Средний</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Категории продуктов -->
+                <div class="table-card full-width">
+                    <h3><i class="fas fa-chart-bar"></i> Средние значения по категориям</h3>
+                    <div class="table-scroll">
+                        <table class="water-table">
+                            <thead>
+                                <tr>
+                                    <th>Категория продуктов</th>
+                                    <th>Средний водный след (л/кг)</th>
+                                    <th>Калорийность (ккал/кг)</th>
+                                    <th>Водный след на калорию (л/ккал)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Сахарные культуры</td>
+                                    <td class="low">197</td>
+                                    <td>285</td>
+                                    <td class="low">0.69</td>
+                                </tr>
+                                <tr>
+                                    <td>Овощи</td>
+                                    <td class="low">322</td>
+                                    <td>240</td>
+                                    <td class="medium">1.34</td>
+                                </tr>
+                                <tr>
+                                    <td>Корнеплоды</td>
+                                    <td class="low">387</td>
+                                    <td>827</td>
+                                    <td class="low">0.47</td>
+                                </tr>
+                                <tr>
+                                    <td>Фрукты</td>
+                                    <td class="medium">967</td>
+                                    <td>460</td>
+                                    <td class="medium">2.09</td>
+                                </tr>
+                                <tr>
+                                    <td>Злаковые</td>
+                                    <td class="medium">1,644</td>
+                                    <td>3,208</td>
+                                    <td class="low">0.51</td>
+                                </tr>
+                                <tr>
+                                    <td>Масличные культуры</td>
+                                    <td class="high">2,364</td>
+                                    <td>2,908</td>
+                                    <td class="low">0.81</td>
+                                </tr>
+                                <tr>
+                                    <td>Бобовые</td>
+                                    <td class="high">4,055</td>
+                                    <td>3,412</td>
+                                    <td class="medium">1.19</td>
+                                </tr>
+                                <tr>
+                                    <td>Орехи</td>
+                                    <td class="very-high">9,063</td>
+                                    <td>2,500</td>
+                                    <td class="high">3.63</td>
+                                </tr>
+                                <tr>
+                                    <td>Молоко</td>
+                                    <td class="medium">1,020</td>
+                                    <td>560</td>
+                                    <td class="medium">1.82</td>
+                                </tr>
+                                <tr>
+                                    <td>Яйца</td>
+                                    <td class="medium">3,265</td>
+                                    <td>1,425</td>
+                                    <td class="medium">2.29</td>
+                                </tr>
+                                <tr>
+                                    <td>Курица</td>
+                                    <td class="medium">4,325</td>
+                                    <td>1,440</td>
+                                    <td class="medium">3.00</td>
+                                </tr>
+                                <tr>
+                                    <td>Свинина</td>
+                                    <td class="medium-high">5,988</td>
+                                    <td>2,786</td>
+                                    <td class="medium">2.15</td>
+                                </tr>
+                                <tr>
+                                    <td>Говядина</td>
+                                    <td class="very-high">15,415</td>
+                                    <td>1,513</td>
+                                    <td class="very-high">10.19</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Источники данных -->
+                <div class="data-sources">
+                    <h4>Источники данных:</h4>
+                    <ul>
+                        <li><strong>Mekonnen, M.M. & Hoekstra, A.Y. (2011).</strong> "The green, blue and grey water footprint of crops and derived crop products." <em>Hydrology and Earth System Sciences</em>, 15, 1577–1600.</li>
+                        <li><strong>Mekonnen, M.M. & Hoekstra, A.Y. (2012).</strong> "A Global Assessment of the Water Footprint of Farm Animal Products." <em>Ecosystems</em>, 15: 401–415.</li>
+                    </ul>
+                    <p class="note">
+                        <strong>Примечание:</strong> Значения представляют средние глобальные показатели за период 1996-2005 гг.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Рекомендации -->
+    <section id="recommendations" class="recommendations-section">
+        <div class="container">
+            <h2 class="section-title">Как снизить водный след?</h2>
+            <div class="recommendations-grid">
+                <div class="recommendation-card">
+                    <div class="recommendation-icon">
+                        <i class="fas fa-shower"></i>
+                    </div>
+                    <h3>В быту</h3>
+                    <ul>
+                        <li>Сократите время в душе до 5-7 минут</li>
+                        <li>Используйте водосберегающие насадки</li>
+                        <li>Закрывайте кран при чистке зубов</li>
+                        <li>Запускайте стиральную машину только при полной загрузке</li>
+                        <li>Собирайте дождевую воду для полива</li>
+                    </ul>
+                </div>
+                <div class="recommendation-card">
+                    <div class="recommendation-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3>В питании</h3>
+                    <ul>
+                        <li>Уменьшите потребление мяса, особенно говядины</li>
+                        <li>Выбирайте местные и сезонные продукты</li>
+                        <li>Избегайте пищевых отходов</li>
+                        <li>Пейте воду из-под крана вместо бутилированной</li>
+                        <li>Предпочитайте растительные белки</li>
+                    </ul>
+                </div>
+                <div class="recommendation-card">
+                    <div class="recommendation-icon">
+                        <i class="fas fa-recycle"></i>
+                    </div>
+                    <h3>В потреблении</h3>
+                    <ul>
+                        <li>Покупайте меньше, но качественнее</li>
+                        <li>Выбирайте товары с меньшей упаковкой</li>
+                        <li>Ремонтируйте вместо покупки нового</li>
+                        <li>Перерабатывайте и повторно используйте</li>
+                        <li>Выбирайте устойчивые бренды</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- О проекте -->
+    <section id="project" class="project-section">
+        <div class="container">
+            <h2 class="section-title">О проекте</h2>
+            <div class="project-content">
+                <div class="project-info">
+                    <h3>Индивидуальный проект</h3>
+                    <p>
+                        Разработка калькулятора использования воды человеком «Водный след»
+                    </p>
+                    <div class="project-details">
+                        <div class="detail">
+                            <strong>Автор:</strong> Голубенко Кирилл Алексеевич
+                        </div>
+                        <div class="detail">
+                            <strong>Класс:</strong> 10 А
+                        </div>
+                        <div class="detail">
+                            <strong>Учреждение:</strong> МОУ «Лицей № 11 Ворошиловского района Волгограда»
+                        </div>
+                        <div class="detail">
+                            <strong>Научный руководитель:</strong> Потоловский Роман Валерьевич
+                        </div>
+                        <div class="detail">
+                            <strong>Должность руководителя:</strong> доцент кафедры «Водоснабжение и водоотведение»
+                        </div>
+                    </div>
+                </div>
+                <div class="project-description">
+                    <h4>Цель проекта</h4>
+                    <p>
+                        Разработать калькулятор, позволяющий оценить индивидуальный водный след 
+                        человека с учётом бытовых привычек, рациона питания и потребления основных товаров.
+                    </p>
+                    <h4>Актуальность</h4>
+                    <p>
+                        В современном мире вопрос рационального использования природных ресурсов 
+                        перестал быть исключительно научной темой и всё чаще затрагивает 
+                        повседневную жизнь человека. Особенно это относится к пресной воде.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Калькулятор водного следа</h4>
+                    <p>Осознанное потребление — первый шаг к защите водных ресурсов планеты.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Контакты</h4>
+                    <p><i class="fas fa-phone"></i> +7 960 868-74-17</p>
+                    <p><i class="fab fa-vk"></i> <a href="https://vk.com/golub4ik_official" target="_blank" style="color: #4f46e5;">vk.com/golub4ik_official</a></p>
+                    <p><i class="fab fa-telegram"></i> @Golub4ikOfficial</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Голубенко К.А.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
