@@ -1,0 +1,1102 @@
+Ecosystems (2012) 15: 401–415
+DOI: 10.1007/s10021-011-9517-8
+                                                                  Ó 2012 The Author(s). This article is published with open access at Springerlink.com
+
+
+
+
+   A Global Assessment of the Water
+  Footprint of Farm Animal Products
+                            Mesfin M. Mekonnen* and Arjen Y. Hoekstra
+
+  Department of Water Engineering and Management, University of Twente, P.O. Box 217, 7500 AE Enschede, The Netherlands
+
+
+ABSTRACT
+The increase in the consumption of animal prod-                                compared to the crop products. Animal products
+ucts is likely to put further pressure on the world’s                          from industrial systems generally consume and
+freshwater resources. This paper provides a com-                               pollute more ground- and surface-water resources
+prehensive account of the water footprint of animal                            than animal products from grazing or mixed sys-
+products, considering different production systems                             tems. The rising global meat consumption and the
+and feed composition per animal type and country.                              intensification of animal production systems will
+Nearly one-third of the total water footprint of                               put further pressure on the global freshwater
+agriculture in the world is related to the production                          resources in the coming decades. The study shows
+of animal products. The water footprint of any                                 that from a freshwater perspective, animal products
+animal product is larger than the water footprint of                           from grazing systems have a smaller blue and grey
+crop products with equivalent nutritional value.                               water footprint than products from industrial sys-
+The average water footprint per calorie for beef is                            tems, and that it is more water-efficient to obtain
+20 times larger than for cereals and starchy roots.                            calories, protein and fat through crop products than
+The water footprint per gram of protein for milk,                              animal products.
+eggs and chicken meat is 1.5 times larger than for
+pulses. The unfavorable feed conversion efficiency                             Key words: meat consumption; livestock pro-
+for animal products is largely responsible for the                             duction; animal feed; water consumption; water
+relatively large water footprint of animal products                            pollution; sustainable consumption.
+
+
+
+INTRODUCTION                                                                   extensive and mixed to industrial farming systems
+                                                                               is likely to continue (Bouwman and others 2005;
+Global meat production has almost doubled in the                               Naylor and others 2005; Galloway and others
+period 1980–2004 (FAO 2005) and this upward                                    2007). There is a rich literature on the expected
+trend will continue given the projected doubling of                            environmental consequences of increased con-
+meat production in the period 2000–2050 (Steinfeld                             sumption of animal products (Naylor and others
+and others 2006). To meet the rising demand for                                2005; Myers and Kent 2003; McAlpine and others
+animal products, the on-going shift from traditional                           2009; Pelletier and Tyedmers 2010; Sutton and
+                                                                               others 2011), and on the pros and cons of industrial
+Received 30 June 2011; accepted 21 December 2011;                              versus conventional farming systems (Lewis and
+published online 24 January 2012                                               others 1990; Capper and others 2009). Specific
+Electronic supplementary materials: The online version of this article         fields of interest include, amongst others, animal
+(doi: 10.1007/s10021-011-9517-8) contains supplementary material               welfare (Fraser 2008; Thompson 2008), excessive
+which is available to authorized users.
+Author Contributions: MMM designed the study, performed research,
+                                                                               use of antibiotics (Gustafson and Bowen 1997;
+analysed data and wrote the paper; AYH designed the study, contributed         Witte 1998; Smith and others 2002; McEwen 2006),
+new methods, analysed data and wrote the paper.                                the demand for scarce lands to produce the required
+*Corresponding author; e-mail: m.m.mekonnen@ctw.utwente.nl
+
+
+
+                                                                         401
+402      M. M. Mekonnen and A. Y. Hoekstra
+
+feed (Naylor and others 2005; Keyzer and others          country at a global level. Although Chapagain and
+2005; Nepstad and others 2006) and the contribu-         Hoekstra (2003, 2004) were able to estimate the
+tion of livestock to the emission of greenhouse gases    water footprint of farm animals and animal prod-
+(Pelletier and Tyedmers 2010; Tilman and others          ucts per country, they have made very crude
+2001; Bouwman and others 2011). Although it is           assumptions regarding the composition and
+known that animal products are very water-inten-         amount of feed consumed by different animals.
+sive (Pimentel and others 2004; Chapagain and            Besides, the water footprints of feed crops were
+Hoekstra 2003), little attention has been paid thus      estimated based on national average climatic data.
+far to the total impact of the livestock sector on the   The main differences with Chapagain and Hoekstra
+global demand for freshwater resources. Most of the      (2003, 2004) are: (1) we estimated the amount of
+water use along the supply chain of animal products      feed consumed per animal category, per production
+takes place in the growing of feed. As a result of the   system and per country based on estimates of feed
+increasing global trade in feed crops and animal         conversion efficiencies and statistics on the annual
+products and the growth of meat preservation over        production of animal products, (2) we took into
+longer periods, consumers of animal products have        consideration the relative occurrence of the three
+often become spatially disconnected from the pro-        production systems (grazing, mixed and industrial)
+cesses necessary to produce the products, so that the    in each country and (3) we estimated the green,
+link between animal products and freshwater con-         blue and grey water footprints of growing feed
+sumption is not well known (Naylor and others            crops using a grid-based dynamic water balance
+2005; Hoekstra 2010; Hoekstra and Chapagain              model that takes into account local climate, soil
+2008).                                                   conditions and data on irrigation at a high spatial
+   There are earlier publications on the water use       resolution.
+behind animal production (Steinfeld and others
+2006; Galloway and others 2007; Pimentel and
+others 2004; Chapagain and Hoekstra 2003, 2004;          METHODS
+De Fraiture and others 2007; Peden and others
+2007; Van Breugel and others 2010; Renault and
+                                                         The Water Footprint of an Animal
+Wallender 2000), but a detailed comprehensive            We follow the water footprint definitions and
+global assessment was lacking. The objective of the      methodology as set out in Hoekstra and others
+current paper is to provide such an assessment by        (2011). The blue water footprint refers to con-
+quantifying the water footprint of farm animals and      sumption of blue water resources (surface and
+of the various derived animal products per country       groundwater) along the supply chain of a product.
+and per animal production system. The period of          ‘Consumption’ refers to loss of water from the
+analysis was 1996–2005. The water footprint of a         available ground-surface water body in a catch-
+product consists of three colour-coded components:       ment area. Losses occur when water evaporates,
+the green, blue and grey water footprint (Hoekstra       returns to another catchment area or the sea or is
+and Chapagain 2008). The blue water footprint            incorporated into a product. The green water
+refers to the volume of surface and groundwater          footprint refers to consumption of green water
+consumed (that is evaporated after withdrawal) as        resources (rainwater in so far as it does not become
+a result of the production of the product; the green     runoff). The grey water footprint refers to pollution
+water footprint refers to the rainwater consumed.        and is defined as the volume of freshwater that is
+The grey water footprint refers to the volume of         required to assimilate the load of pollutants given
+freshwater that is required to assimilate the load of    natural background concentrations and existing
+pollutants based on existing ambient water quality       ambient water quality standards.
+standards. Water footprint calculations have been           We consider eight farm animal categories: beef
+based on the recently established global water           and dairy cattle, pigs, sheep, goats, broiler and layer
+footprint standard (Hoekstra and others 2011),           chickens, and horses. When estimating total feed
+which was developed based on earlier water foot-         amounts and total water footprints per category,
+print studies (see for example, Chapagain and            we include ‘buffaloes’ in the category of ‘beef
+others 2006; Hoekstra and Chapagain 2007; Ger-           cattle’ and ‘asses and mules’ in the category of
+bens-Leenes and others 2009; Aldaya and others           ‘horses’.
+2010).                                                      The water footprint of a live animal consists of
+   With the exception of Chapagain and Hoekstra          different components: the indirect water footprint
+(2003, 2004), no previous study has estimated the        of the feed and the direct water footprint related to
+water footprint of animal products by product and        the drinking water and service water consumed
+                                                         Assessment of the Water Footprint of Farm Animals                 403
+
+(Chapagain and Hoekstra 2003, 2004). The water                     are eaten by the various farm animals have been
+footprint of an animal is expressed as:                            calculated following the methodology developed by
+                                                                   Hoekstra and Chapagain (2008) and Hoekstra and
+    WF½a; c; s ¼ WFfeed ½a; c; s þ WFdrink ½a; c; s
+                                                          ð1Þ      others (2011). The water footprints of feed crops
+                  þ WFserv ½a; c; s                               were estimated using a crop water use model that
+                                                                   estimates crop water footprints at a 5 9 5 arc
+where WFfeed[a,c,s], WFdrink[a,c,s] and WFserv[a,c,s]
+                                                                   minute spatial resolution globally (Mekonnen and
+represent the water footprint of an animal for animal
+                                                                   Hoekstra 2010, 2011). Grey water footprints were
+category a in country c in production systems s
+                                                                   estimated by looking at leaching and runoff of
+related to feed, drinking water and service-water
+                                                                   nitrogen-fertilizers only, following Mekonnen and
+consumption, respectively. Service water refers to
+                                                                   Hoekstra (2010, 2011). As animal feed in a country
+the water used to clean the farmyard, wash the
+                                                                   originates from domestic production and imported
+animal and carry out other services necessary to
+                                                                   products, for the calculation of the water footprint
+maintain the environment. The water footprint of an
+                                                                   of animal feed in a country, we have taken a
+animal and its three components can be expressed in
+                                                                   weighted average water footprint according to the
+terms of m3/y/animal, or, when summed over the
+                                                                   relative volumes of domestic production and im-
+lifetime of the animal, in terms of m3/animal. For
+                                                                   port:
+beef cattle, pigs, sheep, goats and broiler chick-
+ens—animals that provide their products after they
+have been slaughtered—it is most useful to look at                 WFprod ½p
+the water footprint of the animal at the end of its                                       P                                
+                                                                       P½p  WFprod ½p þ     Ti ½ne ; p  WFprod ½ne ; p
+lifetime, because it is this total that will be allocated                                  ne
+                                                                                              P
+                                                                   ¼
+to the various products (for example, meat, leather).                                 P½p þ Ti ½ne ; p
+For dairy cattle and layer chickens, it is most                                               ne
+
+straightforward to look at the water footprint of the                                                                       ð3Þ
+animal per year (averaged over its lifetime), because
+one can easily relate this annual animal water foot-               in which P[p] is the production quantity of feed
+print to its average annual production (milk, eggs).               product p in a country (ton/y), Ti[ne,p] the im-
+   The water footprint of an animal related to the                 ported quantity of feed product p from exporting
+feed consumed consists of two parts: the water                     nation ne (ton/y), WFprod[p] the water footprint of
+footprint of the various feed ingredients and the                  feed product p when produced in the nation con-
+water that is used to mix the feed:                                sidered (m3/ton) and WFprod[ne,p] the water foot-
+                                                                   print of feed product p as in the exporting nation ne
+WFfeed ½a; c; s                                                   (m3/ton). The water footprint of crop residues such
+  Pn                                                             as bran, straw, chaff and leaves and tops from sugar
+        Feed½a; c; s; p  WFprod ½p þ WFmixing ½a; c; s        beet have already been accounted for in the main
+    p¼1
+¼                                                                  product, therefore their water footprint was set
+                          Pop ½a; c; s
+                                                                   equal to zero.
+                                                          ð2Þ
+  Feed[a,c,s,p] represents the annual amount of                    Volume and Composition of Feed
+feed ingredient p consumed by animal category a in
+country c and production system s (ton/y),                         The volume and composition of the feed consumed
+WF*prod[p] the water footprint of feed ingredient p                vary depending on the type of animal, the pro-
+(m3/ton), WFmixing[a,c,s] the volume of water                      duction system and the country. The amount of
+consumed for mixing the feed for animal category a                 feed consumed is estimated following the approach
+in country c and production system s (m3/y/animal)                 of Hendy and others (1995), in which the total
+and Pop*[a,c,s] the number of slaughtered animals                  annual feed consumption (including both concen-
+per year or the number of milk or egg producing                    trates and roughages) is calculated based on annual
+animals in a year for animal category a in country c               production of animal products and feed conversion
+and production system s.                                           efficiencies. Only for horses we have used the ap-
+                                                                   proach as in Chapagain and Hoekstra (2003),
+                                                                   which means that we multiplied the estimated feed
+The Water Footprint of Feed Ingredients
+                                                                   consumption per animal by the number of animals,
+The water footprints of the different crops, rough-                thus arriving at an estimate of the total feed con-
+ages and crop by-products (WF*prod[p], m3/ton) that                sumed by horses.
+404      M. M. Mekonnen and A. Y. Hoekstra
+
+   The total feed per production system for both           in production system s (kg/y) and Pop[a,c,s] the
+ruminants and non-ruminants animals is calcu-              total population of beef cattle, dairy cattle, sheep
+lated as follows:                                          or goats in that country and production system.
+                                                           Region-specific feed conversion efficiencies are
+         Feed½a; c; s ¼ FCE½a; c; s  P½a; c; s   ð4Þ
+                                                           presented in Appendix I (Supplementary mate-
+where Feed[a,c,s] is the total amount of feed con-         rial).
+sumed by animal category a (ton/y) in country c
+and production system s, FCE[a,c,s] the feed con-
+version efficiency (kg dry mass of feed/kg of prod-        Estimating the Total Annual Production
+uct) for animal category a in country c and                of Animal Products
+production system s, and P[a,c,s] the total amount         The meat production (Pmeat, ton/y) per animal
+of product (meat, milk or egg) produced by animal          category a (beef cattle, pigs, sheep and goats) in
+category a (ton/y) in country c and production             country c and production system s is estimated by
+system s. The estimated global amount of feed              multiplying the carcass yield per slaughtered
+consumption per animal category and world region           animal by the annual number of animals slaugh-
+is presented in Appendix II (Supplementary mate-           tered:
+rial). Feed consumption per production system is
+shown in Appendix III (Supplementary material).                    Pmeat ½a; c; s ¼ CY½a; c; s  SA½a; c; s       ð7Þ
+                                                              The carcass yield (CY, kg/animal) for each animal
+Estimating Feed Conversion Efficiencies                    category per production system was estimated by
+Feed conversion efficiency is defined as the amount        combining country average carcass yield data from
+of feed consumed per unit of produced animal               FAO (2009) with data on animal live weight per
+product (for example, meat, milk, egg). Feed con-          production system per economic region (Hendy
+version efficiencies were estimated separately for         and others 1995) and data on carcass weight as
+each animal category (beef cattle, dairy cattle,           percentage of live weight (FAO 2003). The ob-
+sheep, goats, pigs, broiler chickens and egg-layer         tained carcass yields were scaled such that the total
+chickens), for each animal production system and           meat production per animal category equals the
+per country. Although the term used may suggest            value provided by FAO (2009). The number of
+precisely the opposite, animals that have a low ‘feed      slaughtered animals per production system (SA,
+conversion efficiency’ are efficient users of feed. We     number of animal/y) was calculated by multiplying
+use the term here as generally used in livestock           the total animal number by the animal off-take rate
+studies. The feed conversion efficiencies (FCE, kg         per production system:
+dry mass/kg product) for non-ruminants (pigs and                    SA½a; c; s ¼ Pop½a; c; s  OR½a; c; s         ð8Þ
+chickens) were adopted from Hendy and others
+(1995). For ruminants (cattle, goats, sheep), feed         where Pop[a,c,s] is the population of animal cate-
+conversion efficiencies were estimated through             gory a in country c for production system s and
+dividing feed intake per capita by annual produc-          OR[a,c,s] the off-take rate, which is the fraction of
+tion (of beef, milk, sheep and goat meat) per capita:      the animal population that is taken out in a given
+                                                           year for slaughter (dimensionless).
+                                 FI½a; c; s
+                FCE½a; c; s ¼                       ð5Þ     Milk and egg production per production system
+                                 PO½a; c; s               and country were calculated as:
+where FI[a,c,s] is the feed intake per head by
+                                                                   Pmilk ½a; c; s ¼ MY½a; c; s  DC½a; c; s       ð9Þ
+ruminant animal category a in country c and pro-
+duction system s (kg dry mass/y/animal), and
+PO[a,c,s] the product output per head for ruminant                  Pegg ½a; c; s ¼ fegg ½a; c; s  Pegg ½a; c   ð10Þ
+animal category a in country c and production              where Pmilk[a,c,s] and Pegg[a,c,s] represent produc-
+system s (kg product/y/animal). The product out-           tion of milk and egg in country c and production
+put (beef, milk, sheep and goat meat) per animal           system s, respectively (ton/y), MY[a,c,s] milk yield
+for ruminants is calculated as:                            per dairy cow in country c and production system
+                                 P½a; c; s                s (ton/dairy cow), DC[a,c,s] the number of
+                PO½a; c; s ¼                        ð6Þ   dairy cows in country c and production system s,
+                                Pop½a; c; s
+                                                           fegg[a,c,s] the fraction of egg produced in country c
+in which P[a,c,s] is the total annual production of        and production system s and Pegg[a,c] the total
+beef, milk, sheep meat or goat meat in country c           amount of egg produced in country c (ton/y).
+                                                        Assessment of the Water Footprint of Farm Animals         405
+
+Estimating the Feed Composition                                   Other important sources that have been used are:
+                                                                  Bouwman and others (2005), Seré and Steinfeld
+Animal feeds are generally divided into ‘concen-
+                                                                  (1996), Wint and Robinson (2007), Hendy and
+trates’ and ‘roughages’. The volume of concentrate
+                                                                  others (1995), FAO (2003) and Wheeler and others
+feed has been estimated per animal category and                   (1981). Appendix V (Supplementary material)
+per production system as:                                         summarizes how specific data have been obtained
+  Concentrate½a; c; s ¼ Feed½a; c; s  fc ½a; c; s   ð11Þ      from these different sources.
+
+where Concentrate[a,c,s] is the volume of concen-
+trate feed consumed by animal category a in                       RESULTS
+country c and production system s (ton/y) and                     The Water Footprint of Animal Products
+fc[a,c,s] the fraction of concentrate in the total feed           per Ton
+for animal category a in country c and production
+system s. For the latter variable, data have been                 By combining the feed conversion efficiency—dis-
+obtained from Bouwman and others (2005) and                       tinguishing between different animals, production
+Hendy and others (1995).                                          systems and countries (Hendy and others
+   The composition of concentrate feeds varies across             1995)—and the water footprint of the various feed
+animal species and regions of the world. To our                   ingredients (Mekonnen and Hoekstra 2011) we
+knowledge, there are no datasets with global cov-                 estimated the water footprint of different animals
+erage on the composition of feed for the different                and animal products per production systems and
+animals per country. Therefore, we have made a                    per country. The water footprints of animal prod-
+number of assumptions concerning the concentrate                  ucts vary greatly across countries and production
+feed composition of the different animal species.                 systems. The type of production system is highly
+According to Hendy and others (1995), the diets of                relevant for the size, composition and geographic
+pigs and poultry include, on average, 50–60%                      spread of the water footprint of an animal product,
+cereals, 10–20% oil meals and 15–25% ‘other con-                  because it determines feed conversion efficiency,
+centrates’ (grain substitutes, milling by-products,               feed composition and origin of feed. Differences
+non-conventional concentrates). Wheeler and oth-                  between countries are related to existing country
+ers (1981) provide the feed composition in terms of               differences in feed conversion efficiencies, but also
+major crop categories for the different animal cate-              to the fact that water footprints of feed crops vary
+gories. We have used these and other sources in                   across countries as a function of differences in cli-
+combination with FAOSTAT country average con-                     mate and agricultural practice. The Netherlands, for
+centrate feed values for the period 1996–2003 (FAO                example, shows lower total water footprints for
+2009) to estimate the diet composition of the dif-                most animal products if compared to the USA. The
+ferent animal species. To estimate the feed in terms              USA, in turn, generally shows lower total water
+of specific crops per animal, we first estimated the              footprints for animal products than India (Table 1).
+feed in terms of major crop categories following                  The smaller water footprint in the Netherlands
+Wheeler and others (1981). The feed in terms of                   compared to the USA and India, is due to the fact
+major crop categories is further distributed to each              that animal production in the Netherlands is
+crop proportional to the crop’s share in its crops                dominated by the industrial production system,
+category as obtained from FAO (2009). The rough-                  which generally has a smaller total water footprint
+age feed is divided into fodder, grass and crop resi-             than grazing and mixed systems. In addition, the
+dues using the data obtained from Bouwman and                     water footprint per ton of feed material in the
+others (2005). The estimated fraction of concentrate              Netherlands is lower than in the two other coun-
+feed in total feed dry matter, per animal category,               tries. Due to the specific climate and poor agricul-
+production system and world region is presented in                tural practices in India, the water footprint per ton
+Appendix IV (Supplementary material).                             of feed in this country is larger than in the Neth-
+                                                                  erlands and the USA.
+                                                                     When we look at global averages (Table 1), we
+DATA                                                              see that the water footprint of meat increases from
+A large amount of data has been collected from                    chicken meat (4,300 m3/ton), goat meat
+different sources. A major data source for animal                 (5,500 m3/ton), pig meat (6,000 m3/ton) and
+stocks, numbers of animals slaughtered each year,                 sheep meat (10,400 m3/ton) to beef (15,400 m3/
+annual production of animal products, and con-                    ton). The differences can be partly explained from
+centrate feed per country is FAOSTAT (FAO 2009).                  the different feed conversion efficiencies of the
+Table 1. The Green, Blue and Grey Water Footprint of Selected Animal Products for Selected Countries and the Weighted Global Average
+                                                                                                                                                            406
+
+(m3/ton)
+Animal products Farming system         China                  India                  Netherlands         USA                  Weighted average
+
+                                       Green    Blue Grey     Green    Blue   Grey   Green   Blue Grey Green      Blue Grey Green      Blue Grey Total
+
+Beef            Grazing                16,140   213       0   25,913     242     0                       19,102   525   590   21,121   465   243   21,829
+                Mixed                  13,227   339     103   16,192     533   144 10,319 761      664   12,726   546   768   14,803   508   401   15,712
+                Industrial             10,922   933   1,234   12,412   1,471   866  3,934 349      225    2,949   356   551    8,849   683   712   10,244
+                Weighted     average   12,795   495     398   15,537     722   288  5,684 484      345   12,933   525   733   14,414   550   451   15,415
+Sheep meat      Grazing                 9,606   388       0   11,441     489     0                       11,910   312    18   15,870   421    20   16,311
+                Mixed                   5,337   454      14    7,528     582   316  8,248 422      35     9,842   318    74    7,784   484    67    8,335
+                Industrial              2,366   451      22    4,523     593   484                            0     0     0    4,607   800   216    5,623
+                Weighted     average    5,347   452      14    7,416     582   314  8,248 422      35    10,948   315    44    9,813   522    76   10,412
+Goat meat       Grazing                 5,073   272       0    8,081     374     0                                             9,277   285     0    9,562
+                Mixed                   2,765   283       0    4,544     381     9  2,443 453       4                          4,691   313     4    5,007
+                Industrial              1,187   437       0    2,046     436    30                                             2,431   413    18    2,863
+                Weighted     average    2,958   312       0    4,194     393    13  2,443 454        4                         5,185   330     6    5,521
+Pig meat        Grazing                11,134   205     738    3,732     391   325  4,048 479      587    5,118   870   890    7,660   431   632    8,724
+                                                                                                                                                            M. M. Mekonnen and A. Y. Hoekstra
+
+
+
+
+                Mixed                   5,401   356     542    4,068     893   390  3,653 306      451    4,953   743   916    5,210   435   582    6,226
+                Industrial              3,477   538     925    9,236   2,014 1,021  3,776 236      427    3,404   563   634    4,050   487   687    5,225
+                Weighted     average    5,050   405     648    5,415   1,191   554  3,723 268      438    4,102   645   761    4,907   459   622    5,988
+Chicken meat    Grazing                 4,695   448   1,414   11,993   1,536 1,369  2,535 113      271    2,836   294   497    7,919   734   718    9,370
+                Mixed                   3,005   297     905    7,676     995   876  1,509  76      161    1,688   183   296    4,065   348   574    4,987
+                Industrial              1,940   195     584    3,787     496   432  1,548  77      165    1,731   187   303    2,337   210   325    2,873
+                Weighted     average    2,836   281     854    6,726     873   768  1,545  77      165    1,728   187   303    3,545   313   467    4,325
+Egg             Grazing                 3,952   375   1,189   10,604   1,360 1,176  1,695  76      161    1,740   183   331    6,781   418   446    7,644
+                Mixed                   2,351   230     708    6,309     815   699  1,085  51      103    1,113   121   212    3,006   312   545    3,863
+                Industrial              2,086   206     628    3,611     472   400  1,187  55      113    1,218   132   232    2,298   205   369    2,872
+                Weighted     average    2,211   217     666    4,888     635   542  1,175  55      111    1,206   130   230    2,592   244   429    3,265
+Milk            Grazing                 1,580   106     128    1,185     105    34    572  50       32    1,106    69    89    1,087    56    49    1,191
+                Mixed                     897   147     213      863     132    65    431  40       23      582    59    88      790    90    76      956
+                Industrial                                                            500  43       25      444    61   100    1,027    98    82    1,207
+                Weighted     average      927 145       210      885     130    63    462  41       25      647    60    89      863    86    72    1,020
+Butter          Grazing                 8,600 577       696    6,448     572   188  3,111 272      176    6,022   373   482    5,913   305   265    6,484
+                Mixed                   4,880 799     1,161    4,697     716   352  2,345 218      123    3,169   321   478    4,297   492   415    5,204
+                Industrial                                                          2,720 233      136    2,417   330   543    5,591   532   448    6,571
+                Weighted     average    5,044   789   1,141    4,819     706   341  2,513 224      134    3,519   324   483    4,695   465   393    5,553
+Milk powder     Grazing                 7,348   493     595    5,510     489   160  2,658 232      151    5,145   319   412    5,052   261   227    5,540
+                Mixed                   4,169   683     992    4,013     612   301  2,003 186      105    2,708   274   409    3,671   421   354    4,446
+                Industrial                  0     0       0        0       0     0  2,324 199      116    2,065   282   464    4,777   455   382    5,614
+                Weighted     average    4,309   674     975    4,117     603   291  2,147 191      114    3,007   277   413    4,011   398   336    4,745
+                                                                                                     Assessment of the Water Footprint of Farm Animals           407
+
+
+
+
+                                                 21,680
+                                                 17,799
+                                                 11,056
+                                                 17,093
+                                                  5,905
+                                                  4,743
+                                                  5,984
+                                                  5,060
+                                                                                                               animals. Beef production, for example, requires 8
+
+                               Blue Grey Total
+                                                                                                               times more feed (in dry matter) per kilogram of
+                                                                                                               meat compared to producing pig meat, and 11
+                                                                                                               times if compared to the case of chicken meat. This
+                                                 241
+                                                 377
+                                                 406
+                                                 357
+                                                 240
+                                                 453
+                                                 763
+                                                 498
+            Weighted average
+
+
+
+                                                                                                               is not the only factor, however, that can explain
+                                                                                                               the differences. Another important factor is the
+                                                 293
+                                                 463
+                                                 500
+                                                 439
+                                                 535
+                                                 644
+                                                 805
+                                                 679
+                                                                                                               feed composition. Particularly the fraction of con-
+                                                 20,905
+                                                                                                               centrate feed in the total feed is important, because
+                                                 16,701
+
+                                                 15,916
+                                                  5,371
+                                                  3,903
+                                                  5,078
+                                                  4,264
+
+
+                                                  9,487
+                               Blue Grey Green
+
+
+
+
+                                                                                                               concentrate feed generally has a larger water foot-
+                                                                                                               print than roughages. Chickens are efficient from a
+                                                                                                               total feed conversion efficiency point of view, but
+                                                 438
+                                                 435
+                                                 493
+                                                 439
+                                                 658
+                                                 856
+                                                 614
+                                                 819
+                                                                                                               have a large fraction of concentrates in their feed.
+                                                                                                               This fraction is 73% for broiler chickens (global
+                                                                                                               average), whereas it is only 5% for beef cattle.
+                                                 355
+                                                 307
+                                                 315
+                                                 310
+                                                 657
+                                                 681
+                                                 497
+                                                 658
+
+
+
+
+                                                                                                                  For all farm animal products, except dairy prod-
+                                                                                                               ucts, the total water footprint per unit of product
+                                                 21,290
+                                                 14,185
+
+                                                 14,450
+                                                  5,470
+                                                  2,878
+                                                  2,196
+                                                  3,196
+
+
+                                                  3,287
+                               Blue Grey Green
+            USA
+
+
+
+
+                                                                                                               declines from the grazing to the mixed production
+                                                                                                               system and then again to the industrial production
+                                                                                                               system. The reason is that, when moving from
+                                                 160
+                                                 111
+                                                 124
+                                                 121
+
+                                                                                765
+                                                                                259
+                                                                                369
+
+
+
+
+                                                                                                               grazing to industrial production systems, feed
+                                                                                                               conversion efficiencies get better (Appendix I —
+            Netherlands
+
+
+
+                                                 263
+                                                 214
+                                                 227
+                                                 219
+
+                                                                                11,883 947
+                                                                                 4,530 513
+                                                                                 6,067 589
+
+
+
+
+                                                                                                               Supplementary Material). Per unit of product,
+                                                                                                               about three to four times more feed is required for
+                                                 2,826
+                                                 2,130
+                                                 2,471
+                                                 2,283
+                               Grey Green
+
+
+
+
+                                                                                                               grazing systems when compared to industrial sys-
+                                                                                                               tems. More feed implies that more water is needed
+                                                                                                               to produce the feed. The fraction of concentrate
+                                                 535 171
+                                                 666 320
+
+                                                                            657 310
+
+                                                                            593 140
+                                                                   12,068 1,505 842
+                                                                            777 280
+                                                                                  0
+
+
+
+
+                                                                                                               feed in the total feed is larger for industrial systems
+                                                                                                               if compared to mixed production systems and lar-
+                                                                            310
+
+
+
+
+                                                                                                               ger for mixed systems if compared to grazing sys-
+                               Blue
+
+
+
+
+                                                                                                               tems (Appendix IV — Supplementary Material).
+                                                                                                               The water footprint per kg of concentrate feed is
+                                                                   25,195
+                                                                   15,743
+
+                                                                   15,103
+                                                 5,857
+                                                 4,267
+
+                                                                    4,377
+                               Green
+            India
+
+
+
+
+                                                                                                               generally larger than for roughages, so that this
+                                                                                                               works to the disadvantage of the total water foot-
+                                                                                                               print of animals raised in industrial systems and to
+                                                 1,055
+
+                                                                   1,036
+
+                                                                      91
+                                                                   1,093
+                                                                       0
+                                                   633
+
+
+
+
+                                                                     352
+                               Blue Grey
+
+
+
+
+                                                                                                               the advantage of the total water footprint of ani-
+                                                                                                               mals raised in grazing systems. This effect, how-
+                                                                                                               ever, does not fully compensate for the unfavorable
+                                                                                         7,812 540
+                                                                                         4,432 742
+
+                                                                       Weighted average 4,581 732
+                                                                                        14,300 266
+                                                                                        11,719 377
+                                                                                         9,677 904
+                                                                       Weighted average 11,323 515
+
+
+
+
+                                                                                                               feed conversion efficiencies in grazing systems.
+                                                                                                                  In dairy farming, the total water footprint per
+            China
+
+                               Green
+
+
+
+
+                                                                                                               unit of product is comparable in all three pro-
+                                                                                                               duction systems. For dairy products, the water
+                                                                                                               footprint happens to be the smallest when derived
+            Farming system
+
+
+
+
+                                                                                                               from a mixed system and a bit larger but compa-
+                                                                                                               rable when obtained from a grazing or industrial
+                                                                       Industrial
+
+
+
+                                                                       Industrial
+
+
+
+
+                                                                                                               system.
+                                                                       Grazing
+
+
+
+                                                 Leather (beef cattle) Grazing
+                                                                       Mixed
+
+
+
+                                                                       Mixed
+
+
+
+
+                                                                                                               Blue and Grey Water Footprints per Ton
+continued
+
+
+
+
+                                                                                                               of Product
+            Animal products
+
+
+
+
+                                                                                                               All the above is about comparing the total water
+                                                                                                               footprints of animal products. The picture changes
+                                                                                                               when we focus on the blue and grey water foot-
+Table 1.
+
+
+
+
+                                                                                                               print components. With the exception of chicken
+                                                 Cheese
+
+
+
+
+                                                                                                               products, the global average blue and grey water
+                                                                                                               footprints increase from grazing to industrial
+408       M. M. Mekonnen and A. Y. Hoekstra
+
+production systems (Table 1). The larger blue and          the different countries varies significantly from the
+grey water footprints for products obtained from           global mean. Cattle in US grazing systems, for
+industrial production systems are caused by the fact       example, are also fed relatively large amounts of
+that concentrate feed takes a larger share in the          grains, predominantly maize, which is irrigated and
+total feed in industrial systems when compared to          fertilized, which explains the relatively large blue
+grazing systems. For beef cattle in grazing systems,       and grey water footprints of US beef from grazing
+the global average share of concentrate feed in total      systems. In China and India, cattle in grazing and
+feed is 2%, whereas in industrial systems it is 21%.       mixed systems are mainly fed with pasture and
+Mixed systems are generally somewhere in be-               crop residues that have no blue and grey water
+tween. Although the feed crops that are contained          footprints. Beef from industrial systems in China
+in the concentrate feed are often to a great extent        and India, on the contrary, have a relatively large
+based on green water, there is a blue water foot-          blue and grey water footprint, which can be ex-
+print component as well, and the larger the con-           plained from the fact that the concentrates in
+sumption of feed crops compared to roughages, the          Chinese and Indian industrial systems have a rel-
+larger the total amount of blue water consumed.            atively large blue and grey water footprint. This
+This explains the larger blue water footprint per ton      shows that systems that belong to the same cate-
+of product in industrial production systems for beef,      gory, grazing, mixed or industrial, differ in the feed
+milk, cheese, and pig, sheep and goat meat. The            they provide to animals. Often, the feed ingredients
+application and leaching of fertilizers and other          in the different countries have different water
+agro-chemicals in feed crop production results in          footprints, resulting in differences in the total
+the fact that the grey water footprint of animal           green, blue and grey water footprint of the animal
+products from industrial systems, where the                products.
+dependence on feed crops is the greatest, is larger
+than for grazing systems. Given the fact that              The Total Water Footprint of Animal
+freshwater problems generally relate to blue water
+                                                           Production
+scarcity and water pollution and to a lesser extent
+to competition over green water, industrial systems        During the period 1996–2005, the total water
+place greater pressure on ground- and surface-             footprint for global animal production was 2,422
+water resources than grazing systems, because              Gm3/y (87.2% green, 6.2% blue and 6.6% grey
+grazing systems hardly depend on blue water.               water). The largest water footprint for animal pro-
+   In the case of chicken products (chicken meat           duction comes from the feed they consume, which
+and egg), the industrial production system has, on         accounts for 98% of the total water footprint.
+average, a smaller blue and grey water footprint per       Drinking water, service water and feed-mixing
+ton of product compared to the other two produc-           water further account the only for 1.1, 0.8 and
+tion systems. The reason is that chickens strongly         0.03% of the total water footprint, respectively.
+rely on concentrate feed in all production systems,        Grazing accounts for the largest share (38%), fol-
+intensive or extensive. Broiler chickens in exten-         lowed by maize (17%) and fodder crops (8%).
+sive systems have a share of concentrate feed in             The global water footprint of feed production is
+total feed of 63%, whereas this is 81% in intensive        2,376 Gm3/y, of which 1,463 Gm3/y refers to crops
+industrial systems. There is still a difference, but the   and the remainder to grazing. The estimate of green
+differences in feed composition for both broiler and       plus blue water footprint of animal feed production
+layer chickens is smaller if compared to the other         is consistent with estimates of earlier studies
+animal categories. As a result, the relatively unfa-       (Table 4). The total water footprint of feed crops
+vorable feed conversion efficiency in extensive            amounts to 20% of the water footprint of total crop
+systems is not compensated by a more favorable             production in the world, which is 7,404 Gm3/y
+composition of the feed as is in the other animal          (Mekonnen and Hoekstra 2011). The globally
+categories.                                                aggregated blue water footprint of feed crop
+   The trends in the global averages do not always         production is 105 Gm3/y, which is 12% of the blue
+hold for specific countries. This can be seen from         water footprint of total crop production in the
+Table 1, which provides country average water              world (Mekonnen and Hoekstra 2011). This means
+footprints for China, India, the Netherlands and the       that an estimated 12% of the global consumption
+USA as well as global averages. The feed composi-          of groundwater and surface water for irrigation is
+tion varies per production system but also from            for feed, not for food, fibers or other crop products.
+country to country; as a result, the magnitude of          Globally, the total water footprint of animal pro-
+the different components of the water footprint in         duction (2,422 Gm3/y) constitutes 29% of the
+                                                                        Assessment of the Water Footprint of Farm Animals                                 409
+
+water footprint of total agricultural production                                         account for the largest share (57.4%) in the global
+(8,363 Gm3/y). The latter was calculated as the                                          water footprint of animal production. Grazing and
+sum of the global water footprint of crop produc-                                        industrial production systems account for 20.3 and
+tion (7,404 Gm3/y, Mekonnen and Hoekstra 2011),                                          22.3%, respectively. In the grazing system, over
+the water footprint of grazing (913 Gm3/y, this                                          97% of the water footprint related to feed comes
+study) and the direct water footprint of livestock                                       from grazing and fodder crops and the water foot-
+(46 Gm3/y, this study).                                                                  print is dominantly (94%) green. In the mixed and
+   When we consider the total water footprint per                                        industrial production systems, the green water
+animal category (Table 2), we find that beef cattle                                      footprint forms 87 and 82% of the total footprint,
+have the largest contribution (33%) to the global                                        respectively. The blue water footprint in the graz-
+water footprint of farm animal production, fol-                                          ing system accounts for 3.6% of the total water
+lowed by dairy cattle (19%), pigs (19%) and                                              footprint and about 33% of this comes from the
+broiler chickens (11%). Mixed production systems                                         drinking and service-water use. In the industrial
+
+Table 2.        Average Annual Water Footprint of One Animal, per Animal Category (1996–2005)
+Animal                 Water footprint          Average animal           Average water Average Average annual                           Annual water    % of
+category               of live animal           weight at end            footprint at end life time water footprint                     footprint of    total
+                       at end of life           of life time             of life time     (y)       of one animal                       animal category WF
+                       time (m3/ton)            (kg)                     (m3/animal)1               (m3/y/animal)2                      (Gm3/y)
+
+Beef cattle       7,477                         253                       1,889                   3.0             630                     798              33
+Dairy cattle                                                             20,558                   10            2,056                     469              19
+Pigs              3,831                         102                         390                   0.75            520                     458              19
+Broiler chickens 3,364                          1.90                          6                   0.25             26                     255              11
+Horses           40,612                         473                      19,189                   12            1,599                     180               7
+Layer chickens                                                               47                   1.4              33                     167               7
+Sheep             4,519                         31.3                        141                   2.1              68                      71               3
+Goats             3,079                         24.6                         76                   2.3              32                      24               1
+Total                                                                                                                                   2,422             100
+
+1
+Calculated by multiplying the water footprint of the live animal at the end of its lifetime in m3/ton and the average animal weight.
+2
+Calculated by dividing the average water footprint of the animal at the end of its life time by the average life time.
+
+
+
+
+Table 3.        The Water Footprint of Some Selected Food Products from Vegetable and Animal Origin
+Food item                Water footprint per ton                     Nutritional                              Water footprint per unit
+                         (m3/ton)                                    content                                  of nutritional value
+
+                         Green       Blue Grey Total                 Calorie   Protein Fat   Calorie      Protein           Fat
+                                                                     (kcal/kg) (g/kg) (g/kg) (liter/kcal) (liter/g protein) (liter/g fat)
+
+Sugar crops        130   52 15                             197         285             0.0          0.0        0.69               0.0               0.0
+Vegetables         194   43 85                             322         240            12            2.1        1.34              26               154
+Starchy roots      327   16 43                             387         827            13            1.7        0.47              31               226
+Fruits             726 147 89                              962         460             5.3          2.8        2.09             180               348
+Cereals          1,232 228 184                           1,644       3,208            80           15          0.51              21               112
+Oil crops        2,023 220 121                           2,364       2,908           146          209          0.81              16                11
+Pulses           3,180 141 734                           4,055       3,412           215           23          1.19              19               180
+Nuts             7,016 1367 680                          9,063       2,500            65          193          3.63             139                47
+Milk               863   86 72                           1,020         560            33           31          1.82              31                33
+Eggs             2,592 244 429                           3,265       1,425           111          100          2.29              29                33
+Chicken meat     3,545 313 467                           4,325       1,440           127          100          3.00              34                43
+Butter           4,695 465 393                           5,553       7,692             0.0        872          0.72               0.0               6.4
+Pig meat         4,907 459 622                           5,988       2,786           105          259          2.15              57                23
+Sheep/goat meat 8,253 457 53                             8,763       2,059           139          163          4.25              63                54
+Beef            14,414 550 451                          15,415       1,513           138          101         10.19             112               153
+410       M. M. Mekonnen and A. Y. Hoekstra
+
+system, the blue water footprint accounts for 8% of       compare our estimates of the water footprints per
+the total water footprint.                                ton of animal product with two earlier studies and
+                                                          subsequently we will compare the total water
+Water Footprint of Animal versus Crop                     footprint related to animal feed production with
+Products per Unit of Nutritional Value                    five earlier studies.
+                                                             The rough estimates made by Pimentel and
+As a general picture we find that animal products         others (2004) for the water footprints of beef and
+have a larger water footprint per ton of product          meat from sheep, pigs and chickens are partly very
+than crop products. As we see from Table 3, the           close to our global estimates but partly also quite
+global average water footprint per ton of crop in-        different. As Pimentel’s studies did not include the
+creases from sugar crops (roughly 200 m3/ton) and         grey water footprint component, we will compare
+vegetables (300 m3/ton) to pulses (4,000 m3/            only the green plus blue water footprint from our
+ton) and nuts (9,000 m3/ton). For animal prod-           estimate with that of Pimentel and others (2004).
+ucts, the water footprint increases from milk             They report a water footprint of chicken meat of
+(1,000 m3/ton) and egg (3,300 m3/ton) to beef           3,500 m3/ton, which is only a bit lower than our
+(15,400 m3/ton). Also when viewed from a                 global average estimate of 3,858 m3/ton. They
+caloric standpoint, the water footprint of animal         report a water footprint of pig meat of 6,000
+products is larger than for crop products. The            m3/ton, which is a slightly larger than our global
+average water footprint per calorie for beef is 20        average estimate. For sheep meat, they report a
+times larger than for cereals and starchy roots.          water footprint of 51,000 m3/ton and for beef
+When we look at the water requirements for pro-           43,000 m3/ton, values that are very high when
+tein, we find that the water footprint per gram of        compared to our estimates (10,400 m3/ton for
+protein for milk, eggs and chicken meat is about 1.5      sheep meat and 15,400 m3/ton for beef). We con-
+times larger than for pulses. For beef, the water         sider the values reported by Pimentel as rough
+footprint per gram of protein is 6 times larger than      estimates, for which the underlying assumptions
+for pulses. In the case of fat, we find that butter has   have not been spelled out, so that it is difficult to
+a relatively small water footprint per gram of fat,       explain differences with our estimates.
+even lower than for oil crops. All other animal              The study of Chapagain and Hoekstra (2004) is
+products, however, have larger water footprints per       the only publication with global estimates of
+gram of fat when compared to oil crops. The gen-          the water footprint of animal products with
+eral conclusion is that from a freshwater resource        specifications by country. The current study gives
+perspective, it is more efficient to obtain calories,     better estimates due to a refined assessment as
+protein and fat through crop products than animal         explained in the introductory section, so that the
+products. A note should be made here, however,            previous estimates cannot be used for validation
+that types of proteins and fats differ across the dif-    of the estimates from the current study. However,
+ferent products.                                          it is worth comparing the results from the two
+   Meat-based diets have a larger water footprint         studies to see the differences. At a global level,
+compared to a vegetarian diet. We explored the            the estimated water footprints per ton of animal
+implications of our results by examining the diet         and animal product compare very well with the
+within one developed country—the USA—to                   estimates from Chapagain and Hoekstra (2004),
+determine the effect of diet composition on water         with an r2 of 0.88 (Figure 1A). The good agree-
+footprint. Meat contributes 37% towards the food-         ment at the global level between the two studies
+related water footprint of an average American            is probably that the global average water foot-
+citizen. Replacing all meat by an equivalent              prints for various feed ingredients are very close
+amount of crop products such as pulses and nuts           in the two studies. The trend line in Figure 1A is
+will result in a 30% reduction of the food-related        slightly above 1, which is caused by our higher
+water footprint of the average American citizen.          estimates for the water footprints of sheep and
+                                                          goat meat. For most other animal products, the
+                                                          current study gives a bit lower estimates than the
+DISCUSSION                                                earlier study.
+The result of the current study can be compared              When we compare our estimates with Chapagain
+with results from earlier studies. However, only a        and Hoekstra (2004) at a country level, more dif-
+few other studies on the water footprint per unit of      ferences are found (Figure 1B–F). The two studies
+animal product and the total water footprint of           show a relatively good agreement for pig meat,
+animal production are available. We will first            chicken meat and egg—although for egg the earlier
+                                                   Assessment of the Water Footprint of Farm Animals              411
+
+
+
+
+Figure 1. Comparison of average water footprint of A animals and animal products at global level, and B beef, C milk, D
+pig meat, E chicken meat and F egg at the country level as estimated in the current study and Chapagain and Hoekstra
+(2004). From the current study we show here the sum of green and blue water footprints, excluding the grey water
+footprint, because that component was excluded in the 2004 study.
+
+
+study systematically gives higher numbers—but                  based on better data for the estimation of the
+little agreement for beef and dairy products. In               quantity and composition of animal feed. Second,
+general we find that Chapagain and Hoekstra                    the current study takes into consideration the rel-
+(2004) underestimated the water footprints for                 ative presence of the three production systems per
+African countries and overestimated the water                  country and accounts for the differences between
+footprints for OECD countries. As already pointed              those systems. Third, we have estimated the water
+out in the introductory section, there are three               footprints of the various feed ingredients more
+main reasons why the estimates from the current                accurately by using a high-resolution grid-based
+study can differ from the 2004-study and are con-              crop water use model, including the effect of
+sidered more accurate. First, the current study is
+412            M. M. Mekonnen and A. Y. Hoekstra
+
+water deficits where they occur, making explicit                                              There are several uncertainties in this study in
+distinction between the green and blue water                                               the quantification of the water footprint of animals
+footprint components and including the grey water                                          and animal products. Due to a lack of data, many
+footprint component.                                                                       assumptions have to be made. There are a number
+   As one can see in the overview presented in Ta-                                         of uncertainties in the study, but particularly two
+ble 4, our estimate of the total evaporative water use                                     types of uncertainty may have a major effect on the
+(green plus blue water footprint) for producing ani-                                       final output of the study. First, data on animal
+mal feed (2,217 Gm3/y) is 3% larger than the estimate                                      distribution per production system per country for
+by De Fraiture and others (2007) and 5% smaller                                            OECD countries is not available. Wint and Robin-
+than the estimate by Zimmer and Renault (2003).                                            son (2007) provide livestock distributions per pro-
+Our estimate of the global consumptive water use for                                       duction system per country for developing
+producing feed crops (1,304 Gm3/y) does not signif-                                        countries but not for OECD countries. For these
+icantly differ from the estimate by De Fraiture and                                        countries we are forced to use the data from Seré
+others (2007). Our estimate of global consumptive                                          and Steinfeld (1996), which provide livestock dis-
+water use for grazing (913 Gm3/y) is 9% larger than                                        tribution per economic region. These data have the
+the estimate by De Fraiture and others (2007). The                                         limitation that they are not country-specific and
+differences with three other studies that reported on                                      may lead to errors in distribution of animals into
+the consumptive water use related to grazing are                                           the different production system for some countries.
+much larger, which is caused by another definition                                         The second major uncertainty is related to the
+applied. Postel and others (1996) estimated the water                                      precise composition of feed per animal category per
+evaporated from grazing land to be 5,800 Gm3/y. In                                         country. Such data are not directly available so that
+more recent studies, Rost and others (2008) and                                            we had to infer these data by combining different
+Hanasaki and others (2010) estimate the total                                              data sources and a number of assumptions. Despite
+evapotranspiration from grazing land to be 8,258 and                                       the uncertainties in the data used, the order of
+12,960 Gm3/y, respectively. However, unlike the                                            magnitudes of the figures presented are unlikely to
+current study, the estimates in these three studies                                        be affected. Similarly, the general findings regard-
+refer to the total evapotranspiration from grazing                                         ing the overall comparison between different ani-
+lands rather than to the evaporation related to the                                        mals and different production systems and the
+grass actually consumed. This makes a comparison of                                        comparison between animal versus crop products is
+our results with theirs unjustified. According to De                                       not likely to change with better data.
+Fraiture and others (2007), reported ‘grazing lands’                                          Although the scope of this study is very com-
+are only partly actually grazed. Besides, the harvest                                      prehensive, there are many issues that have been
+efficiency—the fraction of grass actually consumed                                         left out. One issue is that we neglected the indirect
+by the animal compared to the standing biomass—is                                          water footprints of materials used in feed produc-
+quite small. In a recent study in the USA, Smart and                                       tion and animal raising. We expect that this may
+others (2010) showed that, depending on the animal                                         add at most a few percent to the water footprint
+stocking density, harvest efficiencies reach between                                       estimates found in this study (based on Hoekstra
+14 and 38%.                                                                                and others 2011). In the grey water footprint
+
+
+Table 4.         Comparison of the Results of the Current Study with the Results from Previous Studies
+Study                                                           Period                               Global water footprint1 related to
+                                                                                                     animal feed production (Gm3/y)
+
+                                                                                                     Grazing                          Crops                          Total
+
+Postel and others (1996)                                        1995                                  5,800                               –                              –
+Zimmer and Renault (2003)                                       2000                                      –                               –                          2,340
+De Fraiture and others (2007)                                   2000                                    840                           1,312                          2,152
+Rost and others (2008)                                          1971–2002                             8,258                               –                              –
+Hanasaki and others (2010)                                      1985–1999                            12,960                               –                              –
+Current study1                                                  1996–2005                               913                           1,304                          2,217
+
+1
+ The numbers in the table, also the ones from the current study, refer to the green plus blue water footprint. None of the previous studies included the grey water footprint
+component.
+                                                  Assessment of the Water Footprint of Farm Animals         413
+
+estimations we have looked at the water pollution           is likely to continue given the projected doubling of
+by nitrogen-fertilizers only, excluding the potential       meat production in the period 2000–2050 (Stein-
+pollution by other fertilizer components or by              feld and others 2006). To meet this rising demand
+pesticides or other agro-chemicals. Besides, we             for animal products, the on-going shift from tradi-
+have not quantified the grey water footprint com-           tional extensive and mixed farming to industrial
+ing from animal wastes, which is particularly rele-         farming systems is likely to continue. Because of
+vant for industrial production systems. Neglecting          the larger dependence on concentrate feed in
+nitrogen leaching and runoff from manure under-             industrial systems, this intensification of animal
+estimates the grey water footprint related to animal        production systems will result in increasing blue
+production. The magnitude of this underestimate             and grey water footprints per unit of animal prod-
+can roughly be shown by estimating the grey water           uct. The pressure on the global freshwater
+footprint related to manure based on the global             resources will thus increase both because of the
+nitrogen input from manure found in the litera-             increasing meat consumption and the increasing
+ture. Global nitrogen input from manure for the             blue and grey water footprint per unit of meat
+year 2000 varies from 17 million tons per year (Liu         consumed.
+and others 2010) to 92 million tons per year                   Managing the demand for animal products by
+(Bouwman and others 2011). Based on the relative            promoting a dietary shift away from a meat-rich
+contribution of manure to the total nitrogen input          diet will be an inevitable component in the envi-
+and the global total nitrogen leaching/runoff, the          ronmental policy of governments. In countries
+nitrogen leaching/runoff from manure can be                 where the consumption of animal products is still
+estimated at 6.0–14.5 million tons per year. This           quickly rising, one should critically look at how
+amount of nitrogen leached/runoff to the fresh-             this growing demand can be moderated. On the
+water systems can be translated into a grey water           production side, it would be wise to include
+footprint of 600–1,450 Gm3/y. The grey water                freshwater implications in the development of
+footprint is more significant in the intensive animal       animal farming policies, which means that partic-
+production system, which often generates an                 ularly feed composition, feed water requirements
+amount of waste that cannot be fully recycled on            and feed origin need to receive attention. Animal
+the nearby land. The large amount of waste gen-             farming puts the lowest pressure on freshwater
+erated in a concentrated place can seriously affect         systems when dominantly based on crop residues,
+freshwater systems (FAO 2005; Steinfeld and oth-            waste and roughages. Policies aimed to influence
+ers 2006; Galloway and others 2007). Finally, by            either the consumption or production side of farm
+focusing on freshwater appropriation, the study             animal products will generally entail various sorts
+obviously excludes many other relevant issues in            of socio-economic and environmental tradeoffs
+farm animal production, such as micro- and macro-           (Herrero and others 2009; Pelletier and Tyedmers
+cost of production, livelihood of smallholder farm-         2010). Therefore, policies aimed at reducing the
+ers, animal welfare, public health and environ-             negative impacts of animal production and con-
+mental issues other than freshwater.                        sumption should be able to address these potential
+                                                            tradeoffs. Policies should not affect the required
+                                                            increase in food security in less developed coun-
+CONCLUSION
+                                                            tries neither the livelihood of the rural poor should
+In conclusion, we provide a detailed estimate of the        be put in danger through intensification of animal
+water footprint of farm animals and animal prod-            farming.
+ucts per production system and per country. The                This study provides a rich data source for further
+results show that the blue and grey water footprints        studies on the factors that determine how animal
+of animal products are the largest for industrial           products put pressure on the global water re-
+systems (with an exception for chicken products).           sources. The reported incidents of groundwater
+The water footprint of any animal product is larger         depletion, rivers running dry and increasing levels
+than the water footprint of crop products with              of pollution form an indication of the growing
+equivalent nutritional value. Finally, 29% of the           water scarcity (Gleick 1993; Postel 2000; UNESCO
+total water footprint of the agricultural sector in the     2009). As animal production and consumption play
+world is related to the production of animal prod-          an important role in depleting and polluting the
+ucts; one-third of the global water footprint of            world’s scarce freshwater resources, information on
+animal production is related to beef cattle.                the water footprint of animal products will help us
+  The global meat production has almost doubled             understand how we can sustainably use the scarce
+in the period 1980–2004 (FAO 2005) and this trend           freshwater resources.
+414         M. M. Mekonnen and A. Y. Hoekstra
+
+OPEN ACCESS                                                           Gerbens-Leenes W, Hoekstra AY, Van der Meer TH. 2009. The
+                                                                        water footprint of bioenergy. Proc Natl Acad Sci 106(25):
+This article is distributed under the terms of the                      10219–23.
+Creative Commons Attribution Noncommercial                            Gleick PH, Ed. 1993. Water in crisis: a guide to the world’s fresh
+License which permits any noncommercial use,                            water resources. Oxford: Oxford University Press. p 473.
+distribution, and reproduction in any medium,                         Gustafson RH, Bowen RE. 1997. Antibiotic use in animal agri-
+                                                                        culture. J Appl Microbiol 83(5):531–41.
+provided the original author(s) and source are
+                                                                      Hanasaki N, Inuzuka T, Kanae S, Oki T. 2010. An estimation of
+credited.
+                                                                        global virtual water flow and sources of water withdrawal for
+                                                                        major crops and livestock products using a global hydrological
+REFERENCES                                                              model. J Hydrol 384:232–44.
+                                                                      Hendy CRC, Kleih U, Crawshaw R, Phillips M. 1995. Livestock
+Aldaya MM, Martinez-Santos P, Llamas MR. 2010. Incorporat-
+                                                                        and the environment finding a balance: Interactions between
+  ing the water footprint and virtual water into policy: Reflec-
+                                                                        livestock production systems and the environment, Impact
+  tions from the Mancha Occidental Region, Spain. Water Res
+                                                                        domain: concentrate feed demand. Available at: [www.fao.
+  Manag 24(5):941–58.
+                                                                        org/wairdocs/lead/x6123e/x6123e00.htm#Contents]. Rome:
+Bouwman AF, Van der Hoek KW, Eickhout B, Soenario I. 2005.              Food and Agriculture Organization.
+  Exploring changes in world ruminant production systems.
+                                                                      Herrero M, Thornton PK, Gerber P, Reid RS. 2009. Livestock,
+  Agric Syst 84:121–53.
+                                                                        livelihoods and the environment: understanding the trade-
+Bouwman L, Goldewijk KK, Van Der Hoek KW, Beusen AHW,                   offs. Curr Opin Environ Sustain 1(2):111–20.
+  Van Vuuren DP, Willems J, Rufino MC, Stehfest, E. 2011.
+                                                                      Hoekstra AY. 2010. The water footprint of animal products. In:
+  Exploring global changes in nitrogen and phosphorus cycles in
+                                                                        D’Silva J, Webster J, Eds. The meat crisis: developing more
+  agriculture induced by livestock production over the 1900-
+                                                                        sustainable production and consumption. London: Earthscan.
+  2050 period. Proceedings of the National Academy of Sciences
+                                                                        p 22–33.
+  USA doi:10.1073/pnas.1012878108.
+                                                                      Hoekstra AY, Chapagain AK. 2007. Water footprints of nations:
+Capper JL, Cady RA, Bauman DE. 2009. The environmental
+                                                                        water use by people as a function of their consumption pat-
+  impact of dairy production: 1944 compared with 2007. J
+                                                                        tern. Water Res Manag 21(1):35–48.
+  Animal Sci 87(6):2160–7.
+                                                                      Hoekstra AY, Chapagain AK. 2008. Globalization of water:
+Chapagain AK, Hoekstra AY. 2004. Water footprints of nations.
+                                                                        Sharing the planet’s freshwater resources. Oxford: Blackwell
+  Value of Water Research Report Series No. 16. Available on-
+                                                                        Publishing. p 208.
+  line:    [www.waterfootprint.org/Reports/Report16Vol1.pdf].
+  Delft, the Netherlands: UNESCO-IHE.                                 Hoekstra AY, Chapagain AK, Aldaya MM, Mekonnen MM.
+                                                                        2011. The water footprint assessment manual: Setting the
+Chapagain AK, Hoekstra, AY. 2003. Virtual water flows between
+                                                                        global standard. London: Earthscan. p 203.
+  nations in relation to trade in livestock and livestock products.
+  Value of Water Research Report Series No. 13. Available on-         Keyzer MA, Merbis MD, Pavel IFPW, Van Wesenbeeck CFA.
+  line: [www.waterfootprint.org/Reports/Report13.pdf]. Delft,           2005. Diet shifts towards meat and the effects on cereal use: Can
+  the Netherlands: UNESCO-IHE.                                          we feed the animals in 2030? Ecol Econom 55(2):187–202.
+Chapagain AK, Hoekstra AY, Savenije HHG, Gautam R. 2006.              Lewis JM, Klopfenstein TJ, Stock RA, Nielsen MK. 1990. Eval-
+  The water footprint of cotton consumption: an assessment of           uation of intensive vs extensive systems of beef production
+  the impact of worldwide consumption of cotton products on             and the effect of level of beef cow milk production on post-
+  the water resources in the cotton producing countries. Ecol           weaning performance. J Animal Sci 68(8):2517–24.
+  Econom 60(1):186–203.                                               Liu J, You L, Amini M, Obersteiner M, Herrero M, Zehnder AJB,
+De Fraiture C, Wichelns D, Rockström J, Kemp-Benedict E,               Yang H. 2010. A high-resolution assessment on global nitro-
+  Eriyagama N, Gordon LJ, Hanjra MA, Hoogeveen J, Huber-                gen flows in cropland. Proc Natl Acad Sci 107(17):8035–40.
+  Lee A, Karlberg L. 2007. Looking ahead to 2050: scenarios of        McAlpine CA, Etter A, Fearnside PM, Seabrook L, Laurance WF.
+  alternative investment approaches. In: Molden D, Ed. Water           2009. Increasing world consumption of beef as a driver of
+  for food, water for life: a comprehensive assessment of water        regional and global change: A call for policy action based on
+  management in agriculture. London, Colombo: Earthscan,               evidence from Queensland (Australia), Colombia and Brazil.
+  International Water Management Institute. pp 91–145.                 Global Environ Change 19(1):21–33.
+FAO. 2003. Technical conversion factors for agricultural com-         McEwen SA. 2006. Antibiotic use in animal agriculture: what
+  modities. Available online: [www.fao.org/fileadmin/tem-              have we learned and where are we going? Animal Biotechnol
+  plates/ess/documents/methodology/tcf.pdf]. Rome: Food and            17(2):239–50.
+  Agriculture Organization.                                           Mekonnen MM, Hoekstra AY. 2010. A global and high-resolu-
+FAO. 2005. Livestock policy brief 02. Rome: Food and Agricul-          tion assessment of the green, blue and grey water footprint of
+  ture Organization.                                                   wheat. Hydrol Earth Syst Sci 14(7):1259–76.
+FAO. 2009. FAOSTAT database. Available online: [http://faos-          Mekonnen MM, Hoekstra AY. 2011. The green, blue and grey
+  tat.fao.org]. Rome: Food and Agriculture Organization.               water footprint of crops and derived crop products. Hydrol
+Fraser D. 2008. Toward a global perspective on farm animal             Earth Syst Sci 15(5):1577–600.
+  welfare. Appl Animal Behav Sci 113(4):330–9.                        Myers N, Kent J. 2003. New consumers: the influence of affluence
+Galloway J, Burke M, Bradford GE, Naylor R, Falcon W, Chap-             on the environment. P Natl Acad Sci USA 100(8):4963–8.
+  again AK, Gaskell JC, McCullough E, Mooney HA, Oleson KLL,          Naylor R, Steinfeld H, Falcon W, Galloway J, Smil V, Bradford E,
+  Steinfeld H, Wassenaar T, Smil V. 2007. International trade in        Alder J, Mooney H. 2005. Agriculture: losing the links be-
+  meat: the tip of the pork chop. Ambio 36:622–9.                       tween livestock and land. Science 310(5754):1621–2.
+                                                            Assessment of the Water Footprint of Farm Animals                    415
+
+Nepstad DC, Stickler CM, Almeida OT. 2006. Globalization of the       Steinfeld H, Gerber P, Wassenaar T, Castel V, Rosales M, de Haan
+  Amazon soy and beef industries: opportunities for conserva-           C. 2006. Livestock’s long shadow: environmental issues and
+  tion. Conserv Biol 20(6):1595–603.                                    options. Rome: Food and Agriculture Organization. p 390.
+Peden D, Tadesse G, Misra AK, Ahmed FA, Astatke A, Ayalneh            Sutton MA, Oenema O, Erisman JW, Leip A, Van Grinsven H,
+  W, Herrero M, Kiwuwa G, Kumsa T, Mati B, Mpairwe D,                   Winiwarter W. 2011. Too much of a good thing. Nature
+  Wassenaar T, Yimegnuhal A. 2007. Water and livestock for              472(7342):159–61.
+  human development. In: Molden D, Ed. Water for food, water          Thompson PB, Ed. 2008. The ethics of intensification: Agricul-
+  for life: a comprehensive assessment of water management in           tural development and cultural change. The International
+  agriculture. London: Earthscan International Water Manage-            Library of Environmental, Agricultural and Food Ethics Vol.
+  ment Institute. p 485–514.                                            16. New York: Springer. doi:10.1007/978-1-4020-8722-6.
+Pelletier N, Tyedmers P. 2010. Forecasting potential global           Tilman D, Fargione J, Wolff B, D’antonio C, Dobson A, Howarth
+  environmental costs of livestock production 2000–2050. Proc            R, Schindler D, Schlesinger WH, Simberloff D, Swackhamer D.
+  Natl Acad Sci USA 107(43):18371–4.                                     2001. Forecasting agriculturally driven global environmental
+Pimentel D, Berger B, Filiberto D, Newton M, Wolfe B, Karabi-            change. Science 292(5515):281–4.
+  nakis E, Clark S, Poon E, Abbett E, Nandagopal S. 2004. Water       UNESCO. 2009. Water in a changing world: The United Nations
+  resources: agricultural and environmental issues. Bioscience         World Water Development Report 3. Paris: UNESCO Pub-
+  54(10):909–18.                                                       lishing, Earthscan.
+Postel SL. 2000. Entering an era of water scarcity: the challenges    Van Breugel P, Herrero M, Van De Steeg J, Peden D. 2010.
+  ahead. Ecol Appl 10(4):941–8.                                         Livestock water use and productivity in the Nile Basin. Eco-
+Postel SL, Daily GC, Ehrlich PR. 1996. Human appropriation of           systems 13(2):205–21.
+  renewable freshwater. Science 271(5250):785–8.                      Wheeler RO, Cramer GL, Young KB, Ospina E. 1981. The world
+Renault D, Wallender WW. 2000. Nutritional water productivity          livestock product, feedstuff, and food grain system, an analysis
+  and diets. Agric Water Manag 45:275–96.                              and evaluation of system interactions throughout the world,
+Rost S, Gerten D, Bondeau A, Lucht W, Rohwer J, Schaphoff S.           with projections to 1985 Little Rock (AK): Winrock Interna-
+  2008. Agricultural green and blue water consumption and              tional.
+  its influence on the global water system. Water Resource            Wint GRW, Robinson TP. 2007. Gridded livestock of the world
+  Research 44:W09405. doi:10.1029/2007WR006331.                        2007. Rome: Food and Agriculture Organization.
+Seré C, Steinfeld H. 1996. World livestock production systems:       Witte W. 1998. Medical consequences of antibiotic use in agri-
+  current status, issues and trends. Animal production and             culture. Science 279(5353):996–7.
+  health paper 127. Rome: Food and Agriculture Organization.          Zimmer D, Renault D. 2003. Virtual water in food production
+Smart AJ, Derner JD, Hendrickson JR, Gillen RL, Dunn BH,                and global trade: review of methodological issues and pre-
+  Mousel EM, Johnson PS, Gates RN, Sedivec KK, Harmoney                 liminary results. In: Hoekstra AY, Ed. Virtual water trade:
+  KR, Volesky JD, Olson KC. 2010. Effects of grazing pressure           Proceedings of the International Expert Meeting on Virtual
+  on efficiency of grazing on North American Great Plains               Water Trade. Value of Water Research Report Series No.12,
+  rangelands. Rangeland Ecol Manag 63(4):397–406.                       Available at [http://www.waterfootprint.org/Reports/Re-
+Smith DL, Harris AD, Johnson JA, Silbergeld EK, Morris JG.              port12.pdf] Delft, The Netherlands: UNESCO-IHE. p93-109.
+  2002. Animal antibiotic use has an early but important impact
+  on the emergence of antibiotic resistance in human com-
+  mensal bacteria. Proc Natl Acad Sci USA 99(9):6434–9.
+

@@ -883,8 +883,58 @@ body {
         grid-template-columns: 1fr;
         text-align: center;
     }
+    
+    /* Адаптивные таблицы для мобильных */
+    .table-card {
+        padding: 20px;
+    }
+    
+    .table-scroll {
+        max-height: 350px;
+        /* Улучшенный скролл для мобильных */
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+        scrollbar-color: #4f46e5 #e5e7eb;
+    }
+    
+    /* Кастомный скроллбар для WebKit */
+    .table-scroll::-webkit-scrollbar {
+        height: 8px;
+        width: 8px;
+    }
+    
+    .table-scroll::-webkit-scrollbar-track {
+        background: #e5e7eb;
+        border-radius: 4px;
+    }
+    
+    .table-scroll::-webkit-scrollbar-thumb {
+        background: #4f46e5;
+        border-radius: 4px;
+    }
+    
+    /* Компактные таблицы на мобильных */
+    .water-table {
+        font-size: 0.85rem;
+    }
+    
+    .water-table th,
+    .water-table td {
+        padding: 10px 6px;
+        white-space: nowrap;
+    }
+    
+    /* Адаптация карточек таблиц */
+    .table-card h3 {
+        font-size: 1.2rem;
+    }
+    
+    .table-card h3 i {
+        font-size: 1.4rem;
+    }
 }
 
+/* Карточный вид таблиц для очень маленьких экранов */
 @media (max-width: 480px) {
     .hero-title {
         font-size: 2rem;
@@ -902,5 +952,115 @@ body {
     .info-card,
     .recommendation-card {
         padding: 25px;
+    }
+    
+    /* Скрываем оригинальную таблицу и показываем карточки */
+    .table-scroll {
+        max-height: none;
+        overflow-x: visible;
+        overflow-y: visible;
+    }
+    
+    .water-table {
+        display: none;
+    }
+    
+    /* Создаем карточный вид для строк таблицы */
+    .table-scroll {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    /* Карточка для каждой строки данных */
+    .water-table tbody tr {
+        display: flex;
+        flex-direction: column;
+        background: white;
+        border: 1px solid #e5e7eb;
+        border-radius: 12px;
+        padding: 15px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        gap: 10px;
+    }
+    
+    .water-table tbody tr:hover {
+        background: white;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
+    }
+    
+    /* Каждая ячейка становится парой ключ-значение */
+    .water-table td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px 0;
+        border-bottom: 1px solid #f3f4f6;
+        white-space: normal;
+    }
+    
+    .water-table td:last-child {
+        border-bottom: none;
+    }
+    
+    /* Добавляем заголовки как псевдоэлементы */
+    .water-table td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        color: #6b7280;
+        font-size: 0.9rem;
+        margin-right: 15px;
+    }
+    
+    /* Убираем границы между ячейками */
+    .water-table td {
+        border-bottom: none;
+    }
+    
+    /* Улучшаем отображение для большой таблицы */
+    .table-card.full-width .water-table tbody tr {
+        padding: 12px;
+    }
+    
+    /* Адаптация секции с таблицами */
+    .tables-section {
+        padding: 50px 15px;
+        margin: 10px;
+    }
+    
+    .table-card {
+        padding: 15px;
+    }
+    
+    /* Скрываем заголовки таблиц на мобильных */
+    .water-table thead {
+        display: none;
+    }
+    
+    /* Показываем tbody как flex контейнер */
+    .water-table tbody {
+        display: contents;
+    }
+}
+
+/* Очень маленькие экраны */
+@media (max-width: 360px) {
+    .hero-title {
+        font-size: 1.8rem;
+    }
+    
+    .table-card {
+        padding: 12px;
+    }
+    
+    .water-table td {
+        font-size: 0.8rem;
+        padding: 6px 0;
+    }
+    
+    .water-table td::before {
+        font-size: 0.85rem;
     }
 }
