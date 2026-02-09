@@ -320,76 +320,58 @@ window.addEventListener('scroll', function() {
     }
 });
 
-// Дополнительные интерактивные элементы
+// Переключение таблиц
 document.addEventListener('DOMContentLoaded', function() {
+    const tableToggles = document.querySelectorAll('.table-toggle');
+    console.log('Найдено переключателей таблиц:', tableToggles.length);
+
+    tableToggles.forEach(toggle => {
+        toggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            const tableId = this.getAttribute('data-table');
+            const tableContent = document.getElementById(tableId);
+
+            console.log('Клик по кнопке, таблица:', tableId, 'Содержимое:', tableContent);
+
+            if (tableContent) {
+                this.classList.toggle('active');
+                tableContent.classList.toggle('show');
+                console.log('Классы после клика:', this.className, tableContent.className);
+            } else {
+                console.error('Таблица не найдена:', tableId);
+            }
+        });
+    });
+
+    // Дополнительные интерактивные элементы
     // Добавление эффекта наведения на карточки
     const cards = document.querySelectorAll('.info-card, .recommendation-card, .result-card');
-    
+
     cards.forEach(card => {
         card.addEventListener('mouseenter', function() {
             this.style.transform = 'translateY(-10px) scale(1.02)';
         });
-        
+
         card.addEventListener('mouseleave', function() {
             this.style.transform = 'translateY(0) scale(1)';
         });
     });
-    
-    // Добавление звукового эффекта при клике на кнопки
+
+    // Добавление эффекта ripple при клике на кнопки
     const buttons = document.querySelectorAll('button');
-    
+
     buttons.forEach(button => {
         button.addEventListener('click', function() {
             // Создаём визуальный эффект
             const ripple = document.createElement('span');
             ripple.classList.add('ripple');
             this.appendChild(ripple);
-            
+
             setTimeout(() => {
                 ripple.remove();
             }, 600);
         });
     });
-});
 
-// Добавление CSS для эффекта ripple
-const style = document.createElement('style');
-style.textContent = `
-    button {
-        position: relative;
-        overflow: hidden;
-    }
-    
-    .ripple {
-        position: absolute;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.6);
-        transform: scale(0);
-        animation: ripple-animation 0.6s linear;
-        pointer-events: none;
-    }
-    
-    @keyframes ripple-animation {
-        to {
-            transform: scale(4);
-            opacity: 0;
-        }
-    }
-`;
-document.head.appendChild(style);
-
-// Переключение таблиц
-document.addEventListener('DOMContentLoaded', function() {
-    const tableToggles = document.querySelectorAll('.table-toggle');
-    tableToggles.forEach(toggle => {
-        toggle.addEventListener('click', function() {
-            const tableId = this.getAttribute('data-table');
-            const tableContent = document.getElementById(tableId);
-
-            if (tableContent) {
-                this.classList.toggle('active');
-                tableContent.classList.toggle('show');
-            }
-        });
-    });
+    animateOnScroll();
 });
