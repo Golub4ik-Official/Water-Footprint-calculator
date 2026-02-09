@@ -52,7 +52,11 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Добавить активный класс к нажатой кнопке и соответствующему контенту
             this.classList.add('active');
-            document.getElementById(targetTab).classList.add('active');
+
+            const targetContent = document.getElementById(targetTab);
+            if (targetContent) {
+                targetContent.classList.add('active');
+            }
         });
     });
 });
@@ -373,3 +377,19 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
+// Переключение таблиц
+document.addEventListener('DOMContentLoaded', function() {
+    const tableToggles = document.querySelectorAll('.table-toggle');
+    tableToggles.forEach(toggle => {
+        toggle.addEventListener('click', function() {
+            const tableId = this.getAttribute('data-table');
+            const tableContent = document.getElementById(tableId);
+
+            if (tableContent) {
+                this.classList.toggle('active');
+                tableContent.classList.toggle('show');
+            }
+        });
+    });
+});
