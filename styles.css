@@ -1059,10 +1059,16 @@ body {
         overflow-y: visible;
     }
     
-    .water-table {
-        display: none;
+    /* Скрываем таблицы, если контент не показан */
+    .table-content:not(.show) .water-table {
+        display: none !important;
     }
     
+    /* Показываем таблицу, если контент активен */
+    .table-content.show .water-table {
+        display: block !important;
+    }
+
     /* Создаем карточный вид для строк таблицы */
     .table-scroll {
         display: flex;
