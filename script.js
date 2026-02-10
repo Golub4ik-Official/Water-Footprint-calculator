@@ -1,33 +1,33 @@
-// Навигация
-document.addEventListener('DOMContentLoaded', function() {
-    const hamburger = document.querySelector('.hamburger');
-    const navMenu = document.querySelector('.nav-menu');
-    
-    hamburger.addEventListener('click', function() {
-        hamburger.classList.toggle('active');
-        navMenu.classList.toggle('active');
-    });
-    
-    // Плавная прокрутка по клику на ссылки
-    document.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href').substring(1);
-            const targetSection = document.getElementById(targetId);
-            
-            if (targetSection) {
-                targetSection.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-            
-            // Закрыть мобильное меню
-            navMenu.classList.remove('active');
-            hamburger.classList.remove('active');
-        });
-    });
-});
+// Конфигурация коэффициентов водного следа
+const WATER_FOOTPRINT_RATES = {
+    domestic: { shower: 12, bath: 150 / 7, dishwashing: 8, laundry: 50 / 7, toilet: 6 },
+    food: {
+        beef: 15415, pork: 5988, lamb: 10412, goatMeat: 5521, chicken: 4325, fish: 5000,
+        milk: 1020, cheese: 5553, yogurt: 1020, butter: 5553, cream: 1020, eggs: 3265,
+        bread: 1608, rice: 1673, wheat: 1827, oats: 1788, potatoes: 287,
+        vegetables: 322, tomatoes: 214, carrots: 195, onions: 345, fruits: 967,
+        apples: 822, bananas: 790, oranges: 560,
+        coffee: 130, tea: 27, juice: 1000, softDrinks: 300, beer: 300, wine: 870,
+        vegetableOil: 2575, oliveOil: 14431, mayonnaise: 3000,
+        beans: 5053, lentils: 5874, peas: 1979, nuts: 9063, peanuts: 3974,
+        sugar: 197, chocolate: 17196, honey: 1000
+    },
+    goods: { clothes: 2700 / 30, electronics: 1600 / 365, books: 1000 / 365, toiletries: 200 / 30 }
+};
+
+// Получение единицы измерения для слайдера
+function getSliderUnit(sliderId) {
+    const timeIds = ['shower-time', 'dishwashing'];
+    const countIds = ['baths', 'laundry', 'toilet-flush'];
+    const itemIds = ['clothes', 'electronics', 'books', 'toiletries'];
+    const drinkIds = ['coffee', 'tea', 'juice', 'soft-drinks', 'beer', 'wine'];
+
+    if (timeIds.includes(sliderId)) return ' мин';
+    if (countIds.includes(sliderId)) return ' раз';
+    if (itemIds.includes(sliderId)) return sliderId === 'clothes' ? ' вещ' : ' покупк';
+    if (drinkIds.some(id => sliderId.includes(id))) return ' мл';
+    return ' г';
+}
 
 // Прокрутка к калькулятору
 function scrollToCalculator() {
@@ -37,341 +37,190 @@ function scrollToCalculator() {
     });
 }
 
-// Переключение вкладок калькулятора
+// Получение значения из элемента
+function getInputValue(id) {
+    return parseFloat(document.getElementById(id)?.value) || 0;
+}
+
+// Инициализация приложения
 document.addEventListener('DOMContentLoaded', function() {
+    // Навигация
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+
+    if (hamburger && navMenu) {
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetSection = document.getElementById(this.getAttribute('href').substring(1));
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+                navMenu.classList.remove('active');
+                hamburger.classList.remove('active');
+            });
+        });
+    }
+
+    // Переключение вкладок калькулятора
     const tabButtons = document.querySelectorAll('.tab-button');
     const tabContents = document.querySelectorAll('.tab-content');
     
     tabButtons.forEach(button => {
         button.addEventListener('click', function() {
             const targetTab = this.getAttribute('data-tab');
-            
-            // Убрать активный класс со всех кнопок и контентов
+            const targetContent = document.getElementById(targetTab);
+
             tabButtons.forEach(btn => btn.classList.remove('active'));
             tabContents.forEach(content => content.classList.remove('active'));
-            
-            // Добавить активный класс к нажатой кнопке и соответствующему контенту
-            this.classList.add('active');
 
-            const targetContent = document.getElementById(targetTab);
-            if (targetContent) {
-                targetContent.classList.add('active');
+            this.classList.add('active');
+            if (targetContent) targetContent.classList.add('active');
+        });
+    });
+
+    // Обновление значений слайдеров
+    document.querySelectorAll('.slider').forEach(slider => {
+        const valueDisplay = slider.parentNode.querySelector('.value-display');
+        const updateDisplay = (value) => {
+            valueDisplay.textContent = value + getSliderUnit(slider.id);
+        };
+        
+        slider.addEventListener('input', function() { updateDisplay(this.value); });
+        updateDisplay(slider.value);
+    });
+
+    // Переключение таблиц
+    document.querySelectorAll('.table-toggle').forEach(toggle => {
+        toggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            const tableContent = document.getElementById(this.getAttribute('data-table'));
+            if (tableContent) {
+                this.classList.toggle('active');
+                tableContent.classList.toggle('show');
             }
         });
     });
-});
 
-// Обновление значений слайдеров
-document.addEventListener('DOMContentLoaded', function() {
-    const sliders = document.querySelectorAll('.slider');
-    
-    sliders.forEach(slider => {
-        const valueDisplay = slider.parentNode.querySelector('.value-display');
-        
-        // Обновление при изменении
-        slider.addEventListener('input', function() {
-            const value = this.value;
-            const unit = this.id === 'shower-time' || this.id === 'dishwashing' ? ' мин' :
-                        this.id === 'baths' || this.id === 'laundry' ? ' раз' :
-                        this.id === 'toilet-flush' ? ' раз' :
-                        this.id.includes('clothes') ? ' вещ' :
-                        this.id.includes('electronics') || this.id.includes('books') ? ' покупк' :
-                        this.id.includes('toiletries') ? ' покупк' :
-                        this.id.includes('coffee') || this.id.includes('tea') || this.id.includes('juice') || 
-                        this.id.includes('soft-drinks') || this.id.includes('beer') || this.id.includes('wine') ? ' мл' :
-                        ' г';
-            
-            valueDisplay.textContent = value + unit;
+    // Эффект наведения на карточки
+    document.querySelectorAll('.info-card, .recommendation-card, .result-card').forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            card.style.transform = 'translateY(-10px) scale(1.02)';
         });
-        
-        // Инициализация отображения
-        const initialValue = slider.value;
-        const unit = slider.id === 'shower-time' || slider.id === 'dishwashing' ? ' мин' :
-                    slider.id === 'baths' || slider.id === 'laundry' ? ' раз' :
-                    slider.id === 'toilet-flush' ? ' раз' :
-                    slider.id.includes('clothes') ? ' вещ' :
-                    slider.id.includes('electronics') || slider.id.includes('books') ? ' покупк' :
-                    slider.id.includes('toiletries') ? ' покупк' :
-                    slider.id.includes('coffee') || slider.id.includes('tea') || slider.id.includes('juice') || 
-                    slider.id.includes('soft-drinks') || slider.id.includes('beer') || slider.id.includes('wine') ? ' мл' :
-                    ' г';
-        
-        valueDisplay.textContent = initialValue + unit;
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'translateY(0) scale(1)';
+        });
     });
+
+    // Эффект ripple на кнопках
+    document.querySelectorAll('button').forEach(button => {
+        button.addEventListener('click', function() {
+            const ripple = document.createElement('span');
+            ripple.classList.add('ripple');
+            this.appendChild(ripple);
+            setTimeout(() => ripple.remove(), 600);
+        });
+    });
+
+    animateOnScroll();
 });
 
 // Расчёт водного следа
 function calculateWaterFootprint() {
-    // Получение значений бытового потребления
-    const showerTime = parseFloat(document.getElementById('shower-time').value);
-    const baths = parseFloat(document.getElementById('baths').value);
-    const dishwashing = parseFloat(document.getElementById('dishwashing').value);
-    const laundry = parseFloat(document.getElementById('laundry').value);
-    const toiletFlush = parseFloat(document.getElementById('toilet-flush').value);
-    
-    // Получение значений мяса и рыбы (граммы)
-    const beef = parseFloat(document.getElementById('beef').value);
-    const pork = parseFloat(document.getElementById('pork').value);
-    const lamb = parseFloat(document.getElementById('lamb').value);
-    const goatMeat = parseFloat(document.getElementById('goat-meat').value);
-    const chicken = parseFloat(document.getElementById('chicken').value);
-    const fish = parseFloat(document.getElementById('fish').value);
-    
-    // Получение значений молочных продуктов (граммы)
-    const milk = parseFloat(document.getElementById('milk').value);
-    const cheese = parseFloat(document.getElementById('cheese').value);
-    const yogurt = parseFloat(document.getElementById('yogurt').value);
-    const butter = parseFloat(document.getElementById('butter').value);
-    const cream = parseFloat(document.getElementById('cream').value);
-    const eggs = parseFloat(document.getElementById('eggs').value);
-    
-    // Получение значений злаков и круп (граммы)
-    const bread = parseFloat(document.getElementById('bread').value);
-    const rice = parseFloat(document.getElementById('rice').value);
-    const wheat = parseFloat(document.getElementById('wheat').value);
-    const oats = parseFloat(document.getElementById('oats').value);
-    const potatoes = parseFloat(document.getElementById('potatoes').value);
-    
-    // Получение значений овощей и фруктов (граммы)
-    const vegetables = parseFloat(document.getElementById('vegetables').value);
-    const tomatoes = parseFloat(document.getElementById('tomatoes').value);
-    const carrots = parseFloat(document.getElementById('carrots').value);
-    const onions = parseFloat(document.getElementById('onions').value);
-    const fruits = parseFloat(document.getElementById('fruits').value);
-    const apples = parseFloat(document.getElementById('apples').value);
-    const bananas = parseFloat(document.getElementById('bananas').value);
-    const oranges = parseFloat(document.getElementById('oranges').value);
-    
-    // Получение значений напитков (мл)
-    const coffee = parseFloat(document.getElementById('coffee').value);
-    const tea = parseFloat(document.getElementById('tea').value);
-    const juice = parseFloat(document.getElementById('juice').value);
-    const softDrinks = parseFloat(document.getElementById('soft-drinks').value);
-    const beer = parseFloat(document.getElementById('beer').value);
-    const wine = parseFloat(document.getElementById('wine').value);
-    
-    // Получение значений масел и жиров (граммы)
-    const vegetableOil = parseFloat(document.getElementById('vegetable-oil').value);
-    const oliveOil = parseFloat(document.getElementById('olive-oil').value);
-    const mayonnaise = parseFloat(document.getElementById('mayonnaise').value);
-    
-    // Получение значений бобовых и орехов (граммы)
-    const beans = parseFloat(document.getElementById('beans').value);
-    const lentils = parseFloat(document.getElementById('lentils').value);
-    const peas = parseFloat(document.getElementById('peas').value);
-    const nuts = parseFloat(document.getElementById('nuts').value);
-    const peanuts = parseFloat(document.getElementById('peanuts').value);
-    
-    // Получение значений сладостей (граммы)
-    const sugar = parseFloat(document.getElementById('sugar').value);
-    const chocolate = parseFloat(document.getElementById('chocolate').value);
-    const honey = parseFloat(document.getElementById('honey').value);
-    
-    // Получение значений товаров
-    const clothes = parseFloat(document.getElementById('clothes').value);
-    const electronics = parseFloat(document.getElementById('electronics').value);
-    const books = parseFloat(document.getElementById('books').value);
-    const toiletries = parseFloat(document.getElementById('toiletries').value);
-    
-    // Расчёт бытового потребления (литров в день)
+    // Бытовое потребление
     const domesticWater = 
-        (showerTime * 12) + // 12 литров в минуту в душе
-        (baths * 150 / 7) + // 150 литров за ванну, делим на 7 дней
-        (dishwashing * 8) + // 8 литров в минуту при мытье посуды
-        (laundry * 50 / 7) + // 50 литров за стирку, делим на 7 дней
-        (toiletFlush * 6); // 6 литров за смыв
-    
-    // Расчёт водного следа питания (литров в день)
-    const foodWater = 
-        // Мясо и рыба (граммы → килограммы)
-        (beef / 1000 * 15415) + // говядина: 15,415 л/кг
-        (pork / 1000 * 5988) + // свинина: 5,988 л/кг
-        (lamb / 1000 * 10412) + // баранина: 10,412 л/кг
-        (goatMeat / 1000 * 5521) + // козье мясо: 5,521 л/кг
-        (chicken / 1000 * 4325) + // курица: 4,325 л/кг
-        (fish / 1000 * 5000) + // рыба: 5,000 л/кг
-        // Молочные продукты (граммы → килограммы)
-        (milk / 1000 * 1020) + // молоко: 1,020 л/кг
-        (cheese / 1000 * 5553) + // сыр: 5,553 л/кг
-        (yogurt / 1000 * 1020) + // йогурт: 1,020 л/кг
-        (butter / 1000 * 5553) + // масло: 5,553 л/кг
-        (cream / 1000 * 1020) + // сливки: 1,020 л/кг
-        (eggs * 50 / 1000 * 3265) + // яйца: 3,265 л/кг (50г за штуку)
-        // Злаки и крупы (граммы → килограммы)
-        (bread / 1000 * 1608) + // хлеб: 1,608 л/кг
-        (rice / 1000 * 1673) + // рис: 1,673 л/кг
-        (wheat / 1000 * 1827) + // пшеница: 1,827 л/кг
-        (oats / 1000 * 1788) + // овсянка: 1,788 л/кг
-        (potatoes / 1000 * 287) + // картофель: 287 л/кг
-        // Овощи и фрукты (граммы → килограммы)
-        (vegetables / 1000 * 322) + // овощи общие: 322 л/кг
-        (tomatoes / 1000 * 214) + // помидоры: 214 л/кг
-        (carrots / 1000 * 195) + // морковь: 195 л/кг
-        (onions / 1000 * 345) + // лук: 345 л/кг
-        (fruits / 1000 * 967) + // фрукты общие: 967 л/кг
-        (apples / 1000 * 822) + // яблоки: 822 л/кг
-        (bananas / 1000 * 790) + // бананы: 790 л/кг
-        (oranges / 1000 * 560) + // апельсины: 560 л/кг
-        // Напитки (мл → литры)
-        (coffee / 1000 * 130) + // кофе: 130 л/литр (7г на чашку)
-        (tea / 1000 * 27) + // чай: 27 л/литр (3г на чашку)
-        (juice / 1000 * 1000) + // сок: 1,000 л/литр
-        (softDrinks / 1000 * 300) + // газировка: 300 л/литр (приблизительно)
-        (beer / 1000 * 300) + // пиво: 300 л/литр
-        (wine / 1000 * 870) + // вино: 870 л/литр
-        // Масла и жиры (граммы → килограммы)
-        (vegetableOil / 1000 * 2575) + // растительное масло: 2,575 л/кг
-        (oliveOil / 1000 * 14431) + // оливковое масло: 14,431 л/кг
-        (mayonnaise / 1000 * 3000) + // майонез: 3,000 л/кг (приблизительно)
-        // Бобовые и орехи (граммы → килограммы)
-        (beans / 1000 * 5053) + // фасоль: 5,053 л/кг
-        (lentils / 1000 * 5874) + // чечевица: 5,874 л/кг
-        (peas / 1000 * 1979) + // горох: 1,979 л/кг
-        (nuts / 1000 * 9063) + // орехи: 9,063 л/кг
-        (peanuts / 1000 * 3974) + // арахис: 3,974 л/кг
-        // Сладости (граммы → килограммы)
-        (sugar / 1000 * 197) + // сахар: 197 л/кг
-        (chocolate / 1000 * 17196) + // шоколад: 17,196 л/кг
-        (honey / 1000 * 1000); // мёд: 1,000 л/кг (приблизительно)
-    
-    // Расчёт водного следа товаров (литров в день)
+        getInputValue('shower-time') * WATER_FOOTPRINT_RATES.domestic.shower +
+        getInputValue('baths') * WATER_FOOTPRINT_RATES.domestic.bath +
+        getInputValue('dishwashing') * WATER_FOOTPRINT_RATES.domestic.dishwashing +
+        getInputValue('laundry') * WATER_FOOTPRINT_RATES.domestic.laundry +
+        getInputValue('toilet-flush') * WATER_FOOTPRINT_RATES.domestic.toilet;
+
+    // Пищевые продукты
+    const foodWater = Object.entries(WATER_FOOTPRINT_RATES.food).reduce((sum, [key, rate]) => {
+        const value = getInputValue(key);
+        // Яйца учитываются поштучно (50г = 1 штука)
+        const multiplier = key === 'eggs' ? value * 50 / 1000 : value / 1000;
+        return sum + multiplier * rate;
+    }, 0);
+
+    // Товары
     const goodsWater = 
-        (clothes * 2700 / 30) + // одежда: 2700 л/вещь, делим на 30 дней
-        (electronics * 1600 / 365) + // электроника: 1600 л/покупка, делим на 365 дней
-        (books * 1000 / 365) + // книги: 1000 л/книга, делим на 365 дней
-        (toiletries * 200 / 30); // средства гигиены: 200 л/покупка, делим на 30 дней
-    
-    // Общий водный след
+        getInputValue('clothes') * WATER_FOOTPRINT_RATES.goods.clothes +
+        getInputValue('electronics') * WATER_FOOTPRINT_RATES.goods.electronics +
+        getInputValue('books') * WATER_FOOTPRINT_RATES.goods.books +
+        getInputValue('toiletries') * WATER_FOOTPRINT_RATES.goods.toiletries;
+
     const totalWater = domesticWater + foodWater + goodsWater;
     
     // Отображение результатов
-    document.getElementById('domestic-result').textContent = Math.round(domesticWater) + ' л/день';
-    document.getElementById('food-result').textContent = Math.round(foodWater) + ' л/день';
-    document.getElementById('goods-result').textContent = Math.round(goodsWater) + ' л/день';
-    document.getElementById('total-result').textContent = Math.round(totalWater) + ' л/день';
-    
-    // Сравнение с средними показателями
-    const comparisonText = getComparisonText(totalWater);
-    document.getElementById('comparison-text').textContent = comparisonText;
-    
-    // Показать результаты
+    const setResult = (id, value) => {
+        document.getElementById(id).textContent = Math.round(value) + ' л/день';
+    };
+
+    setResult('domestic-result', domesticWater);
+    setResult('food-result', foodWater);
+    setResult('goods-result', goodsWater);
+    setResult('total-result', totalWater);
+
+    document.getElementById('comparison-text').textContent = getComparisonText(totalWater);
     document.getElementById('results').style.display = 'block';
     
-    // Плавная прокрутка к результатам
-    document.getElementById('results').scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-    });
+    document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 // Функция для сравнения с средними показателями
 function getComparisonText(totalWater) {
-    const averageWater = 4000; // Средний водный след человека в день (литров)
-    
-    if (totalWater < averageWater * 0.7) {
-        return `🎉 Отличный результат! Ваш водный след на ${Math.round((1 - totalWater/averageWater) * 100)}% ниже среднего. Вы заботитесь о водных ресурсах!`;
-    } else if (totalWater < averageWater) {
-        return `👍 Хорошо! Ваш водный след на ${Math.round((1 - totalWater/averageWater) * 100)}% ниже среднего. Есть потенциал для улучшения.`;
-    } else if (totalWater < averageWater * 1.3) {
-        return `⚠️ Ваш водный след близок к среднему значению. Попробуйте следовать нашим рекомендациям для снижения.`;
-    } else if (totalWater < averageWater * 1.6) {
-        return `🔴 Ваш водный след выше среднего на ${Math.round((totalWater/averageWater - 1) * 100)}%. Рекомендуем обратить внимание на рекомендации.`;
-    } else {
-        return `🚨 Значительно выше среднего! Ваш водный след в ${(totalWater/averageWater).toFixed(1)} раза больше среднего. Обязательно изучите способы снижения потребления воды.`;
+    const AVERAGE_WATER = 4000;
+    const ratio = totalWater / AVERAGE_WATER;
+    const belowAverage = Math.round((1 - ratio) * 100);
+    const aboveAverage = Math.round((ratio - 1) * 100);
+
+    if (ratio < 0.7) {
+        return `🎉 Отличный результат! Ваш водный след на ${belowAverage}% ниже среднего. Вы заботитесь о водных ресурсах!`;
     }
+    if (ratio < 1) {
+        return `👍 Хорошо! Ваш водный след на ${belowAverage}% ниже среднего. Есть потенциал для улучшения.`;
+    }
+    if (ratio < 1.3) {
+        return `⚠️ Ваш водный след близок к среднему значению. Попробуйте следовать нашим рекомендациям для снижения.`;
+    }
+    if (ratio < 1.6) {
+        return `🔴 Ваш водный след выше среднего на ${aboveAverage}%. Рекомендуем обратить внимание на рекомендации.`;
+    }
+    return `🚨 Значительно выше среднего! Ваш водный след в ${ratio.toFixed(1)} раза больше среднего. Обязательно изучите способы снижения потребления воды.`;
 }
 
 // Анимация появления элементов при скролле
 function animateOnScroll() {
-    const elements = document.querySelectorAll('.info-card, .recommendation-card, .result-card');
-    
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.style.opacity = '1';
                 entry.target.style.transform = 'translateY(0)';
+                observer.unobserve(entry.target);
             }
         });
-    }, {
-        threshold: 0.1
-    });
-    
-    elements.forEach(element => {
-        element.style.opacity = '0';
-        element.style.transform = 'translateY(30px)';
-        element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.info-card, .recommendation-card, .result-card').forEach(element => {
+        Object.assign(element.style, {
+            opacity: '0',
+            transform: 'translateY(30px)',
+            transition: 'opacity 0.6s ease, transform 0.6s ease'
+        });
         observer.observe(element);
     });
 }
 
-// Инициализация анимаций
-document.addEventListener('DOMContentLoaded', function() {
-    animateOnScroll();
-});
-
 // Эффект параллакса для фона
 window.addEventListener('scroll', function() {
-    const scrolled = window.pageYOffset;
-    const rate = scrolled * -0.5;
-    
     const heroSection = document.querySelector('.hero');
     if (heroSection) {
-        heroSection.style.transform = `translateY(${rate}px)`;
+        heroSection.style.transform = `translateY(${window.pageYOffset * -0.5}px)`;
     }
-});
-
-// Переключение таблиц
-document.addEventListener('DOMContentLoaded', function() {
-    const tableToggles = document.querySelectorAll('.table-toggle');
-    console.log('Найдено переключателей таблиц:', tableToggles.length);
-
-    tableToggles.forEach(toggle => {
-        toggle.addEventListener('click', function(e) {
-            e.preventDefault();
-            const tableId = this.getAttribute('data-table');
-            const tableContent = document.getElementById(tableId);
-
-            console.log('Клик по кнопке, таблица:', tableId, 'Содержимое:', tableContent);
-
-            if (tableContent) {
-                this.classList.toggle('active');
-                tableContent.classList.toggle('show');
-                console.log('Классы после клика:', this.className, tableContent.className);
-            } else {
-                console.error('Таблица не найдена:', tableId);
-            }
-        });
-    });
-
-    // Дополнительные интерактивные элементы
-    // Добавление эффекта наведения на карточки
-    const cards = document.querySelectorAll('.info-card, .recommendation-card, .result-card');
-
-    cards.forEach(card => {
-        card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-10px) scale(1.02)';
-        });
-
-        card.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0) scale(1)';
-        });
-    });
-
-    // Добавление эффекта ripple при клике на кнопки
-    const buttons = document.querySelectorAll('button');
-
-    buttons.forEach(button => {
-        button.addEventListener('click', function() {
-            // Создаём визуальный эффект
-            const ripple = document.createElement('span');
-            ripple.classList.add('ripple');
-            this.appendChild(ripple);
-
-            setTimeout(() => {
-                ripple.remove();
-            }, 600);
-        });
-    });
-
-    animateOnScroll();
 });
