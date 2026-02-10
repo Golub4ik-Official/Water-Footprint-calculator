@@ -888,6 +888,18 @@ body {
         display: flex;
     }
     
+    .hamburger.active .bar:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+
     .nav-menu {
         position: fixed;
         left: 0;
@@ -901,9 +913,9 @@ body {
         padding: 20px 0;
         max-height: calc(100vh - 70px);
         overflow-y: auto;
-        z-index: 999;
+        z-index: 9999;
     }
-    
+
     .nav-menu.active {
         top: 70px;
     }
