@@ -326,8 +326,14 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('Найдено переключателей таблиц:', tableToggles.length);
 
     tableToggles.forEach(toggle => {
-        toggle.addEventListener('click', function(e) {
+        // Удаляем старые обработчики событий, если есть
+        const newToggle = toggle.cloneNode(true);
+        toggle.parentNode.replaceChild(newToggle, toggle);
+
+        newToggle.addEventListener('click', function(e) {
             e.preventDefault();
+            e.stopPropagation();
+
             const tableId = this.getAttribute('data-table');
             const tableContent = document.getElementById(tableId);
 
@@ -336,9 +342,36 @@ document.addEventListener('DOMContentLoaded', function() {
             if (tableContent) {
                 this.classList.toggle('active');
                 tableContent.classList.toggle('show');
+
+                // Принудительное обновление стиля display
+                if (tableContent.classList.contains('show')) {
+                    tableContent.style.display = 'block';
+                } else {
+                    tableContent.style.display = 'none';
+                }
+
                 console.log('Классы после клика:', this.className, tableContent.className);
             } else {
                 console.error('Таблица не найдена:', tableId);
+            }
+        });
+
+        // Добавляем поддержку touch событий для мобильных
+        newToggle.addEventListener('touchend', function(e) {
+            e.preventDefault();
+            const tableId = this.getAttribute('data-table');
+            const tableContent = document.getElementById(tableId);
+
+            if (tableContent) {
+                this.classList.toggle('active');
+                tableContent.classList.toggle('show');
+
+                // Принудительное обновление стиля display
+                if (tableContent.classList.contains('show')) {
+                    tableContent.style.display = 'block';
+                } else {
+                    tableContent.style.display = 'none';
+                }
             }
         });
     });
