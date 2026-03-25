@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <!-- Навигация -->
@@ -76,13 +77,30 @@
     <!-- Калькулятор -->
     <section id="calculator" class="calculator-section">
         <div class="container">
-            <h2 class="section-title">Калькулятор водного следа</h2>
+            <h2 class="section-title">Сколько воды уходит на ваши привычки</h2>
             <p class="section-description">
                 Ответьте на несколько вопросов о вашем образе жизни, чтобы рассчитать 
                 индивидуальный водный след
             </p>
 
-            <div class="calculator-container">
+            <!-- Переключатель режима расчёта -->
+            <div class="calculation-mode">
+                <div class="mode-switch">
+                    <button class="mode-btn active" data-mode="quick">
+                        <i class="fas fa-bolt"></i>
+                        Быстрый расчёт
+                    </button>
+                    <button class="mode-btn" data-mode="detailed">
+                        <i class="fas fa-list-ul"></i>
+                        Подробный расчёт
+                    </button>
+                </div>
+                <p class="mode-description" id="mode-description">
+                    8–12 ключевых параметров для быстрой оценки водного следа
+                </p>
+            </div>
+
+            <div class="calculator-container mode-quick">
                 <div class="tabs">
                     <button class="tab-button active" data-tab="domestic">
                         <i class="fas fa-home"></i>
@@ -94,313 +112,469 @@
                     </button>
                     <button class="tab-button" data-tab="goods">
                         <i class="fas fa-shopping-bag"></i>
-                        Товары
+                        Скрытая вода в товарах
+                        <span class="tooltip-container">
+                            <i class="fas fa-info-circle tab-info-icon" title="Скрытая (виртуальная) вода — это вода, затраченная на производство товаров: одежды, электроники, книг, средств гигиены"></i>
+                        </span>
                     </button>
                 </div>
 
                 <!-- Бытовое потребление -->
                 <div id="domestic" class="tab-content active">
-                    <div class="input-group">
-                        <label for="shower-time">Время в душе (минут в день)</label>
-                        <input type="range" id="shower-time" min="0" max="30" value="10" class="slider">
-                        <span class="value-display">10 мин</span>
-                    </div>
+<div class="input-group quick-only">
+<label for="shower-time">Время в душе (минут в день)</label>
+<input type="range" id="shower-time" min="0" max="30" value="10" class="slider">
+<span class="value-display">10 мин</span>
+<span class="input-hint"><i class="fas fa-info-circle"></i>10 минут душа = обычный недолгий душ</span>
+</div>
 
-                    <div class="input-group">
-                        <label for="baths">Принятие ванн (раз в неделю)</label>
-                        <input type="range" id="baths" min="0" max="7" value="1" class="slider">
-                        <span class="value-display">1 раз</span>
-                    </div>
+<div class="input-group quick-only">
+<label for="laundry">Стирка (раз в неделю)</label>
+<input type="range" id="laundry" min="0" max="10" value="3" class="slider">
+<span class="value-display">3 раза</span>
+<span class="input-hint"><i class="fas fa-info-circle"></i>3 раза в неделю = примерно 12 раз в месяц</span>
+</div>
 
-                    <div class="input-group">
-                        <label for="dishwashing">Мытьё посуды (минут в день)</label>
-                        <input type="range" id="dishwashing" min="0" max="60" value="15" class="slider">
-                        <span class="value-display">15 мин</span>
-                    </div>
+<div class="input-group detailed-only">
+<label for="baths">Принятие ванн (раз в неделю)</label>
+<input type="range" id="baths" min="0" max="7" value="1" class="slider">
+<span class="value-display">1 раз</span>
 
-                    <div class="input-group">
-                        <label for="laundry">Стирка (раз в неделю)</label>
-                        <input type="range" id="laundry" min="0" max="10" value="3" class="slider">
-                        <span class="value-display">3 раза</span>
-                    </div>
+</div>
 
-                    <div class="input-group">
-                        <label for="toilet-flush">Смыв туалета (раз в день)</label>
-                        <input type="range" id="toilet-flush" min="0" max="20" value="8" class="slider">
-                        <span class="value-display">8 раз</span>
-                    </div>
-                </div>
+<div class="input-group detailed-only">
+<label for="toilet-flush">Смыв туалета (раз в день)</label>
+<input type="range" id="toilet-flush" min="0" max="20" value="8" class="slider">
+<span class="value-display">8 раз</span>
+<span class="input-hint"><i class="fas fa-info-circle"></i>8 раз в день — типичное посещение туалета</span>
+</div>
 
-                <!-- Питание -->
+<div class="input-group detailed-only">
+<label for="dishwashing">Мытьё посуды (минут в день)</label>
+<input type="range" id="dishwashing" min="0" max="60" value="15" class="slider">
+<span class="value-display">15 мин</span>
+<span class="input-hint"><i class="fas fa-info-circle"></i>15 минут = среднее время мытья посуды за один раз</span>
+</div>
+
+</div>
+
+<!-- Питание -->
                 <div id="food" class="tab-content">
-                    <div class="food-category">
-                        <h3>Мясо и рыба (граммов в день)</h3>
-                        <div class="input-group">
-                            <label for="beef">Говядина</label>
-                            <input type="range" id="beef" min="0" max="200" value="50" step="10" class="slider">
-                            <span class="value-display">50 г</span>
-                        </div>
-                        <div class="input-group">
-                            <label for="pork">Свинина</label>
-                            <input type="range" id="pork" min="0" max="200" value="30" step="10" class="slider">
-                            <span class="value-display">30 г</span>
-                        </div>
-                        <div class="input-group">
-                            <label for="lamb">Баранина</label>
-                            <input type="range" id="lamb" min="0" max="150" value="0" step="10" class="slider">
-                            <span class="value-display">0 г</span>
-                        </div>
-                        <div class="input-group">
-                            <label for="goat-meat">Козье мясо</label>
-                            <input type="range" id="goat-meat" min="0" max="150" value="0" step="10" class="slider">
-                            <span class="value-display">0 г</span>
-                        </div>
-                        <div class="input-group">
-                            <label for="chicken">Курица</label>
-                            <input type="range" id="chicken" min="0" max="300" value="100" step="10" class="slider">
-                            <span class="value-display">100 г</span>
-                        </div>
-                        <div class="input-group">
-                            <label for="fish">Рыба</label>
-                            <input type="range" id="fish" min="0" max="200" value="50" step="10" class="slider">
-                            <span class="value-display">50 г</span>
-                        </div>
+                    <!-- БЫСТРЫЙ РЕЖИМ: ключевые продукты -->
+                    <div class="food-category quick-only">
+                        <h3>Основные продукты</h3>
+<div class="input-group">
+<label for="beef">Говядина</label>
+<div class="input-row">
+<input type="range" id="beef" min="0" max="200" value="50" step="10" class="slider">
+<input type="number" id="beef-number" min="0" max="200" value="50" step="10" class="number-input">
+<span class="unit">г</span>
+</div>
+<span class="input-hint"><i class="fas fa-info-circle"></i>100 г мяса — это примерно одна небольшая порция</span>
+</div>
+<div class="input-group">
+<label for="chicken">Курица</label>
+<div class="input-row">
+<input type="range" id="chicken" min="0" max="300" value="100" step="10" class="slider">
+<input type="number" id="chicken-number" min="0" max="300" value="100" step="10" class="number-input">
+<span class="unit">г</span>
+</div>
+<span class="input-hint"><i class="fas fa-info-circle"></i>100 г мяса — это примерно одна небольшая порция</span>
+</div>
+<div class="input-group">
+<label for="milk">Молоко</label>
+<div class="input-row">
+<input type="range" id="milk" min="0" max="500" value="200" step="25" class="slider">
+<input type="number" id="milk-number" min="0" max="500" value="200" step="25" class="number-input">
+<span class="unit">мл</span>
+</div>
+<span class="input-hint"><i class="fas fa-info-circle"></i>200 мл — один стакан молока</span>
+</div>
+<div class="input-group">
+<label for="bread">Хлеб пшеничный</label>
+<div class="input-row">
+<input type="range" id="bread" min="0" max="300" value="100" step="25" class="slider">
+<input type="number" id="bread-number" min="0" max="300" value="100" step="25" class="number-input">
+<span class="unit">г</span>
+</div>
+<span class="input-hint"><i class="fas fa-info-circle"></i>100 г хлеба — примерно 2 ломтика</span>
+</div>
+<div class="input-group">
+<label for="vegetables">Овощи (общие)</label>
+<div class="input-row">
+<input type="range" id="vegetables" min="0" max="800" value="300" step="25" class="slider">
+<input type="number" id="vegetables-number" min="0" max="800" value="300" step="25" class="number-input">
+<span class="unit">г</span>
+</div>
+<span class="input-hint"><i class="fas fa-info-circle"></i>300 г овощей — примерно 2-3 средних порции</span>
+</div>
+<div class="input-group">
+<label for="fruits">Фрукты (общие)</label>
+<div class="input-row">
+<input type="range" id="fruits" min="0" max="600" value="200" step="25" class="slider">
+<input type="number" id="fruits-number" min="0" max="600" value="200" step="25" class="number-input">
+<span class="unit">г</span>
+</div>
+<span class="input-hint"><i class="fas fa-info-circle"></i>200 г фруктов — одно среднее яблоко или апельсин</span>
+</div>
+<div class="input-group">
+<label for="coffee">Кофе</label>
+<div class="input-row">
+<input type="range" id="coffee" min="0" max="1000" value="200" step="50" class="slider">
+<input type="number" id="coffee-number" min="0" max="1000" value="200" step="50" class="number-input">
+<span class="unit">мл</span>
+</div>
+<span class="input-hint"><i class="fas fa-info-circle"></i>200 мл кофе — одна стандартная чашка</span>
+</div>
                     </div>
 
-                    <div class="food-category">
-                        <h3>Молочные продукты и яйца (граммов в день)</h3>
-                        <div class="input-group">
-                            <label for="milk">Молоко</label>
-                            <input type="range" id="milk" min="0" max="500" value="200" step="25" class="slider">
-                            <span class="value-display">200 мл</span>
-                        </div>
+                    <!-- ПОДРОБНЫЙ РЕЖИМ -->
+                    <div class="food-category detailed-only">
+                        <h3>Мясо и рыба (дополнительно)</h3>
+<div class="input-group">
+<label for="pork">Свинина</label>
+<div class="input-row">
+<input type="range" id="pork" min="0" max="200" value="30" step="10" class="slider">
+<input type="number" id="pork-number" min="0" max="200" value="30" step="10" class="number-input">
+<span class="unit">г</span>
+</div>
+<span class="input-hint"><i class="fas fa-info-circle"></i>100 г мяса — это примерно одна небольшая порция</span>
+</div>
+<div class="input-group">
+<label for="lamb">Баранина</label>
+<div class="input-row">
+<input type="range" id="lamb" min="0" max="150" value="0" step="10" class="slider">
+<input type="number" id="lamb-number" min="0" max="150" value="0" step="10" class="number-input">
+<span class="unit">г</span>
+</div>
+<span class="input-hint"><i class="fas fa-info-circle"></i>100 г мяса — это примерно одна небольшая порция</span>
+</div>
+<div class="input-group">
+<label for="goat-meat">Козье мясо</label>
+<div class="input-row">
+<input type="range" id="goat-meat" min="0" max="150" value="0" step="10" class="slider">
+<input type="number" id="goat-meat-number" min="0" max="150" value="0" step="10" class="number-input">
+<span class="unit">г</span>
+</div>
+<span class="input-hint"><i class="fas fa-info-circle"></i>100 г мяса — это примерно одна небольшая порция</span>
+</div>
+<div class="input-group">
+<label for="fish">Рыба</label>
+<div class="input-row">
+<input type="range" id="fish" min="0" max="200" value="50" step="10" class="slider">
+<input type="number" id="fish-number" min="0" max="200" value="50" step="10" class="number-input">
+<span class="unit">г</span>
+</div>
+<span class="input-hint"><i class="fas fa-info-circle"></i>100 г рыбы — это примерно одна небольшая порция</span>
+</div>
+                    </div>
+
+                    <div class="food-category detailed-only">
+                        <h3>Молочные продукты и яйца</h3>
                         <div class="input-group">
                             <label for="cheese">Сыр твёрдый</label>
-                            <input type="range" id="cheese" min="0" max="100" value="30" step="5" class="slider">
-                            <span class="value-display">30 г</span>
+                            <div class="input-row">
+                                <input type="range" id="cheese" min="0" max="100" value="30" step="5" class="slider">
+                                <input type="number" id="cheese-number" min="0" max="100" value="30" step="5" class="number-input">
+                                <span class="unit">г</span>
+                            </div>
                         </div>
                         <div class="input-group">
                             <label for="yogurt">Йогурт</label>
-                            <input type="range" id="yogurt" min="0" max="500" value="150" step="25" class="slider">
-                            <span class="value-display">150 г</span>
+                            <div class="input-row">
+                                <input type="range" id="yogurt" min="0" max="500" value="150" step="25" class="slider">
+                                <input type="number" id="yogurt-number" min="0" max="500" value="150" step="25" class="number-input">
+                                <span class="unit">г</span>
+                            </div>
                         </div>
                         <div class="input-group">
                             <label for="butter">Масло сливочное</label>
-                            <input type="range" id="butter" min="0" max="100" value="15" step="5" class="slider">
-                            <span class="value-display">15 г</span>
+                            <div class="input-row">
+                                <input type="range" id="butter" min="0" max="100" value="15" step="5" class="slider">
+                                <input type="number" id="butter-number" min="0" max="100" value="15" step="5" class="number-input">
+                                <span class="unit">г</span>
+                            </div>
                         </div>
                         <div class="input-group">
                             <label for="cream">Сливки</label>
-                            <input type="range" id="cream" min="0" max="100" value="0" step="5" class="slider">
-                            <span class="value-display">0 г</span>
+                            <div class="input-row">
+                                <input type="range" id="cream" min="0" max="100" value="0" step="5" class="slider">
+                                <input type="number" id="cream-number" min="0" max="100" value="0" step="5" class="number-input">
+                                <span class="unit">г</span>
+                            </div>
                         </div>
                         <div class="input-group">
                             <label for="eggs">Яйца куриные</label>
-                            <input type="range" id="eggs" min="0" max="5" value="1" step="1" class="slider">
-                            <span class="value-display">1 штука (50 г)</span>
+                            <div class="input-row">
+                                <input type="range" id="eggs" min="0" max="5" value="1" step="1" class="slider">
+                                <input type="number" id="eggs-number" min="0" max="5" value="1" step="1" class="number-input">
+                                <span class="unit">шт</span>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="food-category">
-                        <h3>Злаки и крупы (граммов в день)</h3>
-                        <div class="input-group">
-                            <label for="bread">Хлеб пшеничный</label>
-                            <input type="range" id="bread" min="0" max="300" value="100" step="25" class="slider">
-                            <span class="value-display">100 г</span>
-                        </div>
+                    <div class="food-category detailed-only">
+                        <h3>Злаки и крупы (дополнительно)</h3>
                         <div class="input-group">
                             <label for="rice">Рис</label>
-                            <input type="range" id="rice" min="0" max="200" value="75" step="25" class="slider">
-                            <span class="value-display">75 г</span>
+                            <div class="input-row">
+                                <input type="range" id="rice" min="0" max="200" value="75" step="25" class="slider">
+                                <input type="number" id="rice-number" min="0" max="200" value="75" step="25" class="number-input">
+                                <span class="unit">г</span>
+                            </div>
                         </div>
                         <div class="input-group">
                             <label for="wheat">Пшеница (макароны, крупы)</label>
-                            <input type="range" id="wheat" min="0" max="200" value="50" step="25" class="slider">
-                            <span class="value-display">50 г</span>
+                            <div class="input-row">
+                                <input type="range" id="wheat" min="0" max="200" value="50" step="25" class="slider">
+                                <input type="number" id="wheat-number" min="0" max="200" value="50" step="25" class="number-input">
+                                <span class="unit">г</span>
+                            </div>
                         </div>
                         <div class="input-group">
                             <label for="oats">Овсянка</label>
-                            <input type="range" id="oats" min="0" max="150" value="30" step="15" class="slider">
-                            <span class="value-display">30 г</span>
+                            <div class="input-row">
+                                <input type="range" id="oats" min="0" max="150" value="30" step="15" class="slider">
+                                <input type="number" id="oats-number" min="0" max="150" value="30" step="15" class="number-input">
+                                <span class="unit">г</span>
+                            </div>
                         </div>
                         <div class="input-group">
                             <label for="potatoes">Картофель</label>
-                            <input type="range" id="potatoes" min="0" max="400" value="150" step="25" class="slider">
-                            <span class="value-display">150 г</span>
+                            <div class="input-row">
+                                <input type="range" id="potatoes" min="0" max="400" value="150" step="25" class="slider">
+                                <input type="number" id="potatoes-number" min="0" max="400" value="150" step="25" class="number-input">
+                                <span class="unit">г</span>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="food-category">
-                        <h3>Овощи и фрукты (граммов в день)</h3>
-                        <div class="input-group">
-                            <label for="vegetables">Овощи (общие)</label>
-                            <input type="range" id="vegetables" min="0" max="800" value="300" step="25" class="slider">
-                            <span class="value-display">300 г</span>
-                        </div>
+                    <div class="food-category detailed-only">
+                        <h3>Овощи и фрукты (дополнительно)</h3>
                         <div class="input-group">
                             <label for="tomatoes">Помидоры</label>
-                            <input type="range" id="tomatoes" min="0" max="300" value="100" step="25" class="slider">
-                            <span class="value-display">100 г</span>
+                            <div class="input-row">
+                                <input type="range" id="tomatoes" min="0" max="300" value="100" step="25" class="slider">
+                                <input type="number" id="tomatoes-number" min="0" max="300" value="100" step="25" class="number-input">
+                                <span class="unit">г</span>
+                            </div>
                         </div>
                         <div class="input-group">
                             <label for="carrots">Морковь</label>
-                            <input type="range" id="carrots" min="0" max="200" value="50" step="25" class="slider">
-                            <span class="value-display">50 г</span>
+                            <div class="input-row">
+                                <input type="range" id="carrots" min="0" max="200" value="50" step="25" class="slider">
+                                <input type="number" id="carrots-number" min="0" max="200" value="50" step="25" class="number-input">
+                                <span class="unit">г</span>
+                            </div>
                         </div>
                         <div class="input-group">
                             <label for="onions">Лук репчатый</label>
-                            <input type="range" id="onions" min="0" max="150" value="30" step="15" class="slider">
-                            <span class="value-display">30 г</span>
-                        </div>
-                        <div class="input-group">
-                            <label for="fruits">Фрукты (общие)</label>
-                            <input type="range" id="fruits" min="0" max="600" value="200" step="25" class="slider">
-                            <span class="value-display">200 г</span>
+                            <div class="input-row">
+                                <input type="range" id="onions" min="0" max="150" value="30" step="15" class="slider">
+                                <input type="number" id="onions-number" min="0" max="150" value="30" step="15" class="number-input">
+                                <span class="unit">г</span>
+                            </div>
                         </div>
                         <div class="input-group">
                             <label for="apples">Яблоки</label>
-                            <input type="range" id="apples" min="0" max="400" value="150" step="25" class="slider">
-                            <span class="value-display">150 г</span>
+                            <div class="input-row">
+                                <input type="range" id="apples" min="0" max="400" value="150" step="25" class="slider">
+                                <input type="number" id="apples-number" min="0" max="400" value="150" step="25" class="number-input">
+                                <span class="unit">г</span>
+                            </div>
                         </div>
                         <div class="input-group">
                             <label for="bananas">Бананы</label>
-                            <input type="range" id="bananas" min="0" max="300" value="100" step="25" class="slider">
-                            <span class="value-display">100 г</span>
+                            <div class="input-row">
+                                <input type="range" id="bananas" min="0" max="300" value="100" step="25" class="slider">
+                                <input type="number" id="bananas-number" min="0" max="300" value="100" step="25" class="number-input">
+                                <span class="unit">г</span>
+                            </div>
                         </div>
                         <div class="input-group">
                             <label for="oranges">Апельсины</label>
-                            <input type="range" id="oranges" min="0" max="300" value="100" step="25" class="slider">
-                            <span class="value-display">100 г</span>
+                            <div class="input-row">
+                                <input type="range" id="oranges" min="0" max="300" value="100" step="25" class="slider">
+                                <input type="number" id="oranges-number" min="0" max="300" value="100" step="25" class="number-input">
+                                <span class="unit">г</span>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="food-category">
-                        <h3>Напитки (мл в день)</h3>
-                        <div class="input-group">
-                            <label for="coffee">Кофе</label>
-                            <input type="range" id="coffee" min="0" max="1000" value="200" step="50" class="slider">
-                            <span class="value-display">200 мл</span>
-                        </div>
+                    <div class="food-category detailed-only">
+                        <h3>Напитки (дополнительно)</h3>
                         <div class="input-group">
                             <label for="tea">Чай</label>
-                            <input type="range" id="tea" min="0" max="1000" value="300" step="50" class="slider">
-                            <span class="value-display">300 мл</span>
+                            <div class="input-row">
+                                <input type="range" id="tea" min="0" max="1000" value="300" step="50" class="slider">
+                                <input type="number" id="tea-number" min="0" max="1000" value="300" step="50" class="number-input">
+                                <span class="unit">мл</span>
+                            </div>
                         </div>
                         <div class="input-group">
                             <label for="juice">Соки фруктовые</label>
-                            <input type="range" id="juice" min="0" max="500" value="100" step="50" class="slider">
-                            <span class="value-display">100 мл</span>
+                            <div class="input-row">
+                                <input type="range" id="juice" min="0" max="500" value="100" step="50" class="slider">
+                                <input type="number" id="juice-number" min="0" max="500" value="100" step="50" class="number-input">
+                                <span class="unit">мл</span>
+                            </div>
                         </div>
                         <div class="input-group">
                             <label for="soft-drinks">Газированные напитки</label>
-                            <input type="range" id="soft-drinks" min="0" max="1000" value="0" step="50" class="slider">
-                            <span class="value-display">0 мл</span>
+                            <div class="input-row">
+                                <input type="range" id="soft-drinks" min="0" max="1000" value="0" step="50" class="slider">
+                                <input type="number" id="soft-drinks-number" min="0" max="1000" value="0" step="50" class="number-input">
+                                <span class="unit">мл</span>
+                            </div>
                         </div>
                         <div class="input-group">
                             <label for="beer">Пиво</label>
-                            <input type="range" id="beer" min="0" max="2000" value="0" step="100" class="slider">
-                            <span class="value-display">0 мл</span>
+                            <div class="input-row">
+                                <input type="range" id="beer" min="0" max="2000" value="0" step="100" class="slider">
+                                <input type="number" id="beer-number" min="0" max="2000" value="0" step="100" class="number-input">
+                                <span class="unit">мл</span>
+                            </div>
                         </div>
                         <div class="input-group">
                             <label for="wine">Вино</label>
-                            <input type="range" id="wine" min="0" max="500" value="0" step="50" class="slider">
-                            <span class="value-display">0 мл</span>
+                            <div class="input-row">
+                                <input type="range" id="wine" min="0" max="500" value="0" step="50" class="slider">
+                                <input type="number" id="wine-number" min="0" max="500" value="0" step="50" class="number-input">
+                                <span class="unit">мл</span>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="food-category">
-                        <h3>Масла и жиры (граммов в день)</h3>
+                    <div class="food-category detailed-only">
+                        <h3>Масла и жиры</h3>
                         <div class="input-group">
                             <label for="vegetable-oil">Растительное масло</label>
-                            <input type="range" id="vegetable-oil" min="0" max="100" value="20" step="5" class="slider">
-                            <span class="value-display">20 г</span>
+                            <div class="input-row">
+                                <input type="range" id="vegetable-oil" min="0" max="100" value="20" step="5" class="slider">
+                                <input type="number" id="vegetable-oil-number" min="0" max="100" value="20" step="5" class="number-input">
+                                <span class="unit">г</span>
+                            </div>
                         </div>
                         <div class="input-group">
                             <label for="olive-oil">Оливковое масло</label>
-                            <input type="range" id="olive-oil" min="0" max="50" value="0" step="5" class="slider">
-                            <span class="value-display">0 г</span>
+                            <div class="input-row">
+                                <input type="range" id="olive-oil" min="0" max="50" value="0" step="5" class="slider">
+                                <input type="number" id="olive-oil-number" min="0" max="50" value="0" step="5" class="number-input">
+                                <span class="unit">г</span>
+                            </div>
                         </div>
                         <div class="input-group">
                             <label for="mayonnaise">Майонез</label>
-                            <input type="range" id="mayonnaise" min="0" max="100" value="0" step="5" class="slider">
-                            <span class="value-display">0 г</span>
+                            <div class="input-row">
+                                <input type="range" id="mayonnaise" min="0" max="100" value="0" step="5" class="slider">
+                                <input type="number" id="mayonnaise-number" min="0" max="100" value="0" step="5" class="number-input">
+                                <span class="unit">г</span>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="food-category">
-                        <h3>Бобовые и орехи (граммов в день)</h3>
+                    <div class="food-category detailed-only">
+                        <h3>Бобовые и орехи</h3>
                         <div class="input-group">
                             <label for="beans">Фасоль и бобы</label>
-                            <input type="range" id="beans" min="0" max="150" value="30" step="15" class="slider">
-                            <span class="value-display">30 г</span>
+                            <div class="input-row">
+                                <input type="range" id="beans" min="0" max="150" value="30" step="15" class="slider">
+                                <input type="number" id="beans-number" min="0" max="150" value="30" step="15" class="number-input">
+                                <span class="unit">г</span>
+                            </div>
                         </div>
                         <div class="input-group">
                             <label for="lentils">Чечевица</label>
-                            <input type="range" id="lentils" min="0" max="150" value="0" step="15" class="slider">
-                            <span class="value-display">0 г</span>
+                            <div class="input-row">
+                                <input type="range" id="lentils" min="0" max="150" value="0" step="15" class="slider">
+                                <input type="number" id="lentils-number" min="0" max="150" value="0" step="15" class="number-input">
+                                <span class="unit">г</span>
+                            </div>
                         </div>
                         <div class="input-group">
                             <label for="peas">Горох</label>
-                            <input type="range" id="peas" min="0" max="150" value="0" step="15" class="slider">
-                            <span class="value-display">0 г</span>
+                            <div class="input-row">
+                                <input type="range" id="peas" min="0" max="150" value="0" step="15" class="slider">
+                                <input type="number" id="peas-number" min="0" max="150" value="0" step="15" class="number-input">
+                                <span class="unit">г</span>
+                            </div>
                         </div>
                         <div class="input-group">
                             <label for="nuts">Орехи (грецкие, миндаль)</label>
-                            <input type="range" id="nuts" min="0" max="100" value="15" step="5" class="slider">
-                            <span class="value-display">15 г</span>
+                            <div class="input-row">
+                                <input type="range" id="nuts" min="0" max="100" value="15" step="5" class="slider">
+                                <input type="number" id="nuts-number" min="0" max="100" value="15" step="5" class="number-input">
+                                <span class="unit">г</span>
+                            </div>
                         </div>
                         <div class="input-group">
                             <label for="peanuts">Арахис</label>
-                            <input type="range" id="peanuts" min="0" max="100" value="0" step="5" class="slider">
-                            <span class="value-display">0 г</span>
+                            <div class="input-row">
+                                <input type="range" id="peanuts" min="0" max="100" value="0" step="5" class="slider">
+                                <input type="number" id="peanuts-number" min="0" max="100" value="0" step="5" class="number-input">
+                                <span class="unit">г</span>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="food-category">
-                        <h3>Сахар и сладости (граммов в день)</h3>
+                    <div class="food-category detailed-only">
+                        <h3>Сахар и сладости</h3>
                         <div class="input-group">
                             <label for="sugar">Сахар</label>
-                            <input type="range" id="sugar" min="0" max="100" value="30" step="5" class="slider">
-                            <span class="value-display">30 г</span>
+                            <div class="input-row">
+                                <input type="range" id="sugar" min="0" max="100" value="30" step="5" class="slider">
+                                <input type="number" id="sugar-number" min="0" max="100" value="30" step="5" class="number-input">
+                                <span class="unit">г</span>
+                            </div>
                         </div>
                         <div class="input-group">
                             <label for="chocolate">Шоколад</label>
-                            <input type="range" id="chocolate" min="0" max="100" value="20" step="10" class="slider">
-                            <span class="value-display">20 г</span>
+                            <div class="input-row">
+                                <input type="range" id="chocolate" min="0" max="100" value="20" step="10" class="slider">
+                                <input type="number" id="chocolate-number" min="0" max="100" value="20" step="10" class="number-input">
+                                <span class="unit">г</span>
+                            </div>
                         </div>
                         <div class="input-group">
                             <label for="honey">Мёд</label>
-                            <input type="range" id="honey" min="0" max="50" value="0" step="5" class="slider">
-                            <span class="value-display">0 г</span>
+                            <div class="input-row">
+                                <input type="range" id="honey" min="0" max="50" value="0" step="5" class="slider">
+                                <input type="number" id="honey-number" min="0" max="50" value="0" step="5" class="number-input">
+                                <span class="unit">г</span>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Товары -->
                 <div id="goods" class="tab-content">
-                    <div class="input-group">
-                        <label for="clothes">Покупка одежды (вещей в месяц)</label>
-                        <input type="range" id="clothes" min="0" max="20" value="2" class="slider">
-                        <span class="value-display">2 вещи</span>
-                    </div>
+<div class="input-group quick-only">
+<label for="clothes">Покупка одежды (вещей в месяц)</label>
+<input type="range" id="clothes" min="0" max="20" value="2" class="slider">
+<span class="value-display">2 вещи</span>
+<span class="input-hint"><i class="fas fa-info-circle"></i>2 вещи в месяц = около24 вещей в год</span>
+</div>
 
-                    <div class="input-group">
-                        <label for="electronics">Электроника (покупок в год)</label>
-                        <input type="range" id="electronics" min="0" max="10" value="1" class="slider">
-                        <span class="value-display">1 покупка</span>
-                    </div>
+<div class="input-group detailed-only">
+<label for="electronics">Электроника (покупок в год)</label>
+<input type="range" id="electronics" min="0" max="10" value="1" class="slider">
+<span class="value-display">1 покупка</span>
+<span class="input-hint"><i class="fas fa-info-circle"></i>1 покупка в год — например, новый телефон или ноутбук</span>
+</div>
 
-                    <div class="input-group">
-                        <label for="books">Книги (покупок в год)</label>
-                        <input type="range" id="books" min="0" max="20" value="4" class="slider">
-                        <span class="value-display">4 книги</span>
-                    </div>
+<div class="input-group detailed-only">
+<label for="books">Книги (покупок в год)</label>
+<input type="range" id="books" min="0" max="20" value="4" class="slider">
+<span class="value-display">4 книги</span>
 
-                    <div class="input-group">
-                        <label for="toiletries">Средства гигиены (покупок в месяц)</label>
-                        <input type="range" id="toiletries" min="0" max="10" value="2" class="slider">
-                        <span class="value-display">2 покупки</span>
-                    </div>
+</div>
+
+<div class="input-group detailed-only">
+<label for="toiletries">Средства гигиены (покупок в месяц)</label>
+<input type="range" id="toiletries" min="0" max="10" value="2" class="slider">
+<span class="value-display">2 покупки</span>
+<span class="input-hint"><i class="fas fa-info-circle"></i>2 покупки в месяц — зубная паста, шампунь и т.д.</span>
+</div>
                 </div>
 
                 <button class="calculate-button" onclick="calculateWaterFootprint()">
@@ -412,35 +586,71 @@
             <!-- Результаты -->
             <div id="results" class="results-container" style="display: none;">
                 <h3>Ваш водный след</h3>
+                
+                <!-- Блок с карточками категорий -->
                 <div class="results-grid">
                     <div class="result-card">
-                        <div class="result-icon">
+                        <div class="result-icon domestic-icon">
                             <i class="fas fa-home"></i>
                         </div>
                         <div class="result-content">
                             <h4>Бытовое потребление</h4>
                             <div class="result-value" id="domestic-result">0 л/день</div>
+                            <div class="result-percent" id="domestic-percent">0%</div>
                         </div>
                     </div>
                     <div class="result-card">
-                        <div class="result-icon">
+                        <div class="result-icon food-icon">
                             <i class="fas fa-utensils"></i>
                         </div>
                         <div class="result-content">
                             <h4>Питание</h4>
                             <div class="result-value" id="food-result">0 л/день</div>
+                            <div class="result-percent" id="food-percent">0%</div>
                         </div>
                     </div>
                     <div class="result-card">
-                        <div class="result-icon">
+                        <div class="result-icon goods-icon">
                             <i class="fas fa-shopping-bag"></i>
                         </div>
                         <div class="result-content">
-                            <h4>Товары</h4>
+                            <h4>Скрытая вода в товарах</h4>
                             <div class="result-value" id="goods-result">0 л/день</div>
+                            <div class="result-percent" id="goods-percent">0%</div>
                         </div>
                     </div>
                 </div>
+
+                <!-- Блок визуализации -->
+                <div class="visualization-section">
+                    <!-- Круговая диаграмма -->
+                    <div class="chart-card">
+                        <h4>Структура водного следа</h4>
+                        <div class="chart-container pie-chart-container">
+                            <canvas id="pieChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Столбчатая диаграмма -->
+                    <div class="chart-card">
+                        <h4>Главные источники водного следа</h4>
+                        <div class="chart-container bar-chart-container">
+                            <canvas id="barChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Главные источники -->
+                <div class="top-sources-section">
+                    <h4><i class="fas fa-exclamation-triangle"></i> Главные источники вашего водного следа</h4>
+                    <div class="sources-list" id="sources-list">
+                        <!-- Заполняется JavaScript -->
+                    </div>
+                    <div class="sources-advice" id="sources-advice">
+                        <!-- Заполняется JavaScript -->
+                    </div>
+                </div>
+
                 <div class="total-result">
                     <h3>Общий водный след</h3>
                     <div class="total-value" id="total-result">0 л/день</div>
@@ -1085,3 +1295,4 @@
     <script src="script.js"></script>
 </body>
 </html>
+

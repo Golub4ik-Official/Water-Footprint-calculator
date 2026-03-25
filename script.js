@@ -59,44 +59,125 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+    
+    // Переключение режима расчёта
+    const modeButtons = document.querySelectorAll('.mode-btn');
+    const calculatorContainer = document.querySelector('.calculator-container');
+    const modeDescription = document.getElementById('mode-description');
+    
+    const descriptions = {
+        quick: '8–12 ключевых параметров для быстрой оценки водного следа',
+        detailed: 'Полный набор параметров для детального анализа водного следа'
+    };
+    
+    if (modeButtons.length > 0 && calculatorContainer) {
+        modeButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const mode = this.getAttribute('data-mode');
+                
+                // Переключение активной кнопки
+                modeButtons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Переключение класса контейнера
+                calculatorContainer.classList.remove('mode-quick', 'mode-detailed');
+                calculatorContainer.classList.add('mode-' + mode);
+                
+                // Обновление описания
+                modeDescription.textContent = descriptions[mode];
+            });
+        });
+    }
 });
 
-// Обновление значений слайдеров
+// Обновление значений слайдеров и числовых полей
 document.addEventListener('DOMContentLoaded', function() {
     const sliders = document.querySelectorAll('.slider');
+    const numberInputs = document.querySelectorAll('.number-input');
     
+    // Функция определения единицы измерения
+    function getUnit(sliderId) {
+        if (sliderId === 'shower-time' || sliderId === 'dishwashing') return ' мин';
+        if (sliderId === 'baths' || sliderId === 'laundry') return ' раз';
+        if (sliderId === 'toilet-flush') return ' раз';
+        if (sliderId.includes('clothes')) return ' вещ';
+        if (sliderId.includes('electronics') || sliderId.includes('books')) return ' покупок';
+        if (sliderId.includes('toiletries')) return ' покупок';
+        if (sliderId.includes('coffee') || sliderId.includes('tea') || sliderId.includes('juice') || 
+            sliderId.includes('soft-drinks') || sliderId.includes('beer') || sliderId.includes('wine')) return ' мл';
+        if (sliderId === 'eggs') return ' шт';
+        return ' г';
+    }
+    
+    // Функция для синхронизации слайдера и числового поля
+    function syncSliderAndNumber(slider, numberInput) {
+        if (!slider || !numberInput) return;
+        
+        const unit = getUnit(slider.id);
+        
+        // При изменении слайдера - обновляем числовое поле
+        slider.addEventListener('input', function() {
+            numberInput.value = this.value;
+        });
+        
+        // При изменении числа - обновляем слайдер
+        numberInput.addEventListener('input', function() {
+            let value = parseFloat(this.value);
+            const min = parseFloat(this.min);
+            const max = parseFloat(this.max);
+            
+            // Ограничение диапазоном
+            if (isNaN(value)) value = min;
+            if (value < min) value = min;
+            if (value > max) value = max;
+            
+            this.value = value;
+            slider.value = value;
+        });
+        
+        // Синхронизация при потере фокуса
+        numberInput.addEventListener('blur', function() {
+            let value = parseFloat(this.value);
+            const min = parseFloat(this.min);
+            const max = parseFloat(this.max);
+            const step = parseFloat(this.step) || 1;
+            
+            if (isNaN(value)) value = min;
+            if (value < min) value = min;
+            if (value > max) value = max;
+            
+            // Округление до шага
+            value = Math.round(value / step) * step;
+            
+            this.value = value;
+            slider.value = value;
+        });
+    }
+    
+    // Обновление для старых ползунков с value-display
     sliders.forEach(slider => {
         const valueDisplay = slider.parentNode.querySelector('.value-display');
         
-        // Обновление при изменении
-        slider.addEventListener('input', function() {
-            const value = this.value;
-            const unit = this.id === 'shower-time' || this.id === 'dishwashing' ? ' мин' :
-                        this.id === 'baths' || this.id === 'laundry' ? ' раз' :
-                        this.id === 'toilet-flush' ? ' раз' :
-                        this.id.includes('clothes') ? ' вещ' :
-                        this.id.includes('electronics') || this.id.includes('books') ? ' покупк' :
-                        this.id.includes('toiletries') ? ' покупк' :
-                        this.id.includes('coffee') || this.id.includes('tea') || this.id.includes('juice') || 
-                        this.id.includes('soft-drinks') || this.id.includes('beer') || this.id.includes('wine') ? ' мл' :
-                        ' г';
+        if (valueDisplay) {
+            // Обновление при изменении
+            slider.addEventListener('input', function() {
+                const value = this.value;
+                const unit = getUnit(this.id);
+                valueDisplay.textContent = value + unit;
+            });
             
-            valueDisplay.textContent = value + unit;
-        });
-        
-        // Инициализация отображения
-        const initialValue = slider.value;
-        const unit = slider.id === 'shower-time' || slider.id === 'dishwashing' ? ' мин' :
-                    slider.id === 'baths' || slider.id === 'laundry' ? ' раз' :
-                    slider.id === 'toilet-flush' ? ' раз' :
-                    slider.id.includes('clothes') ? ' вещ' :
-                    slider.id.includes('electronics') || slider.id.includes('books') ? ' покупк' :
-                    slider.id.includes('toiletries') ? ' покупк' :
-                    slider.id.includes('coffee') || slider.id.includes('tea') || slider.id.includes('juice') || 
-                    slider.id.includes('soft-drinks') || slider.id.includes('beer') || slider.id.includes('wine') ? ' мл' :
-                    ' г';
-        
-        valueDisplay.textContent = initialValue + unit;
+            // Инициализация отображения
+            const initialValue = slider.value;
+            const unit = getUnit(slider.id);
+            valueDisplay.textContent = initialValue + unit;
+        }
+    });
+    
+    // Синхронизация для новых комбинированных полей
+    numberInputs.forEach(numberInput => {
+        const sliderId = numberInput.id.replace('-number', '');
+        const slider = document.getElementById(sliderId);
+        syncSliderAndNumber(slider, numberInput);
     });
 });
 
@@ -173,86 +254,319 @@ function calculateWaterFootprint() {
     const books = parseFloat(document.getElementById('books').value);
     const toiletries = parseFloat(document.getElementById('toiletries').value);
     
-    // Расчёт бытового потребления (литров в день)
-    const domesticWater = 
-        (showerTime * 12) + // 12 литров в минуту в душе
-        (baths * 150 / 7) + // 150 литров за ванну, делим на 7 дней
-        (dishwashing * 8) + // 8 литров в минуту при мытье посуды
-        (laundry * 50 / 7) + // 50 литров за стирку, делим на 7 дней
-        (toiletFlush * 6); // 6 литров за смыв
+    // ===== РАСЧЁТ ПОДКАТЕГОРИЯМ ДЛЯ ДИАГРАММ =====
     
-    // Расчёт водного следа питания (литров в день)
-    const foodWater = 
-        // Мясо и рыба (граммы → килограммы)
-        (beef / 1000 * 15415) + // говядина: 15,415 л/кг
-        (pork / 1000 * 5988) + // свинина: 5,988 л/кг
-        (lamb / 1000 * 10412) + // баранина: 10,412 л/кг
-        (goatMeat / 1000 * 5521) + // козье мясо: 5,521 л/кг
-        (chicken / 1000 * 4325) + // курица: 4,325 л/кг
-        (fish / 1000 * 5000) + // рыба: 5,000 л/кг
-        // Молочные продукты (граммы → килограммы)
-        (milk / 1000 * 1020) + // молоко: 1,020 л/кг
-        (cheese / 1000 * 5553) + // сыр: 5,553 л/кг
-        (yogurt / 1000 * 1020) + // йогурт: 1,020 л/кг
-        (butter / 1000 * 5553) + // масло: 5,553 л/кг
-        (cream / 1000 * 1020) + // сливки: 1,020 л/кг
-        (eggs * 50 / 1000 * 3265) + // яйца: 3,265 л/кг (50г за штуку)
-        // Злаки и крупы (граммы → килограммы)
-        (bread / 1000 * 1608) + // хлеб: 1,608 л/кг
-        (rice / 1000 * 1673) + // рис: 1,673 л/кг
-        (wheat / 1000 * 1827) + // пшеница: 1,827 л/кг
-        (oats / 1000 * 1788) + // овсянка: 1,788 л/кг
-        (potatoes / 1000 * 287) + // картофель: 287 л/кг
-        // Овощи и фрукты (граммы → килограммы)
-        (vegetables / 1000 * 322) + // овощи общие: 322 л/кг
-        (tomatoes / 1000 * 214) + // помидоры: 214 л/кг
-        (carrots / 1000 * 195) + // морковь: 195 л/кг
-        (onions / 1000 * 345) + // лук: 345 л/кг
-        (fruits / 1000 * 967) + // фрукты общие: 967 л/кг
-        (apples / 1000 * 822) + // яблоки: 822 л/кг
-        (bananas / 1000 * 790) + // бананы: 790 л/кг
-        (oranges / 1000 * 560) + // апельсины: 560 л/кг
-        // Напитки (мл → литры)
-        (coffee / 1000 * 130) + // кофе: 130 л/литр (7г на чашку)
-        (tea / 1000 * 27) + // чай: 27 л/литр (3г на чашку)
-        (juice / 1000 * 1000) + // сок: 1,000 л/литр
-        (softDrinks / 1000 * 300) + // газировка: 300 л/литр (приблизительно)
-        (beer / 1000 * 300) + // пиво: 300 л/литр
-        (wine / 1000 * 870) + // вино: 870 л/литр
-        // Масла и жиры (граммы → килограммы)
-        (vegetableOil / 1000 * 2575) + // растительное масло: 2,575 л/кг
-        (oliveOil / 1000 * 14431) + // оливковое масло: 14,431 л/кг
-        (mayonnaise / 1000 * 3000) + // майонез: 3,000 л/кг (приблизительно)
-        // Бобовые и орехи (граммы → килограммы)
-        (beans / 1000 * 5053) + // фасоль: 5,053 л/кг
-        (lentils / 1000 * 5874) + // чечевица: 5,874 л/кг
-        (peas / 1000 * 1979) + // горох: 1,979 л/кг
-        (nuts / 1000 * 9063) + // орехи: 9,063 л/кг
-        (peanuts / 1000 * 3974) + // арахис: 3,974 л/кг
-        // Сладости (граммы → килограммы)
-        (sugar / 1000 * 197) + // сахар: 197 л/кг
-        (chocolate / 1000 * 17196) + // шоколад: 17,196 л/кг
-        (honey / 1000 * 1000); // мёд: 1,000 л/кг (приблизительно)
+    // Бытовое потребление по категориям
+    const showerWater = showerTime * 12;
+    const bathWater = baths * 150 / 7;
+    const dishwasherWater = dishwashing * 8;
+    const laundryWater = laundry * 50 / 7;
+    const toiletWater = toiletFlush * 6;
     
-    // Расчёт водного следа товаров (литров в день)
-    const goodsWater = 
-        (clothes * 2700 / 30) + // одежда: 2700 л/вещь, делим на 30 дней
-        (electronics * 1600 / 365) + // электроника: 1600 л/покупка, делим на 365 дней
-        (books * 1000 / 365) + // книги: 1000 л/книга, делим на 365 дней
-        (toiletries * 200 / 30); // средства гигиены: 200 л/покупка, делим на 30 дней
+    const domesticWater = showerWater + bathWater + dishwasherWater + laundryWater + toiletWater;
+    
+    // Питание по подкатегориям
+    const meatFishWater = 
+        (beef / 1000 * 15415) +
+        (pork / 1000 * 5988) +
+        (lamb / 1000 * 10412) +
+        (goatMeat / 1000 * 5521) +
+        (chicken / 1000 * 4325) +
+        (fish / 1000 * 5000);
+    
+    const dairyWater = 
+        (milk / 1000 * 1020) +
+        (cheese / 1000 * 5553) +
+        (yogurt / 1000 * 1020) +
+        (butter / 1000 * 5553) +
+        (cream / 1000 * 1020) +
+        (eggs * 50 / 1000 * 3265);
+    
+    const grainsWater = 
+        (bread / 1000 * 1608) +
+        (rice / 1000 * 1673) +
+        (wheat / 1000 * 1827) +
+        (oats / 1000 * 1788) +
+        (potatoes / 1000 * 287);
+    
+    const vegetablesFruitsWater = 
+        (vegetables / 1000 * 322) +
+        (tomatoes / 1000 * 214) +
+        (carrots / 1000 * 195) +
+        (onions / 1000 * 345) +
+        (fruits / 1000 * 967) +
+        (apples / 1000 * 822) +
+        (bananas / 1000 * 790) +
+        (oranges / 1000 * 560);
+    
+    const beveragesWater = 
+        (coffee / 1000 * 130) +
+        (tea / 1000 * 27) +
+        (juice / 1000 * 1000) +
+        (softDrinks / 1000 * 300) +
+        (beer / 1000 * 300) +
+        (wine / 1000 * 870);
+    
+    const oilsWater = 
+        (vegetableOil / 1000 * 2575) +
+        (oliveOil / 1000 * 14431) +
+        (mayonnaise / 1000 * 3000);
+    
+    const legumesNutsWater = 
+        (beans / 1000 * 5053) +
+        (lentils / 1000 * 5874) +
+        (peas / 1000 * 1979) +
+        (nuts / 1000 * 9063) +
+        (peanuts / 1000 * 3974);
+    
+    const sweetsWater = 
+        (sugar / 1000 * 197) +
+        (chocolate / 1000 * 17196) +
+        (honey / 1000 * 1000);
+    
+    const foodWater = meatFishWater + dairyWater + grainsWater + vegetablesFruitsWater + 
+                      beveragesWater + oilsWater + legumesNutsWater + sweetsWater;
+    
+    // Товары по категориям
+    const clothesWater = clothes * 2700 / 30;
+    const electronicsWater = electronics * 1600 / 365;
+    const booksWater = books * 1000 / 365;
+    const toiletriesWater = toiletries * 200 / 30;
+    
+    const goodsWater = clothesWater + electronicsWater + booksWater + toiletriesWater;
     
     // Общий водный след
     const totalWater = domesticWater + foodWater + goodsWater;
     
-    // Отображение результатов
+    // ===== ОТОБРАЖЕНИЕ РЕЗУЛЬТАТОВ =====
+    
+    // Основные значения
     document.getElementById('domestic-result').textContent = Math.round(domesticWater) + ' л/день';
     document.getElementById('food-result').textContent = Math.round(foodWater) + ' л/день';
     document.getElementById('goods-result').textContent = Math.round(goodsWater) + ' л/день';
     document.getElementById('total-result').textContent = Math.round(totalWater) + ' л/день';
     
+    // Проценты
+    const domesticPercent = totalWater > 0 ? Math.round((domesticWater / totalWater) * 100) : 0;
+    const foodPercent = totalWater > 0 ? Math.round((foodWater / totalWater) * 100) : 0;
+    const goodsPercent = totalWater > 0 ? Math.round((goodsWater / totalWater) * 100) : 0;
+    
+    document.getElementById('domestic-percent').textContent = domesticPercent + '% от общего';
+    document.getElementById('food-percent').textContent = foodPercent + '% от общего';
+    document.getElementById('goods-percent').textContent = goodsPercent + '% от общего';
+    
     // Сравнение с средними показателями
     const comparisonText = getComparisonText(totalWater);
     document.getElementById('comparison-text').textContent = comparisonText;
+    
+    // ===== СОЗДАНИЕ ДИАГРАММ =====
+    
+    // Удаляем старые диаграммы, если есть
+    if (window.pieChartInstance) {
+        window.pieChartInstance.destroy();
+    }
+    if (window.barChartInstance) {
+        window.barChartInstance.destroy();
+    }
+    
+    // Круговая диаграмма (Pie Chart)
+    const pieCtx = document.getElementById('pieChart').getContext('2d');
+    window.pieChartInstance = new Chart(pieCtx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Бытовое потребление', 'Питание', 'Скрытая вода в товарах'],
+            datasets: [{
+                data: [domesticWater, foodWater, goodsWater],
+                backgroundColor: [
+                    '#0ea5e9', // Быт - голубой
+                    '#22c55e', // Питание - зелёный
+                    '#f59e0b'  // Товары - жёлтый
+                ],
+                borderWidth: 0,
+                hoverOffset: 10
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        padding: 20,
+                        font: {
+                            size: 13,
+                            family: 'Inter'
+                        },
+                        usePointStyle: true,
+                        pointStyle: 'circle'
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            const value = Math.round(context.raw);
+                            const percent = Math.round((context.raw / totalWater) * 100);
+                            return ` ${value} л/день (${percent}%)`;
+                        }
+                    }
+                }
+            },
+            cutout: '60%'
+        }
+    });
+    
+    // Сбор данных для столбчатой диаграммы (топ категорий)
+    const categoryData = [
+        { name: 'Душ', value: showerWater, category: 'domestic' },
+        { name: 'Ванна', value: bathWater, category: 'domestic' },
+        { name: 'Посуда', value: dishwasherWater, category: 'domestic' },
+        { name: 'Стирка', value: laundryWater, category: 'domestic' },
+        { name: 'Туалет', value: toiletWater, category: 'domestic' },
+        { name: 'Мясо и рыба', value: meatFishWater, category: 'food' },
+        { name: 'Молочные', value: dairyWater, category: 'food' },
+        { name: 'Злаки и крупы', value: grainsWater, category: 'food' },
+        { name: 'Овощи и фрукты', value: vegetablesFruitsWater, category: 'food' },
+        { name: 'Напитки', value: beveragesWater, category: 'food' },
+        { name: 'Масла и жиры', value: oilsWater, category: 'food' },
+        { name: 'Бобовые и орехи', value: legumesNutsWater, category: 'food' },
+        { name: 'Сладости', value: sweetsWater, category: 'food' },
+        { name: 'Одежда', value: clothesWater, category: 'goods' },
+        { name: 'Электроника', value: electronicsWater, category: 'goods' },
+        { name: 'Книги', value: booksWater, category: 'goods' },
+        { name: 'Гигиена', value: toiletriesWater, category: 'goods' }
+    ];
+    
+    // Сортируем и берём топ-8
+    const topCategories = categoryData
+        .filter(c => c.value > 0)
+        .sort((a, b) => b.value - a.value)
+        .slice(0, 8);
+    
+    // Цвета для столбчатой диаграммы
+    const categoryColors = {
+        domestic: '#0ea5e9',
+        food: '#22c55e',
+        goods: '#f59e0b'
+    };
+    
+    // Столбчатая диаграмма (Bar Chart)
+    const barCtx = document.getElementById('barChart').getContext('2d');
+    window.barChartInstance = new Chart(barCtx, {
+        type: 'bar',
+        data: {
+            labels: topCategories.map(c => c.name),
+            datasets: [{
+                label: 'Водный след (л/день)',
+                data: topCategories.map(c => Math.round(c.value)),
+                backgroundColor: topCategories.map(c => categoryColors[c.category]),
+                borderRadius: 6,
+                borderSkipped: false
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            indexAxis: 'y',
+            plugins: {
+                legend: {
+                    display: false
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            const value = context.raw;
+                            const percent = totalWater > 0 ? Math.round((value / totalWater) * 100) : 0;
+                            return ` ${value} л/день (${percent}%)`;
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    grid: {
+                        display: false
+                    },
+                    ticks: {
+                        font: {
+                            size: 11,
+                            family: 'Inter'
+                        },
+                        callback: function(value) {
+                            return value + ' л';
+                        }
+                    }
+                },
+                y: {
+                    grid: {
+                        display: false
+                    },
+                    ticks: {
+                        font: {
+                            size: 12,
+                            family: 'Inter'
+                        }
+                    }
+                }
+            }
+        }
+    });
+    
+    // ===== БЛОК "ГЛАВНЫЕ ИСТОЧНИКИ" =====
+    const sourcesList = document.getElementById('sources-list');
+    const sourcesAdvice = document.getElementById('sources-advice');
+    
+    // Определяем топ-3 источника
+    const top3Sources = categoryData
+        .filter(c => c.value > 0)
+        .sort((a, b) => b.value - a.value)
+        .slice(0, 3);
+    
+    let sourcesHTML = '';
+    top3Sources.forEach((source, index) => {
+        const percent = totalWater > 0 ? Math.round((source.value / totalWater) * 100) : 0;
+        sourcesHTML += `
+            <div class="source-item ${source.category}">
+                <div class="source-rank">${index + 1}</div>
+                <div class="source-info">
+                    <div class="source-name">${source.name}</div>
+                    <div class="source-value">${Math.round(source.value)} л/день</div>
+                </div>
+                <div class="source-percent">${percent}%</div>
+            </div>
+        `;
+    });
+    sourcesList.innerHTML = sourcesHTML;
+    
+    // Рекомендации на основе главных источников
+    let adviceHTML = '<h5>💡 Рекомендации:</h5><p>';
+    
+    if (top3Sources.length > 0) {
+        const mainCategory = top3Sources[0].category;
+        
+        if (mainCategory === 'food') {
+            if (meatFishWater > foodWater * 0.3) {
+                adviceHTML += 'Мясные продукты — основной источник вашего водного следа. Попробуйте сократить потребление красного мяса и увеличить долю растительной пищи. Замена говядины на курицу или рыбу может снизить водный след питания на 30-50%.';
+            } else if (dairyWater > foodWater * 0.2) {
+                adviceHTML += 'Молочные продукты значительно влияют на ваш водный след. Рассмотрите возможность замены некоторых молочных продуктов на растительные альтернативы (молоко из овса, сои или миндаля).';
+            } else {
+                adviceHTML += 'Питание — основная составляющая вашего водного следа. Сбалансированная диета с меньшим количеством животных продуктов поможет снизить водный след.';
+            }
+        } else if (mainCategory === 'domestic') {
+            if (showerWater > domesticWater * 0.4) {
+                adviceHTML += 'Душ — основной источник бытового водопотребления. Сократите время в душе на 2-3 минуты или установите водосберегающую насадку. Каждая минута экономит около 12 литров воды.';
+            } else if (laundryWater > domesticWater * 0.3) {
+                adviceHTML += 'Стирка занимает значительную долю в бытовом потреблении. Используйте полную загрузку стиральной машины и выбирайте экономичные режимы.';
+            } else {
+                adviceHTML += 'Бытовые привычки значительно влияют на водный след. Простые изменения — например, более короткий душ или экономичная стирка — могут существенно сократить потребление.';
+            }
+        } else if (mainCategory === 'goods') {
+            adviceHTML += 'Покупка товаров — основной источник вашего водного следа. Старайтесь выбирать качественные вещи с длительным сроком службы, избегайте импульсивных покупок и отдавайте предпочтение экологичным брендам.';
+        }
+    }
+    
+    adviceHTML += '</p>';
+    sourcesAdvice.innerHTML = adviceHTML;
     
     // Показать результаты
     document.getElementById('results').style.display = 'block';
@@ -295,7 +609,7 @@ function animateOnScroll() {
     }, {
         threshold: 0.1
     });
-    
+
     elements.forEach(element => {
         element.style.opacity = '0';
         element.style.transform = 'translateY(30px)';
