@@ -84,21 +84,34 @@
             </p>
 
 <!-- Переключатель режима расчёта -->
-             <div class="calculation-mode">
-                 <div class="mode-switch">
-                     <button class="mode-btn active" data-mode="quick">
-                         <i class="fas fa-bolt"></i>
-                         Быстрый расчёт
-                     </button>
-                     <button class="mode-btn" data-mode="detailed">
-                         <i class="fas fa-list-ul"></i>
-                         Подробный расчёт
-                     </button>
-                 </div>
-                 <p class="mode-description" id="mode-description">
-                     8–12 ключевых параметров для быстрой оценки водного следа
-                 </p>
-             </div>
+              <div class="calculation-mode">
+                  <div class="mode-switch">
+                      <button class="mode-btn active" data-mode="quick">
+                          <i class="fas fa-bolt"></i>
+                          Быстрый расчёт
+                      </button>
+                      <button class="mode-btn" data-mode="detailed">
+                          <i class="fas fa-list-ul"></i>
+                          Подробный расчёт
+                      </button>
+                  </div>
+                  <p class="mode-description" id="mode-description">
+                      8–12 ключевых параметров для быстрой оценки водного следа
+                  </p>
+              </div>
+              
+              <!-- Выбор готового сценария -->
+              <div class="preset-selector">
+                  <label for="preset-select" class="preset-label">Готовые сценарии:</label>
+                  <select id="preset-select" class="preset-select">
+                      <option value="">Выбрать сценарий...</option>
+                      <option value="eco">Экономный пользователь</option>
+                      <option value="average">Средний городской житель</option>
+                      <option value="high">Высокое потребление</option>
+                      <option value="veg">Вегетарианский рацион</option>
+                      <option value="fashion">Частые покупки одежды</option>
+                  </select>
+              </div>
              
              <!-- Индикатор прогресса -->
              <div class="progress-indicator">

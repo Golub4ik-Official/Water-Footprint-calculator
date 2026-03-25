@@ -37,6 +37,315 @@ function scrollToCalculator() {
     });
 }
 
+// Пресеты для сценариев использования
+const presets = {
+    eco: {
+        name: "Экономный пользователь",
+        values: {
+            // Бытовое потребление
+            showerTime: 5,      // 5 минут душа
+            baths: 0,           // 0 ванн
+            dishwashing: 5,     // 5 минут мытья посуды
+            laundry: 2,         // 2 раза в неделю
+            toiletFlush: 4,     // 4 раза в день
+            
+            // Питание (граммы)
+            beef: 20,           // 20 г говядины
+            pork: 10,           // 10 г свинины
+            lamb: 0,            // 0 г баранины
+            goatMeat: 0,        // 0 г козьего мяса
+            chicken: 30,        // 30 г курицы
+            fish: 20,           // 20 г рыбы
+            milk: 100,          // 100 мл молока
+            cheese: 10,         // 10 г сыра
+            yogurt: 50,         // 50 г йогурта
+            butter: 5,          // 5 г масла
+            cream: 0,           // 0 г сливок
+            eggs: 0,            // 0 яиц
+            bread: 50,          // 50 г хлеба
+            rice: 30,           // 30 г риса
+            wheat: 20,          // 20 г пшеницы
+            oats: 15,           // 15 г овсянки
+            potatoes: 50,       // 50 г картофеля
+            vegetables: 200,    // 200 г овощей
+            tomatoes: 30,       // 30 г помидоров
+            carrots: 20,        // 20 г моркови
+            onions: 10,         // 10 г лука
+            fruits: 100,        // 100 г фруктов
+            apples: 50,         // 50 г яблок
+            bananas: 30,        // 30 г бананов
+            oranges: 20,        // 20 г апельсинов
+            coffee: 100,        // 100 мл кофе
+            tea: 100,           // 100 мл чая
+            juice: 50,          // 50 мл сока
+            softDrinks: 0,      // 0 газировки
+            beer: 0,            // 0 пива
+            wine: 0,            // 0 вина
+            vegetableOil: 10,   // 10 г растительного масла
+            oliveOil: 5,        // 5 г оливкового масла
+            mayonnaise: 5,      // 5 г майонеза
+            beans: 15,          // 15 г фасоли
+            lentils: 10,        // 10 г чечевицы
+            peas: 10,           // 10 г гороха
+            nuts: 5,            // 5 г орехов
+            peanuts: 0,         // 0 г арахиса
+            sugar: 15,          // 15 г сахара
+            chocolate: 5,       // 5 г шоколада
+            honey: 0,           // 0 г меда
+            
+            // Товары
+            clothes: 1,         // 1 вещь в месяц
+            electronics: 0.2,   // 0.2 покупки в год (1 раз в 5 лет)
+            books: 1,           // 1 книга в год
+            toiletries: 1       // 1 покупка в месяц
+        }
+    },
+    average: {
+        name: "Средний городской житель",
+        values: {
+            // Бытовое потребление
+            showerTime: 8,      // 8 минут душа
+            baths: 1,           // 1 ванна в неделю
+            dishwashing: 10,    // 10 минут мытья посуды
+            laundry: 3,         // 3 раза в неделю
+            toiletFlush: 6,     // 6 раз в день
+            
+            // Питание (граммы)
+            beef: 50,           // 50 г говядины
+            pork: 30,           // 30 г свинины
+            lamb: 10,           // 10 г баранины
+            goatMeat: 0,        // 0 г козьего мяса
+            chicken: 80,        // 80 г курицы
+            fish: 40,           // 40 г рыбы
+            milk: 200,          // 200 мл молока
+            cheese: 20,         // 20 г сыра
+            yogurt: 100,        // 100 г йогурта
+            butter: 10,         // 10 г масла
+            cream: 10,          // 10 г сливок
+            eggs: 1,            // 1 яйцо
+            bread: 100,         // 100 г хлеба
+            rice: 75,           // 75 г риса
+            wheat: 50,          // 50 г пшеницы
+            oats: 30,           // 30 г овсянки
+            potatoes: 150,      // 150 г картофеля
+            vegetables: 300,    // 300 г овощей
+            tomatoes: 100,      // 100 г помидоров
+            carrots: 50,        // 50 г моркови
+            onions: 30,         // 30 г лука
+            fruits: 200,        // 200 г фруктов
+            apples: 150,        // 150 г яблок
+            bananas: 100,       // 100 г бананов
+            oranges: 100,       // 100 г апельсинов
+            coffee: 200,        // 200 мл кофе
+            tea: 300,           // 300 мл чая
+            juice: 100,         // 100 мл сока
+            softDrinks: 200,    // 200 мл газировки
+            beer: 200,          // 200 мл пива
+            wine: 100,          // 100 мл вина
+            vegetableOil: 20,   // 20 г растительного масла
+            oliveOil: 10,       // 10 г оливкового масла
+            mayonnaise: 10,     // 10 г майонеза
+            beans: 30,          // 30 г фасоли
+            lentils: 15,        // 15 г чечевицы
+            peas: 10,           // 10 г гороха
+            nuts: 10,           // 10 г орехов
+            peanuts: 5,         // 5 г арахиса
+            sugar: 25,          // 25 г сахара
+            chocolate: 10,      // 10 г шоколада
+            honey: 5,           // 5 г меда
+            
+            // Товары
+            clothes: 2,         // 2 вещи в месяц
+            electronics: 0.5,   // 0.5 покупки в год (1 раз в 2 года)
+            books: 3,           // 3 книги в год
+            toiletries: 2       // 2 покупки в месяц
+        }
+    },
+    high: {
+        name: "Высокое потребление",
+        values: {
+            // Бытовое потребление
+            showerTime: 15,     // 15 минут душа
+            baths: 3,           // 3 ванны в неделю
+            dishwashing: 20,    // 20 минут мытья посуды
+            laundry: 5,         // 5 раз в неделю
+            toiletFlush: 8,     // 8 раз в день
+            
+            // Питание (граммы)
+            beef: 150,          // 150 г говядины
+            pork: 80,           // 80 г свинины
+            lamb: 50,           // 50 г баранины
+            goatMeat: 20,       // 20 г козьего мяса
+            chicken: 150,       // 150 г курицы
+            fish: 100,          // 100 г рыбы
+            milk: 300,          // 300 мл молока
+            cheese: 40,         // 40 г сыра
+            yogurt: 200,        // 200 г йогурта
+            butter: 20,         // 20 г масла
+            cream: 30,          // 30 г сливок
+            eggs: 2,            // 2 яйца
+            bread: 200,         // 200 г хлеба
+            rice: 150,          // 150 г риса
+            wheat: 100,         // 100 г пшеницы
+            oats: 50,           // 50 г овсянки
+            potatoes: 300,      // 300 г картофеля
+            vegetables: 400,    // 400 г овощей
+            tomatoes: 150,      // 150 г помидоров
+            carrots: 80,        // 80 г моркови
+            onions: 50,         // 50 г лука
+            fruits: 300,        // 300 г фруктов
+            apples: 200,        // 200 г яблок
+            bananas: 150,       // 150 г бананов
+            oranges: 150,       // 150 г апельсинов
+            coffee: 400,        // 400 мл кофе
+            tea: 500,           // 500 мл чая
+            juice: 200,         // 200 мл сока
+            softDrinks: 500,    // 500 мл газировки
+            beer: 500,          // 500 мл пива
+            wine: 200,          // 200 мл вина
+            vegetableOil: 40,   // 40 г растительного масла
+            oliveOil: 20,       // 20 г оливкового масла
+            mayonnaise: 20,     // 20 г майонеза
+            beans: 50,          // 50 г фасоли
+            lentils: 30,        // 30 г чечевицы
+            peas: 20,           // 20 г гороха
+            nuts: 20,           // 20 г орехов
+            peanuts: 10,        // 10 г арахиса
+            sugar: 50,          // 50 г сахара
+            chocolate: 30,      // 30 г шоколада
+            honey: 10,          // 10 г меда
+            
+            // Товары
+            clothes: 5,         // 5 вещей в месяц
+            electronics: 1,     // 1 покупка в год
+            books: 5,           // 5 книг в год
+            toiletries: 3       // 3 покупки в месяц
+        }
+    },
+    veg: {
+        name: "Вегетарианский рацион",
+        values: {
+            // Бытовое потребление
+            showerTime: 7,      // 7 минут душа
+            baths: 1,           // 1 ванна в неделю
+            dishwashing: 10,    // 10 минут мытья посуды
+            laundry: 3,         // 3 раза в неделю
+            toiletFlush: 6,     // 6 раз в день
+            
+            // Питание (граммы) - без мяса
+            beef: 0,            // 0 г говядины
+            pork: 0,            // 0 г свинины
+            lamb: 0,            // 0 г баранины
+            goatMeat: 0,        // 0 г козьего мяса
+            chicken: 0,         // 0 г курицы
+            fish: 0,            // 0 г рыбы
+            milk: 200,          // 200 мл молока
+            cheese: 30,         // 30 г сыра
+            yogurt: 150,        // 150 г йогурта
+            butter: 15,         // 15 г масла
+            cream: 10,          // 10 г сливок
+            eggs: 2,            // 2 яйца
+            bread: 120,         // 120 г хлеба
+            rice: 100,          // 100 г риса
+            wheat: 80,          // 80 г пшеницы
+            oats: 40,           // 40 г овсянки
+            potatoes: 200,      // 200 г картофеля
+            vegetables: 400,    // 400 г овощей
+            tomatoes: 100,      // 100 г помидоров
+            carrots: 60,        // 60 г моркови
+            onions: 40,         // 40 г лука
+            fruits: 250,        // 250 г фруктов
+            apples: 150,        // 150 г яблок
+            bananas: 100,       // 100 г бананов
+            oranges: 100,       // 100 г апельсинов
+            coffee: 250,        // 250 мл кофе
+            tea: 300,           // 300 мл чая
+            juice: 150,         // 150 мл сока
+            softDrinks: 100,    // 100 мл газировки
+            beer: 100,          // 100 мл пива
+            wine: 150,          // 150 мл вина
+            vegetableOil: 25,   // 25 г растительного масла
+            oliveOil: 15,       // 15 г оливкового масла
+            mayonnaise: 15,     // 15 г майонеза
+            beans: 80,          // 80 г фасоли (основной источник белка)
+            lentils: 60,        // 60 г чечевицы
+            peas: 30,           // 30 г гороха
+            nuts: 25,           // 25 г орехов
+            peanuts: 15,        // 15 г арахиса
+            sugar: 30,          // 30 г сахара
+            chocolate: 20,      // 20 г шоколада
+            honey: 10,          // 10 г меда
+            
+            // Товары
+            clothes: 2,         // 2 вещи в месяц
+            electronics: 0.5,   // 0.5 покупки в год
+            books: 4,           // 4 книги в год
+            toiletries: 2       // 2 покупки в месяц
+        }
+    },
+    fashion: {
+        name: "Частые покупки одежды",
+        values: {
+            // Бытовое потребление
+            showerTime: 8,      // 8 минут душа
+            baths: 1,           // 1 ванна в неделю
+            dishwashing: 10,    // 10 минут мытья посуды
+            laundry: 4,         // 4 раза в неделю (больше стирки из-за частой смены одежды)
+            toiletFlush: 6,     // 6 раз в день
+            
+            // Питание (граммы) - среднее потребление
+            beef: 40,           // 40 г говядины
+            pork: 20,           // 20 г свинины
+            lamb: 5,            // 5 г баранины
+            goatMeat: 0,        // 0 г козьего мяса
+            chicken: 60,        // 60 г курицы
+            fish: 30,           // 30 г рыбы
+            milk: 180,          // 180 мл молока
+            cheese: 15,         // 15 г сыра
+            yogurt: 80,         // 80 г йогурта
+            butter: 8,          // 8 г масла
+            cream: 5,           // 5 г сливок
+            eggs: 1,            // 1 яйцо
+            bread: 90,          // 90 г хлеба
+            rice: 60,           // 60 г риса
+            wheat: 40,          // 40 г пшеницы
+            oats: 25,           // 25 г овсянки
+            potatoes: 120,      // 120 г картофеля
+            vegetables: 250,    // 250 г овощей
+            tomatoes: 80,       // 80 г помидоров
+            carrots: 40,        // 40 г моркови
+            onions: 25,         // 25 г лука
+            fruits: 180,        // 180 г фруктов
+            apples: 100,        // 100 г яблок
+            bananas: 80,        // 80 г бананов
+            oranges: 60,        // 60 г апельсинов
+            coffee: 180,        // 180 мл кофе
+            tea: 250,           // 250 мл чая
+            juice: 80,          // 80 мл сока
+            softDrinks: 150,    // 150 мл газировки
+            beer: 150,          // 150 мл пива
+            wine: 80,           // 80 мл вина
+            vegetableOil: 18,   // 18 г растительного масла
+            oliveOil: 8,        // 8 г оливкового масла
+            mayonnaise: 8,      // 8 г майонеза
+            beans: 25,          // 25 г фасоли
+            lentils: 12,        // 12 г чечевицы
+            peas: 8,            // 8 г гороха
+            nuts: 8,            // 8 г орехов
+            peanuts: 4,         // 4 г арахиса
+            sugar: 20,          // 20 г сахара
+            chocolate: 8,       // 8 г шоколада
+            honey: 4,           // 4 г меда
+            
+            // Товары - акцент на одежде
+            clothes: 8,         // 8 вещей в месяц (частые покупки)
+            electronics: 0.5,   // 0.5 покупки в год
+            books: 2,           // 2 книги в год
+            toiletries: 2       // 2 покупки в месяц
+        }
+    }
+};
+
 // Шаговая навигация калькулятора
 let currentStep = 1;
 const totalSteps = 3;
@@ -70,6 +379,26 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Обновление описания
                 modeDescription.textContent = descriptions[mode];
             });
+        });
+    }
+    
+    // Обработчик выбора готового сценария
+    const presetSelect = document.getElementById('preset-select');
+    if (presetSelect) {
+        presetSelect.addEventListener('change', function() {
+            const presetKey = this.value;
+            if (presetKey && presets[presetKey]) {
+                applyPreset(presetKey);
+                // Автоматически переключаемся на быстрый режим для пресетов
+                const quickModeBtn = document.querySelector('.mode-btn[data-mode="quick"]');
+                if (quickModeBtn) {
+                    modeButtons.forEach(btn => btn.classList.remove('active'));
+                    quickModeBtn.classList.add('active');
+                    calculatorContainer.classList.remove('mode-quick', 'mode-detailed');
+                    calculatorContainer.classList.add('mode-quick');
+                    modeDescription.textContent = descriptions.quick;
+                }
+            }
         });
     }
     
@@ -266,6 +595,53 @@ function initializeSliderSync() {
         const slider = document.getElementById(sliderId);
         syncSliderAndNumber(slider, numberInput);
     });
+}
+
+// Применение готового сценария к полям формы
+function applyPreset(presetKey) {
+    const preset = presets[presetKey];
+    if (!preset) return;
+    
+    // Применяем все значения из пресета
+    for (const [key, value] of Object.entries(preset.values)) {
+        const element = document.getElementById(key);
+        const numberElement = document.getElementById(key + '-number');
+        
+        if (element) {
+            element.value = value;
+            
+            // Обновляем отображаемое значение для старых слайдеров
+            const valueDisplay = element.parentNode.querySelector('.value-display');
+            if (valueDisplay) {
+                const unit = getUnit(element.id);
+                valueDisplay.textContent = value + unit;
+            }
+        }
+        
+        if (numberElement) {
+            numberElement.value = value;
+        }
+    }
+    
+    // Синхронизируем все слайдеры и числовые поля после обновления
+    initializeSliderSync();
+    
+    // Обновляем описание режима, если нужно
+    updateModeDescription();
+}
+
+// Функция определения единицы измерения (вынесена для использования в applyPreset)
+function getUnit(sliderId) {
+    if (sliderId === 'shower-time' || sliderId === 'dishwashing') return ' мин';
+    if (sliderId === 'baths' || sliderId === 'laundry') return ' раз';
+    if (sliderId === 'toilet-flush') return ' раз';
+    if (sliderId.includes('clothes')) return ' вещ';
+    if (sliderId.includes('electronics') || sliderId.includes('books')) return ' покупок';
+    if (sliderId.includes('toiletries')) return ' покупок';
+    if (sliderId.includes('coffee') || sliderId.includes('tea') || sliderId.includes('juice') || 
+        sliderId.includes('soft-drinks') || sliderId.includes('beer') || sliderId.includes('wine')) return ' мл';
+    if (sliderId === 'eggs') return ' шт';
+    return ' г';
 }
 
 // Оставляем остальные функции без изменений
