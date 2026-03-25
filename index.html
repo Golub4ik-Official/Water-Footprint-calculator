@@ -83,41 +83,63 @@
                 индивидуальный водный след
             </p>
 
-            <!-- Переключатель режима расчёта -->
-            <div class="calculation-mode">
-                <div class="mode-switch">
-                    <button class="mode-btn active" data-mode="quick">
-                        <i class="fas fa-bolt"></i>
-                        Быстрый расчёт
-                    </button>
-                    <button class="mode-btn" data-mode="detailed">
-                        <i class="fas fa-list-ul"></i>
-                        Подробный расчёт
-                    </button>
-                </div>
-                <p class="mode-description" id="mode-description">
-                    8–12 ключевых параметров для быстрой оценки водного следа
-                </p>
-            </div>
+<!-- Переключатель режима расчёта -->
+             <div class="calculation-mode">
+                 <div class="mode-switch">
+                     <button class="mode-btn active" data-mode="quick">
+                         <i class="fas fa-bolt"></i>
+                         Быстрый расчёт
+                     </button>
+                     <button class="mode-btn" data-mode="detailed">
+                         <i class="fas fa-list-ul"></i>
+                         Подробный расчёт
+                     </button>
+                 </div>
+                 <p class="mode-description" id="mode-description">
+                     8–12 ключевых параметров для быстрой оценки водного следа
+                 </p>
+             </div>
+             
+             <!-- Индикатор прогресса -->
+             <div class="progress-indicator">
+                 <div class="progress-bar">
+                     <div class="progress-fill" style="width: 0%"></div>
+                 </div>
+                 <div class="progress-steps">
+                     <div class="progress-step active" data-step="1">
+                         <div class="step-number">1</div>
+                         <div class="step-label">Бытовое потребление</div>
+                     </div>
+                     <div class="progress-step" data-step="2">
+                         <div class="step-number">2</div>
+                         <div class="step-label">Питание</div>
+                     </div>
+                     <div class="progress-step" data-step="3">
+                         <div class="step-number">3</div>
+                         <div class="step-label">Товары</div>
+                     </div>
+                 </div>
+             </div>
 
-            <div class="calculator-container mode-quick">
-                <div class="tabs">
-                    <button class="tab-button active" data-tab="domestic">
-                        <i class="fas fa-home"></i>
-                        Бытовое потребление
-                    </button>
-                    <button class="tab-button" data-tab="food">
-                        <i class="fas fa-utensils"></i>
-                        Питание
-                    </button>
-                    <button class="tab-button" data-tab="goods">
-                        <i class="fas fa-shopping-bag"></i>
-                        Скрытая вода в товарах
-                        <span class="tooltip-container">
-                            <i class="fas fa-info-circle tab-info-icon" title="Скрытая (виртуальная) вода — это вода, затраченная на производство товаров: одежды, электроники, книг, средств гигиены"></i>
-                        </span>
-                    </button>
-                </div>
+<div class="calculator-container mode-quick">
+                 <!-- Скрываем старые вкладки, используем шаговую навигацию -->
+                 <div class="tabs" style="display: none;">
+                     <button class="tab-button active" data-tab="domestic">
+                         <i class="fas fa-home"></i>
+                         Бытовое потребление
+                     </button>
+                     <button class="tab-button" data-tab="food">
+                         <i class="fas fa-utensils"></i>
+                         Питание
+                     </button>
+                     <button class="tab-button" data-tab="goods">
+                         <i class="fas fa-shopping-bag"></i>
+                         Скрытая вода в товарах
+                         <span class="tooltip-container">
+                             <i class="fas fa-info-circle tab-info-icon" title="Скрытая (виртуальная) вода — это вода, затраченная на производство товаров: одежды, электроники, книг, средств гигиены"></i>
+                         </span>
+                     </button>
+                 </div>
 
                 <!-- Бытовое потребление -->
                 <div id="domestic" class="tab-content active">
@@ -575,13 +597,25 @@
 <span class="value-display">2 покупки</span>
 <span class="input-hint"><i class="fas fa-info-circle"></i>2 покупки в месяц — зубная паста, шампунь и т.д.</span>
 </div>
-                </div>
+</div>
 
-                <button class="calculate-button" onclick="calculateWaterFootprint()">
-                    <i class="fas fa-calculator"></i>
-                    Рассчитать водный след
-                </button>
-            </div>
+<!-- Навигационные кнопки -->
+<div class="navigation-buttons">
+<button class="nav-button prev-btn" onclick="goToPreviousStep()">
+<i class="fas fa-arrow-left"></i>
+Назад
+</button>
+<button class="nav-button next-btn" onclick="goToNextStep()">
+Далее
+<i class="fas fa-arrow-right"></i>
+</button>
+</div>
+
+<button class="calculate-button" onclick="calculateWaterFootprint()">
+<i class="fas fa-calculator"></i>
+Рассчитать водный след
+</button>
+</div>
 
             <!-- Результаты -->
             <div id="results" class="results-container" style="display: none;">
