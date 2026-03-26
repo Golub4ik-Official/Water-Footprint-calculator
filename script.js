@@ -644,6 +644,185 @@ function getUnit(sliderId) {
     return ' г';
 }
 
+// Сброс всех значений формы
+function resetAllValues() {
+    // Сброс всех ползунков и числовых полей к значениям по умолчанию
+    const defaultValues = {
+        // Бытовое потребление
+        'shower-time': 10,
+        'baths': 1,
+        'dishwashing': 15,
+        'laundry': 3,
+        'toilet-flush': 8,
+        
+        // Питание (быстрый режим)
+        'beef': 50,
+        'chicken': 100,
+        'milk': 200,
+        'bread': 100,
+        'vegetables': 300,
+        'fruits': 200,
+        'coffee': 200,
+        
+        // Питание (детальный режим) - мясо и рыба
+        'pork': 30,
+        'lamb': 0,
+        'goat-meat': 0,
+        'fish': 50,
+        
+        // Питание (детальный режим) - молочные продукты
+        'cheese': 30,
+        'yogurt': 150,
+        'butter': 15,
+        'cream': 0,
+        'eggs': 1,
+        
+        // Питание (детальный режим) - злаки и крупы
+        'rice': 75,
+        'wheat': 50,
+        'oats': 30,
+        'potatoes': 150,
+        
+        // Питание (детальный режим) - овощи и фрукты
+        'tomatoes': 100,
+        'carrots': 50,
+        'onions': 30,
+        'apples': 150,
+        'bananas': 100,
+        'oranges': 100,
+        
+        // Питание (детальный режим) - напитки
+        'tea': 300,
+        'juice': 100,
+        'soft-drinks': 0,
+        'beer': 0,
+        'wine': 0,
+        
+        // Питание (детальный режим) - масла и жиры
+        'vegetable-oil': 20,
+        'olive-oil': 0,
+        'mayonnaise': 0,
+        
+        // Питание (детальный режим) - бобовые и орехи
+        'beans': 30,
+        'lentils': 15,
+        'peas': 10,
+        'nuts': 10,
+        'peanuts': 5,
+        
+        // Питание (детальный режим) - сахар и сладости
+        'sugar': 25,
+        'chocolate': 10,
+        'honey': 5,
+        
+        // Товары
+        'clothes': 2,
+        'electronics': 0.5,
+        'books': 3,
+        'toiletries': 2
+    };
+    
+    // Применяем значения по умолчанию ко всем элементам
+    for (const [id, value] of Object.entries(defaultValues)) {
+        const element = document.getElementById(id);
+        const numberElement = document.getElementById(id + '-number');
+        
+        if (element) {
+            element.value = value;
+            
+            // Обновляем отображаемое значение для старых слайдеров
+            const valueDisplay = element.parentNode.querySelector('.value-display');
+            if (valueDisplay) {
+                const unit = getUnit(element.id);
+                valueDisplay.textContent = value + unit;
+            }
+        }
+        
+        if (numberElement) {
+            numberElement.value = value;
+        }
+    }
+    
+    // Синхронизируем все слайдеры и числовые поля после обновления
+    initializeSliderSync();
+    
+    // Сбрасываем режим расчёта на быстрый
+    const quickModeBtn = document.querySelector('.mode-btn[data-mode="quick"]');
+    const modeButtons = document.querySelectorAll('.mode-btn');
+    const calculatorContainer = document.querySelector('.calculator-container');
+    const modeDescription = document.getElementById('mode-description');
+    
+    if (quickModeBtn && modeButtons.length > 0 && calculatorContainer && modeDescription) {
+        modeButtons.forEach(btn => btn.classList.remove('active'));
+        quickModeBtn.classList.add('active');
+        calculatorContainer.classList.remove('mode-quick', 'mode-detailed');
+        calculatorContainer.classList.add('mode-quick');
+        modeDescription.textContent = '8–12 ключевых параметров для быстрой оценки водного следа';
+    }
+    
+    // Сбрасываем выбор готового сценария
+    const presetSelect = document.getElementById('preset-select');
+    if (presetSelect) {
+        presetSelect.value = '';
+    }
+    
+    // Сбрасываем шаги на первый
+    currentStep = 1;
+    updateStepDisplay();
+    updateNavigationButtons();
+    
+    // Скрываем результаты
+    document.getElementById('results').style.display = 'none';
+    
+    // Показываем уведомление о сбросе
+    showResetNotification();
+}
+
+// Показ уведомления о сбросе
+function showResetNotification() {
+    // Создаем элемент уведомления
+    const notification = document.createElement('div');
+    notification.className = 'reset-notification';
+    notification.innerHTML = '<i class="fas fa-check"></i> Все значения сброшены к значениям по умолчанию';
+    
+    // Добавляем стили для уведомления
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+        color: white;
+        padding: 15px 25px;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 500;
+        transform: translateX(120%);
+        transition: transform 0.3s ease;
+    `;
+    
+    // Добавляем уведомление на страницу
+    document.body.appendChild(notification);
+    
+    // Показываем уведомление с анимацией
+    setTimeout(() => {
+        notification.style.transform = 'translateX(0)';
+    }, 100);
+    
+    // Убираем уведомление через 3 секунды
+    setTimeout(() => {
+        notification.style.transform = 'translateX(120%)';
+        setTimeout(() => {
+            if (notification.parentNode) {
+                notification.parentNode.removeChild(notification);
+            }
+        }, 300);
+    }, 3000);
+}
+
 // Оставляем остальные функции без изменений
 // Расчёт водного следа
 function calculateWaterFootprint() {
